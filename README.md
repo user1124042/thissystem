@@ -2,7 +2,7 @@ i no can do this thing
 
 so i find some man.
 
-they and i, we are crite this system.
+they and i, we are create this system.
 
 i am very honoured.
 
