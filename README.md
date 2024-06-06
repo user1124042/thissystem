@@ -1,6 +1,6 @@
 i no can do this thing
 
-so i find some man.
+so i find some men.
 
 they and i, we are create this system.
 
