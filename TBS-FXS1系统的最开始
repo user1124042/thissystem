@@ -40,9 +40,9 @@ int main(){
 		cout << s << "不是一个指令" << endl;
 		Beep(750,100);
 	}
-	Prints("MADE IN CHINA,BAIGEPING",75);
-	Prints("                       ",100);
-	Prints("Closeing·······",300);
+	puts("MADE IN CHINA,BAIGEPING");
+	puts("                       ");
+	puts("Closeing·······");
 	Sleep(1000);
 	return 0;
 }
