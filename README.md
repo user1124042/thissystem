@@ -1,3 +1,5 @@
+you cant use it with windows7
+
 i no can do this thing
 
 so i find some men.
