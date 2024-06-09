@@ -1,4 +1,4 @@
-//this is a wonderful windows 19.1.2
+//this is a wonderful windows 19.1.4
 #include<bits/stdc++.h>
 #include<windows.h>
 #include<fstream>
@@ -428,6 +428,7 @@ void update()
 	puts("2024-5-31  14.1.2 大更新hydro自动化！！"); 
 	puts("2024-6-9   19.1.2 把系统更改成了自研发！恭喜！！"); 
 	puts("2024-6-9   19.1.3 改了开机动画和输入提示语"); 
+	puts("2024-6-9   19.1.4 改了背景与前景"); 
 	return ;
 }
 void looking(){
@@ -551,19 +552,23 @@ void jjxrb(){
 	ShellExecuteA(NULL, "open", (LPCSTR)"https://www.2344.com/flash/28135.htm", NULL, NULL, SW_MAXIMIZE);
 }
 int main(){
+	system("color 17");
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	string qaz, wsx;
 	cin >> qaz >> wsx;
 	if(qaz == "alanyufeng" && wsx == "bgp20130427"){
 		system("cls");
+		system("color 17");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		Sleep(5000);
 		system("cls");
+		system("color 17");
 		srand(time(0));
 		cout << "开机时间：" << nowtm() << endl;
 		Sleep(1000);
 		system("cls"); 
+		system("color 17");
 		puts("************* ************  *************               ************* *          *  *************      **     *************         **");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *      *   *");
 		puts("      *       *           * *                           *               *      *    *             *     *     *           *     *    *");
@@ -576,7 +581,7 @@ int main(){
 		puts("      *       *           *             *               *              *        *               *       *                 *  **      *");
 		puts("      *       ************  *************               *             *          *  ************* *********** *************  ** ***********");
 		puts("                           智     能     计     算     机     TBS-FXS1系		统								");
-		puts("                                         Made with BAIGEPING&SUNYUHAO V19.1.2(版权所有)");
+		puts("                                         Made with BAIGEPING&SUNYUHAO V19.1.4(版权所有)");
 		puts("");
 		puts("*****        *********     *********");
 		puts("*    ***     *       *     *        ");
@@ -608,6 +613,7 @@ int main(){
 		for(int i=1; i<=100; i+=1)
 		{
 			system("CLS");
+			system("color 17");
 			for(int j=1; j<=i; j++)
 			{
 				cout<<"-";
@@ -618,10 +624,12 @@ int main(){
 			Sleep(rand()%15);
 		}
 		system("cls");
+		system("color 17");
 		s="本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！"; 
 		Prints(s,50);
 		Sleep(5000);
 		system("CLS"); 
+		system("color 17");
 		puts("fn··············笑话");
 		puts("catstore···········商店");
 		puts("state············ 型号");
@@ -672,6 +680,7 @@ int main(){
 			if(s=="shut")
 			{
 				system("cls");
+				system("color 17");
 				break;
 			}
 			if(s=="st"){
@@ -874,12 +883,14 @@ int main(){
 			cout << s << "不是一个指令" << endl;
 			Beep(750,100);
 		}
+		system("color 17");
 		Prints("MADE IN CHINA,BAIGEPING",75);
 		Prints("                       ",100);
 		Prints("Closeing·······",300);
 		Sleep(1000);
 	}
 	else{
+		system("color 17");
 		puts("由于你是危险人物，我们强行退出");
 		return 0; 
 	}
