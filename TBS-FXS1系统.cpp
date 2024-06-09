@@ -1,4 +1,4 @@
-//this is a wonderful windows 14.1.2
+//this is a wonderful windows 19.1.2
 #include<bits/stdc++.h>
 #include<windows.h>
 #include<fstream>
@@ -144,6 +144,70 @@ void presenter(){
 	puts("世界那么大，我想去看看");
 	puts("来来来"); 
 	system("start https://www.luogu.com.cn/team/71582");
+	return ;
+}
+void ziyanfa(){
+	puts("您已进入自研发解析");
+	puts("名：TbS-FXS-endsts");
+	int sxsxdsx;
+	while(1){
+		puts("请输入数字");
+		puts("列表：");
+		puts("0.退出 1.钟表 2.团队 3.简介 4.Administrator");
+		cin >> sxsxdsx;
+		if(sxsxdsx == 0){
+			return ;
+		}
+		if(sxsxdsx == 1){
+			cout << "时间" << nowtm() << endl; 
+		}
+		if(sxsxdsx == 2){
+			puts("我们的研发团队: TBS-FXS团队");
+			puts("详情见QQ群908658106");
+		}
+		if(sxsxdsx == 3){
+			puts("系统已实现自研发！！！");
+		}
+		if(sxsxdsx == 4){
+			while(1){
+				puts("Administrator");
+				puts("指令：");
+				puts("按 [mkd] + 文件夹名字(只输入一个字母) 创建文件夹 按 [odd] + 文件夹名字 打开文件夹(只输入一个字母) 按[mkt] + 文件名字创建文件(只输入一个字母) 按 [o] 退出");
+				string one;
+				char two; 
+				char mkeddir[10001];
+				cin >> one;
+				if(one == "o"){
+					break;
+				}
+				if(one == "odd"){
+					cin >> two;
+					cout << "您打开了一个名为" << two << "的文件夹" << endl;
+					cout << "文件夹中有："  << mkeddir << endl;
+				}
+				if(one == "mkd"){
+					cin >> two;
+					cout << "您创建了一个名为" << two << "的文件夹" << endl;
+					int y = 1;
+					mkeddir[y] = two;
+				}
+				if(one == "mkt"){
+					cin >> two;
+					cout << "您创建了一个名为" << two << "的TXT文件" << endl;
+					cout << "输入内容，按 [Q + 回车] 完成";
+					string saving;
+					for(int i = 0; i < 100001; i++){
+						cin >> saving[i];
+						if(saving[i] == 'Q'){
+							Prints("完成完成！", 50);
+							break;
+						}
+					}
+					cout << "请您自己复制粘贴您的文件" << endl; 
+				}
+			}
+		}
+	}
 	return ;
 }
 void downcpp(){
@@ -362,6 +426,8 @@ void update()
 	puts("2024-5-31  13.1.1 大更新未来信箱！！"); 
 	puts("2024-5-31  13.1.2 更新hydro！！"); 
 	puts("2024-5-31  14.1.2 大更新hydro自动化！！"); 
+	puts("2024-6-9   19.1.2 把系统更改成了自研发！恭喜！！"); 
+	puts("2024-6-9   19.1.3 改了开机动画和输入提示语"); 
 	return ;
 }
 void looking(){
@@ -498,7 +564,7 @@ int main(){
 		cout << "开机时间：" << nowtm() << endl;
 		Sleep(1000);
 		system("cls"); 
-		puts("************* ************  *************               ************* *          *  *************      **     *           *         **");
+		puts("************* ************  *************               ************* *          *  *************      **     *************         **");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *      *   *");
 		puts("      *       *           * *                           *               *      *    *             *     *     *           *     *    *");
 		puts("      *       *           * *                           *                *    *     *                   *     *           *          *");
@@ -508,9 +574,9 @@ int main(){
 		puts("      *       *           *             *               *                *    *                 *       *                 *          *");
 		puts("      *       *           *             *               *               *      *                *       *                 *          *");
 		puts("      *       *           *             *               *              *        *               *       *                 *  **      *");
-		puts("      *       ************  *************               *             *          *  ************* ***********             *  ** ***********");
+		puts("      *       ************  *************               *             *          *  ************* *********** *************  ** ***********");
 		puts("                           智     能     计     算     机     TBS-FXS1系		统								");
-		puts("                                         Made with BAIGEPING&SUNYUHAO V14.1.2(版权所有)");
+		puts("                                         Made with BAIGEPING&SUNYUHAO V19.1.2(版权所有)");
 		puts("");
 		puts("*****        *********     *********");
 		puts("*    ***     *       *     *        ");
@@ -598,9 +664,10 @@ int main(){
 		puts("CPS············· CPS测试");
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
+		puts("weyf·············系统");
 		while(1)
 		{
-			cout<<"Windows terminal OS(No DIR)>>>";
+			cout<<"TBS-FXS19.1.2(weveDIR)>>>";
 			cin>>s;
 			if(s=="shut")
 			{
@@ -619,6 +686,11 @@ int main(){
 			if(s=="pblktct")
 			{
 				pblktct();
+				continue;
+			}
+			if(s=="weyf")
+			{
+				ziyanfa();
 				continue;
 			}
 			if(s=="jd")
