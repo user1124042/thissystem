@@ -1,4 +1,4 @@
-//this is a wonderful windows 19.2.1
+//this is a wonderful windows 19.2.2
 #include<bits/stdc++.h>
 #include<windows.h>
 #include<fstream>
@@ -438,6 +438,7 @@ void update()
 	puts("2024-6-9   19.1.3 改了开机动画和输入提示语"); 
 	puts("2024-6-9   19.1.4 改了背景与前景"); 
 	puts("2024-6-10  19.2.1 改了系统自研发"); 
+	puts("2024-6-10  19.2.2 改again"); 
 	return ;
 }
 void looking(){
