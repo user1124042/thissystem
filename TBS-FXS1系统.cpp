@@ -150,10 +150,10 @@ void ziyanfa(){
 	puts("您已进入自研发解析");
 	puts("名：TbS-FXS-endsts");
 	int sxsxdsx;
+	puts("请输入数字");
+	puts("列表：");
+	puts("0.退出 1.钟表 2.团队 3.简介 4.Administrator");
 	while(1){
-		puts("请输入数字");
-		puts("列表：");
-		puts("0.退出 1.钟表 2.团队 3.简介 4.Administrator");
 		cin >> sxsxdsx;
 		if(sxsxdsx == 0){
 			return ;
@@ -164,6 +164,7 @@ void ziyanfa(){
 		if(sxsxdsx == 2){
 			puts("我们的研发团队: TBS-FXS团队");
 			puts("详情见QQ群908658106");
+			Prints("若想退出，请在这段文字结束后按 [0] 退出", 100);
 		}
 		if(sxsxdsx == 3){
 			puts("系统已实现自研发！！！");
@@ -172,10 +173,10 @@ void ziyanfa(){
 			Prints("若想退出，请在这段文字结束后按 [0] 退出", 100);
 		}
 		if(sxsxdsx == 4){
+			puts("Administrator");
+			puts("指令：");
+			puts("按 [mkd] + 文件夹名字(只输入一个字母) 创建文件夹 按 [odd] + 文件夹名字 打开文件夹(只输入一个字母) 按[mkt] + 文件名字创建文件(只输入一个字母) 按 [o] 退出 (指令需要按回车，退出不用)");
 			while(1){
-				puts("Administrator");
-				puts("指令：");
-				puts("按 [mkd] + 文件夹名字(只输入一个字母) 创建文件夹 按 [odd] + 文件夹名字 打开文件夹(只输入一个字母) 按[mkt] + 文件名字创建文件(只输入一个字母) 按 [o] 退出 (指令需要按回车，退出不用)");
 				string one;
 				char two; 
 				char mkeddir[10001];
