@@ -1,10 +1,10 @@
 //this is a wonderful windows 19.2.2
 #include<bits/stdc++.h>
-#include<windows.h>
+#include <unistd.h>
 #include<fstream>
 using namespace std; 
 //命令库：清屏：system("cls"); 
-//等待：Sleep(); 
+//等待：sleep(); 
 //声音：Beep(频率,时间); 
 string s;
 string o;
@@ -16,7 +16,7 @@ void Prints(string s,int speed)//自动换行
 	for(int i=0; i<s.size(); i++)
 	{
 		cout<<s[i];
-		Sleep(speed);
+		sleep(speed / 1000);
 	}
 	cout<<endl;
 	return ;
@@ -43,7 +43,7 @@ void leetcode(){
 	cin >> c;
 	if(c == 'Y'){
 		puts("你确定的话，我就不管你了");
-		Sleep(1000);
+		sleep(1);
 		system("start https://leetcode.cn/") ;
 	} 
 	else{
@@ -77,7 +77,7 @@ void coutrlor(){
 } 
 void CPS(){
 	puts("测试你的游戏速度---------点击更多，游戏就开挂！！！");
-	Sleep(1000);
+	sleep(1);
 	system("start https://clickpersecond.com/cn/1-second/");
 	return ;
 } 
@@ -108,13 +108,13 @@ void mail(){
 } 
 void bd(){
 	puts("百度一下");
-	Sleep(1000);
+	sleep(1);
 	system("start https://www.baidu.com/");
 	return ;
 } 
 void text(){
 	puts("刷题时间到了，刷题吧！");
-	Sleep(1000);
+	sleep(1);
 	int abc = rand()%(10120-1000)+1000;
 	puts("请输入题号！"); 
 	string qwe;
@@ -122,7 +122,7 @@ void text(){
 	string qwqw = "start https://www.luogu.com.cn/problem/" + qwe;
 	system(qwqw.c_str());
 //	puts("大更改的浏览器");
-//	Sleep(3000);
+//	sleep(3000);
 //	string s;
 //	puts("输入浏览网页网址:");
 //	cin >> s;
@@ -220,19 +220,19 @@ void ziyanfa(){
 }
 void downcpp(){
 	puts("来来来，下c++载来！");
-	Sleep(2000);
+	sleep(2);
 	system("start https://www.onlinedown.net/soft/9500.htm");
 	return ;
 }
 void chinajy(){
 	puts("国家云教育平台");
-	Sleep(2000);
+	sleep(2);
 	system("start https://basic.smartedu.cn/");
 	return ;
 }
 void funnyth(){
 	system("echo 神奇的事情");
-	Sleep(2000);
+	sleep(2);
 	system("start https://lglg.top/61884"); 
 	return ;
 }
@@ -260,7 +260,7 @@ void gametwo(){
 } 
 void txt(string q){
 	puts("文本编辑器");
-	Sleep(1000);
+	sleep(1);
 	system("cls"); 
 	o = "这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束，注意，需要最后自己复制文本的，没有任何东西监视你，请放心使用（好骂，大胆骂）";
 	Prints(o,30);
@@ -275,7 +275,7 @@ void txt(string q){
 
 void qwqw(){
 	puts("系统之家---一键下载");
-	Sleep(500);
+	sleep(0.5);
 	system("start https://windows.ycgxgy.cn/");
 	return ;
 } 
@@ -316,8 +316,8 @@ void catstore()
 
 void jd(){
 	puts("来买东西吧！");
-	Sleep(1000);
-	ShellExecuteA(NULL, "open", (LPCSTR)"https://www.jd.com/", NULL, NULL, SW_MAXIMIZE);
+	sleep(1);
+	system("https://www.jd.com/");
 }
 
 
@@ -358,7 +358,7 @@ void state()
 }
 void prog(){
 	puts("好用的编程软件--洛谷IDE");
-	Sleep(3000);
+	sleep(3);
 	system("start https://www.luogu.com.cn/ide");
 	return ;
 }
@@ -443,7 +443,7 @@ void update()
 }
 void looking(){
 	puts("大更改的浏览器");
-	Sleep(3000);
+	sleep(3);
 	string s;
 	puts("输入浏览网页网址:");
 	cin >> s;
@@ -488,7 +488,7 @@ void pblktct(){
 }
 void look(){
 	puts("浏览");
-	Sleep(1000);//43.6 is lowest 
+	sleep(1);//43.6 is lowest 
 	system("start https://hao.360.com/");
 	return ;
 }
@@ -502,14 +502,14 @@ void taotao(){
 	}
 	else{
 		system("echo 66666666666666666666");
-		Sleep(2000);
+		sleep(2);
 		system("start https://www.taobao.com/");
 	}
 	return ;
 }
 void hzhz(){
 	puts("Hydro Online Judge，原名H，是世界知名的OJ"); 
-	Sleep(1000); 
+	sleep(1); 
 	string sssss;
 	cout << "输入题号！！！"; 
 	cin >> sssss;
@@ -520,16 +520,16 @@ void hzhz(){
 }
 void kkk(){
 	puts("累了吗？刷会视频吧！"); 
-	Sleep(1000); 
+	sleep(1); 
 	system("start https://www.ixigua.com/");
 	return; 
 }
 void ybt(){
 
 	puts("信息学奥赛在线练习网站！！！");
-	Sleep(2000);
+	sleep(2);
 	puts("开发者 sunyuhao") ;
-	Sleep(2000);
+	sleep(2);
 	system("start http://ybt.ssoier.cn:8088/ ") ;
 	return ;
 }
@@ -545,21 +545,21 @@ void TBS(){
 }
 void ys(){
 	puts("来添加一个163邮箱吧！！");
-	Sleep(1000);
+	sleep(1);
 	system("start https://mail.163.com/"); 
 	return;
 }
 void ajy(){
 	puts("想刷剧了吗？来爱奇艺吧！");
-	Sleep(1000) ;
+	sleep(1) ;
 	system("start https://www.iqiyi.com/ ");
 	return;
 }
 void jjxrb(){
 	puts("狙击小日本无敌版！");
-	Sleep(1000);
-	puts("那叫一个爽爽爽！！！！！！真解恨！！！！！"); 
-	ShellExecuteA(NULL, "open", (LPCSTR)"https://www.2344.com/flash/28135.htm", NULL, NULL, SW_MAXIMIZE);
+	sleep(1);
+	puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
+	system("https://www.2344.com/flash/28135.htm");
 }
 int main(){
 	system("color 17");
@@ -571,12 +571,12 @@ int main(){
 		system("cls");
 		system("color 17");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
-		Sleep(5000);
+		sleep(5);
 		system("cls");
 		system("color 17");
 		srand(time(0));
 		cout << "开机时间：" << nowtm() << endl;
-		Sleep(1000);
+		sleep(1);
 		system("cls"); 
 		system("color 17");
 		puts("************* ************  *************               ************* *          *  *************      **     *************     *************");
@@ -604,22 +604,22 @@ int main(){
 		puts("*  *  *   ********   *        *        *     *   *  *  *  *******  *");
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
-		Sleep(5000);
+		sleep(5);
 		system("cls");
-		Sleep(1);
+		sleep(1);
 		s="";
-		Beep(550,400);
-		Beep(605,400);
-		Beep(660,400);
-		Beep(715,400);
-		Beep(770,400);
+		// Beep(550,400);
+		// Beep(605,400);
+		// Beep(660,400);
+		// Beep(715,400);
+		// Beep(770,400);
 		s="loading......";
 		for(int i=0; i<s.size(); i++)
 		{
 			cout<<s[i];
-			Sleep(100);
+			sleep(0.1);
 		}
-		Sleep(500);
+		sleep(0.5);
 		for(int i=1; i<=100; i+=1)
 		{
 			system("CLS");
@@ -631,13 +631,13 @@ int main(){
 			cout<<endl;
 			cout<<i;
 			puts("%");
-			Sleep(rand()%15);
+			sleep((rand()%15) / 1000);
 		}
 		system("cls");
 		system("color 17");
 		s="本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！"; 
 		Prints(s,50);
-		Sleep(5000);
+		sleep(5);
 		system("CLS"); 
 		system("color 17");
 		puts("fn··············笑话");
@@ -891,13 +891,13 @@ int main(){
 				continue;
 			} 	
 			cout << s << "不是一个指令" << endl;
-			Beep(750,100);
+			// Beep(750,100);
 		}
 		system("color 17");
 		Prints("MADE IN CHINA,BAIGEPING",75);
 		Prints("                       ",100);
 		Prints("Closeing·······",300);
-		Sleep(1000);
+		sleep(1);
 	}
 	else{
 		system("color 17");
