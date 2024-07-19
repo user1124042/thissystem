@@ -377,8 +377,8 @@ void txt(string q)
 	Prints("这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束，注意，需要最后自己复制文本的，没有任何东西监视你，请放心使用（好骂，大胆骂）", 30);
 	for (int i = 0; i <= 10000; i++)
 	{
-		cin >> s[i];
-		if (s[i] == '/')
+		cin >> commandor[i];
+		if (commandor[i] == '/')
 		{
 			break;
 		}
@@ -397,7 +397,8 @@ void qwqw()
 void cpu()
 {
 	puts("CPU配置：Intel Core i7");
-	puts("ip地址：223.101.195.145");
+	// printf("ip地址：223.101.195.145");
+	printf("ip地址：%d.%d.%d.%d\n", rand() % 899 + 100, rand() % 899 + 100, rand() % 998 + 1, rand() % 998 + 1);
 	return;
 }
 void copyright()
@@ -559,7 +560,6 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
-	puts("2024-7-19 No Version 某AR又又又在他的Fork添加了下载Minecraft的功能");
 }
 void looking()
 {
@@ -812,9 +812,9 @@ int main()
 		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		commandor = "loading......";
-		for (int i = 0; i < s.size(); i++)
+		for (int i = 0; i < commandor.size(); i++)
 		{
-			printf("%c", s[i]);
+			printf("%c", commandor[i]);
 			sleep(100 / 1000);
 		}
 		sleep(500 / 1000);
@@ -887,7 +887,6 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-		puts("downloadMinecraft..........下载Minecraft");
 		while (1)
 		{
 			cout << "TBS-FXS19.1.2(weveDIR)>>>";
@@ -1027,57 +1026,11 @@ int main()
 			case str2int("ajy"):
 				ajy();
 				continue;
-			case str2int("downloadMinecraft"):
-			{
-				puts("该功能用来下载Minecraft");
-				printf("如果你没有正版, 请输入N\n如果你已经有正版, 请输入[N/Y]: ");
-				string mode;
-				mode.resize(1);
-				scanf("%s", &mode);
-				switch (str2int(mode.c_str()))
-				{
-				case str2int("N"):
-				{
-					puts("如果你没有正版账号, 那么最好去官网购买一个Minecraft");
-					OpenWeb("www.minecraft.net");
-					break;
-				}
-				case str2int("Y"):
-				{
-					puts("目前主流Minecraft启动器(或客户端)有很多");
-					printf("你可以试试一些经典的\n1. 官方启动器\n2. Lunar Client\n3. LabyMod\n4. Badlion Client\n5. Feather Client\n请选择客户端[MS/L/LMD/B/F]: ");
-					string mode;
-					cin >> mode;
-					switch (str2int(mode.c_str()))
-					{
-					case str2int("MS"):
-						OpenWeb("www.minecraft.net/download");
-						break;
-					case str2int("L"):
-						OpenWeb("www.lunarclient.com");
-						break;
-					case str2int("LMD"):
-						OpenWeb("www.labymod.net");
-						break;
-					case str2int("B"):
-						OpenWeb("www.badlion.net");
-						break;
-					case str2int("F"):
-						OpenWeb("www.feathermc.com");
-						break;
-					default:
-						break;
-					}
-				}
-				default:
-					break;
-				}
-			}
 			default:
 				break;
 			}
 
-			cout << s << "不是一个指令" << endl;
+			printf("%s 不是一个有效的命令", commandor);			
 			#ifdef _WIN32
 			Beep(750,100);
 			#else
