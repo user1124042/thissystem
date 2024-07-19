@@ -396,8 +396,10 @@ void qwqw()
 
 void cpu()
 {
-	puts("CPU配置：Intel Core i7");
-	// printf("ip地址：223.101.195.145");
+	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
+	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
+	printf("CPU配置: %s %s\n", cpu[rand() % 5].c_str(), cpucore[rand() % 12].c_str());
+	// (:
 	printf("ip地址：%d.%d.%d.%d\n", rand() % 899 + 100, rand() % 899 + 100, rand() % 998 + 1, rand() % 998 + 1);
 	return;
 }
