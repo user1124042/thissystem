@@ -35,9 +35,7 @@ constexpr unsigned int str2int(const char *str, int h = 0)
 
 void OpenWeb(string url)
 {
-	string command[2];
-	command[0] = "start " + url;
-	command[1] = "xdg-open " + url;
+	string command[2] = {"start " + url, "xdg-open " + url};
 	#if _WIN32
 		system(command[0].c_str());
 	#else
