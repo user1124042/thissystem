@@ -38,14 +38,14 @@ void OpenWeb(string url)
 	string command[2];
 	command[0] = "start " + url;
 	command[1] = "xdg-open " + url;
-#if _WIN32
-	system(command[0].c_str());
-#else
-#endif
+	#if _WIN32
+		system(command[0].c_str());
+	#else
+	#endif
 
-#if __linux__
-	system(command[1].c_str());
-#endif
+	#if __linux__
+		system(command[1].c_str());
+	#endif
 }
 
 
@@ -242,8 +242,8 @@ void ziyanfa()
 			while (1)
 			{
 				string one;
-				char two;
-				char mkeddir[10001];
+				string two;
+				string mkeddir[10001];
 				cin >> one;
 				if (one == "o")
 				{
@@ -253,7 +253,7 @@ void ziyanfa()
 				if (one == "mkd")
 				{
 					cin >> two; // idk
-					printf("您创建了一个名为 %s 的文件夹\n", two);
+					printf("您创建了一个名为 %s 的文件夹\n", two.c_str());
 					y = 1;
 					mkeddir[y] = two;
 					y++;
@@ -262,14 +262,14 @@ void ziyanfa()
 				{
 					puts("请输入您第几个创建-1的文件夹");
 					cin >> y;
-					printf("这是一个名为 %s 的文件夹\n", mkeddir[y]);
+					printf("这是一个名为 %s 的文件夹\n", mkeddir[y].c_str());
 					cout << "您打开了" << endl;
 					break;
 				}
 				if (one == "mkt")
 				{
 					cin >> two;
-					printf("您创建了一个名为 %s 的TXT文件", two);
+					printf("您创建了一个名为 %s 的TXT文件", two.c_str());
 					printf("输入内容，按 [Q + 回车] 完成");
 					string saving;
 					for (int i = 0; i < 100001; i++)
@@ -292,21 +292,31 @@ void downcpp()
 {
 	puts("来来来，下c++载来！");
 	string mode;
-	printf("\n有两种选择:\n1. 下载DevC++\n2. 下载编译好的Mingw(Github)\n3. 用微软的Visual Studio(或MSVC)\n请选择你的模式[D/M/VC]");
+	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/VC/CL]");
 	cin >> mode;
 	switch (str2int(mode.c_str()))
 	{
 	case str2int("D"):
-		sleep(2);
 		OpenWeb("www.onlinedown.net/soft/9500.htm");
 		break;
 	case str2int("M"):
-		sleep(2);
-		OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases");
+	{
+		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/MG]");
+		cin >> mode;
+		switch (str2int(mode.c_str()))
+		{
+			case str2int("G"): OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
+			case str2int("MG"): OpenWeb("https://www.mingw-w64.org/"); break;
+		}
 		break;
+	} // 这里只能用括号包起来
 	case str2int("VC"):
-		sleep(2);
 		OpenWeb("http://visualstudio.microsoft.com");
+		break;
+	case str2int("CL"):
+		printf("访问可能比较慢, 请稍等\n我们将给你两个下载渠道 一个是Github 一个是官网\n");
+		OpenWeb("https://github.com/llvm/llvm-project/releases");
+		OpenWeb("https://clang.llvm.org/");
 		break;
 	default:
 		printf("错误: 模式 %s 不存在", mode.c_str());
@@ -344,7 +354,7 @@ void game()
 		continue;
 	getchar();
 	OpenWeb("ws.imc.re/");
-	puts("哎呦我，老得劲了！！");
+	// puts("哎呦我，老得劲了！！"); sunyuhao你这写的太抽象了吧 --- 某A
 	return;
 }
 void gametwo()
@@ -428,8 +438,8 @@ void kfcid()
 	OpenWeb("www.qq.com/");
 	Prints("66666", 500);
 	Prints("666666666666666666666", 500);
-	Prints("QQ腾讯网-----搜索更多的事情66666666666666666666666666", 500);
-	Prints("QQ腾讯网-----搜索更多的事情66666666666666666666", 500);
+	// Prints("QQ腾讯网-----搜索更多的事情66666666666666666666666666", 500); // 为什么要输很多"6"
+	// Prints("QQ腾讯网-----搜索更多的事情66666666666666666666", 500);
 	return;
 }
 void fy()
@@ -545,7 +555,8 @@ void update()
 	puts("2024-6-9   19.1.4 改了背景与前景");
 	puts("2024-6-10  19.2.1 改了系统自研发");
 	puts("2024-6-10  19.2.2 改again");
-	puts("2024-7-17  No Version 某AR在他的Frok上把这个系统的一些地方重置了一遍");
+	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
+	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 }
 void looking()
 {
@@ -593,10 +604,39 @@ void bat()
 void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-	puts("建议运行系统：Windows 10");
-	puts("建议运行CPU：intel Core i7");
-	puts("系统类别：基于ubuntu的指令操作系统");
-	puts("名称：alanbecker's-first-PC");
+	sleep(0.01);
+	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
+	srand(time(NULL));
+	int o = rand() % 7;
+	sleep(0.01);
+	srand(time(NULL));
+	printf("建议运行系统：%s %d\n", os[o].c_str(), rand()); // 这里我写个彩蛋
+	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
+	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
+	printf("建议运行CPU: %s %s\n", cpu[rand() % 5].c_str(), cpucore[rand() % 12].c_str());
+	sleep(0.01);
+	o = rand() % 7;
+	printf("系统类别：基于%s 的指令操作系统\n", os[o].c_str());
+	srand(time(NULL));
+	string PCNAME = "";
+    for (int i = 0; i < rand() % 12 + 5; ++i) {
+        char rdc = 'a' + rand() % 26;
+        PCNAME += rdc;
+    }
+	char rdc = 'a' + rand() % 26;
+	PCNAME += "'";
+	PCNAME += rdc;
+	PCNAME += "-";
+	for (int i = 0; i < rand() % 6 + 1; ++i) {
+        char rdc = 'a' + rand() % 26; 
+        PCNAME += rdc;
+    }
+	PCNAME += "-";
+    for (int i = 0; i < rand() % 5 + 1; ++i) {
+        char rdc = 'a' + rand() % 26; 
+        PCNAME += rdc;
+    }
+	printf("名称: %s\n", PCNAME.c_str());
 	return;
 }
 void pblktct()
@@ -604,7 +644,7 @@ void pblktct()
 	puts("alanbecker代码输出，sunyuhao负责编辑，tongyifeng负责试用。此版权为sunyuhao与alanbecker所有，请勿在未获得权限");
 	puts("的情况下私自在各网站上发布，谢谢");
 	puts("洛谷网站                        alanbecker联系洛谷alanbecker");
-	puts("www.luogu.com.cn                sunyuhao联系洛谷stzhl");
+	puts("www.luogu.com                  sunyuhao联系洛谷stzhl");
 	puts("Copyright by sunyuhao and alanbecker C");
 	return;
 }
@@ -612,7 +652,7 @@ void look()
 {
 	puts("浏览");
 	sleep(1); // 43.6 is lowest
-	OpenWeb("hao.360.com/");
+	OpenWeb("www.bing.com"); // 还是推荐用微软必应
 	return;
 }
 void taotao()
@@ -649,7 +689,7 @@ void kkk()
 {
 	puts("累了吗？刷会视频吧！");
 	sleep(1);
-	OpenWeb("www.ixigua.com/");
+	OpenWeb("www.bilibili.com"); // 建议Bilibili
 	return;
 }
 void ybt()
@@ -657,7 +697,7 @@ void ybt()
 
 	puts("信息学奥赛在线练习网站！！！");
 	sleep(2);
-	puts("开发者 sunyuhao");
+	// puts("开发者 sunyuhao"); ?????????????????
 	sleep(2);
 	OpenWeb("ybt.ssoier.cn:8088/");
 	return;
@@ -689,9 +729,9 @@ void ajy()
 }
 void jjxrb()
 {
-	puts("狙击小日本无敌版！");
+	// puts("狙击小日本无敌版！");
 	sleep(1);
-	puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
+	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
 	OpenWeb("www.2344.com/flash/28135.htm");
 }
 int main()
