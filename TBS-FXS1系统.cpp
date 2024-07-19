@@ -82,7 +82,7 @@ void leetcode()
 	cin >> c;
 	if (c == 'Y')
 	{
-		puts("你确定的话，我就不管你了");
+		puts("你确定的话，我就不管你了"); // eeeeeeeeeee
 		sleep(1);
 		OpenWeb("leetcode.cn/");
 	}
