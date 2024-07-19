@@ -15,7 +15,7 @@ using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-string s;
+string commandor;
 string o;
 string c;
 int abc;
@@ -799,7 +799,7 @@ int main()
 		#else
 		#endif
 		sleep(1);
-		s = "";
+		commandor = "";
 		#ifdef _WIN32
 		Beep(550,400);
 		Beep(605,400);
@@ -809,7 +809,7 @@ int main()
 		#else
 		#endif
 		printf("\033[2J\033[3J\033[1;1H");
-		s = "loading......";
+		commandor = "loading......";
 		for (int i = 0; i < s.size(); i++)
 		{
 			printf("%c", s[i]);
@@ -889,8 +889,8 @@ int main()
 		while (1)
 		{
 			cout << "TBS-FXS19.1.2(weveDIR)>>>";
-			cin >> s;
-			switch (str2int(s.c_str()))
+			cin >> commandor;
+			switch (str2int(commandor.c_str()))
 			{
 			case str2int("shut"):
 				printf("\033[2J\033[1;1H");
@@ -1028,11 +1028,11 @@ int main()
 			case str2int("downloadMinecraft"):
 			{
 				puts("该功能用来下载Minecraft");
-				printf("如果你没有正版, 请输入N\n如果你已经有正版, 请输入Y\N请输入[N/Y]: ");
+				printf("如果你没有正版, 请输入N\n如果你已经有正版, 请输入[N/Y]: ");
 				string mode;
 				mode.resize(1);
 				scanf("%s", &mode);
-				switch (str2int(mode.c_str（))
+				switch (str2int(mode.c_str()))
 				{
 				case str2int("N"):
 				{
@@ -1042,7 +1042,7 @@ int main()
 				}
 				case str2int("Y"):
 				{
-					puts("目前主流客户端有很多");
+					puts("目前主流Minecraft启动器(或客户端)有很多");
 					printf("你可以试试一些经典的\n1. 官方启动器\n2. Lunar Client\n3. LabyMod\n4. Badlion Client\n5. Feather Client\n请选择客户端[MS/L/LMD/B/F]: ");
 					string mode;
 					cin >> mode;
