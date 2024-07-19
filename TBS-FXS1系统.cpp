@@ -181,6 +181,10 @@ void text()
 	//	s = "start " + s;
 	//	system(s.c_str());
 	// 参照他的 wushaochen yi Edogawa_Conan
+	// 某AR曰:
+	// 我改了一下
+	// 建议使用OpenWeb 怎么使用呢? 假如我要让它打开www.bing.com, 那么就OpenWeb("www.bing.com");
+	// 用法 OpenWeb(目标网址)
 	return;
 }
 static string nowtm()
