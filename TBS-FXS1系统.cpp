@@ -557,6 +557,7 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
+	puts("2024-7-19 No Version 某AR又又又在他的Fork添加了下载Minecraft的功能");
 }
 void looking()
 {
@@ -884,6 +885,7 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
+		puts("downloadMinecraft..........下载Minecraft");
 		while (1)
 		{
 			cout << "TBS-FXS19.1.2(weveDIR)>>>";
@@ -1023,6 +1025,52 @@ int main()
 			case str2int("ajy"):
 				ajy();
 				continue;
+			case str2int("downloadMinecraft"):
+			{
+				puts("该功能用来下载Minecraft");
+				printf("如果你没有正版, 请输入N\n如果你已经有正版, 请输入Y\N请输入[N/Y]: ");
+				string mode;
+				mode.resize(1);
+				scanf("%s", &mode);
+				switch (str2int(mode.c_str（))
+				{
+				case str2int("N"):
+				{
+					puts("如果你没有正版账号, 那么最好去官网购买一个Minecraft");
+					OpenWeb("www.minecraft.net");
+					break;
+				}
+				case str2int("Y"):
+				{
+					puts("目前主流客户端有很多");
+					printf("你可以试试一些经典的\n1. 官方启动器\n2. Lunar Client\n3. LabyMod\n4. Badlion Client\n5. Feather Client\n请选择客户端[MS/L/LMD/B/F]: ");
+					string mode;
+					cin >> mode;
+					switch (str2int(mode.c_str()))
+					{
+					case str2int("MS"):
+						OpenWeb("www.minecraft.net/download");
+						break;
+					case str2int("L"):
+						OpenWeb("www.lunarclient.com");
+						break;
+					case str2int("LMD"):
+						OpenWeb("www.labymod.net");
+						break;
+					case str2int("B"):
+						OpenWeb("www.badlion.net");
+						break;
+					case str2int("F"):
+						OpenWeb("www.feathermc.com");
+						break;
+					default:
+						break;
+					}
+				}
+				default:
+					break;
+				}
+			}
 			default:
 				break;
 			}
