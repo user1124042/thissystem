@@ -47,11 +47,11 @@ void OpenWeb(string url)
 }
 
 
-void Prints(string s, int speed) // 自动换行
+void Prints(string text, int speed) // 自动换行
 {
-	for (int i = 0; i < s.size(); i++)
+	for (int i = 0; i < text.size(); i++)
 	{
-		printf("%c", s[i]);
+		printf("%c", text[i]);
 		sleep(speed / 1000);
 	}
 	puts("");
