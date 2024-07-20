@@ -82,7 +82,7 @@ void leetcode()
 	cin >> c;
 	if (c == 'Y')
 	{
-		puts("你确定的话，我就不管你了"); // eeeeeeeeeee
+		puts("你确定的话，我就不管你了"); // eeeeeeeee6
 		sleep(1);
 		OpenWeb("leetcode.cn/");
 	}
@@ -122,9 +122,99 @@ void coutrlor()
 		return;
 	}
 }
+long long cifang(long long number,long long cishu)
+{
+    if(cishu == 0) return 1;
+    else if(cishu == 1) return number;
+    else if(cishu % 2 == 0) return cifang(number * number, cishu / 2);
+    return cifang(number * number, cishu / 2) * number;
+}
+void alpjsq()
+{
+  string shuanshu;
+  printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
+  cin >> shuanshu;
+  if (shuanshu.find('+') != string::npos)
+  {
+    int left, right;
+    try {
+      int lc = shuanshu.find('+');
+      right = stoi(shuanshu.substr(0, lc));
+      left = stoi(shuanshu.substr(lc + 1));
+    }
+    catch (const std::exception& e) {
+      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+    }
+    printf("%d + %d = %d\n", right, left, right + left);
+  }
+  if (shuanshu.find('-') != string::npos)
+  {
+    int right, leftt;
+    try {
+      int lc = shuanshu.find('-');
+      right = stoi(shuanshu.substr(0, lc));
+      // 
+      leftt = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+    }
+    catch (const std::exception& e) {
+      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+    }
+    printf("%d - %d = %d\n", right, leftt, right - leftt);
+  }
+  if (shuanshu.find('*') != string::npos)
+  {
+    int right, left;
+    try {
+      int lc = shuanshu.find('*');
+      right = stoi(shuanshu.substr(0, lc));
+      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+    }
+    catch (const std::exception& e) {
+      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+    }
+    printf("%d * %d = %d\n", right, left, right * left);
+  }
+  if (shuanshu.find('/') != string::npos)
+  {
+    int right, left;
+    try {
+      int lc = shuanshu.find('/');
+      right = stoi(shuanshu.substr(0, lc));
+	    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+	  }
+    catch (const std::exception& e) {
+		  printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+    }
+    printf("%d / %d = %d\n", right, left, right / left);
+  }
+  if (shuanshu.find('^') != string::npos)
+  {
+    long long int right, left;
+    int lc = shuanshu.find('^');
+    right = stoi(shuanshu.substr(0, lc));
+    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+    printf("%d ^ %d = %lld\n", right, left, cifang(right, left));
+  }
+  if (shuanshu.find('s') != string::npos)
+  {
+    printf("求根运算可能不准确\n");
+    // 以下这些代码选自游戏《Quake-III Arena》
+    double n = stoi(shuanshu.substr(1, shuanshu.length()));
+    double j = n;
+    if (n == 0) printf("sqrt(0) = 0\n");
+    float result = n;
+    float xhalf = 0.5f * result;
+    int i = *(int*) &result;
+    i = 0x5f3759df - (i >> 1);
+    result = *(float*) &i;
+    result = result * (1.5f - xhalf * result * result);
+    result = result * (1.5f - xhalf * result * result);
+    printf("sqrt(%lf) = %lf\n", j, 1.0f / result);
+  }
+}
 void CPS()
 {
-	printf("测试你的游戏速度---------点击更多，游戏就开挂！！！\n");
+	printf("测试你的每秒点击速度---------点击更多，KB越小！！！\n");
 	sleep(1);
 	OpenWeb("clickpersecond.com/cn/1-second/");
 	return;
@@ -562,6 +652,7 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
+  puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 }
 void looking()
 {
@@ -889,6 +980,7 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
+    puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
 		while (1)
 		{
 			cout << "TBS-FXS19.1.2(weveDIR)>>>";
@@ -1028,6 +1120,9 @@ int main()
 			case str2int("ajy"):
 				ajy();
 				continue;
+      case str2int("alpjsq"):
+        alpjsq();
+        continue;
 			default:
 				break;
 			}
