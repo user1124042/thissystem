@@ -253,6 +253,10 @@ void bd()
 	OpenWeb("www.baidu.com/");
 	return;
 }
+void ahaoj()
+{
+	OpenWeb("www.acoj.com");
+}
 void text()
 {
 	printf("刷题时间到了，刷题吧！\n");
@@ -1120,18 +1124,19 @@ int main()
 			case str2int("ajy"):
 				ajy();
 				continue;
-      case str2int("alpjsq"):
-        alpjsq();
-        continue;
+      		case str2int("alpcl"):
+        		alpjsq();
+        		continue;
+			case str2int("ahaoj"):
+				ahaoj();
+				continue;
 			default:
-				break;
+				printf("%s 不是一个有效的命令", commandor);	
+				#ifdef _WIN32
+				Beep(750,100);
+				#else
+				#endif
 			}
-
-			printf("%s 不是一个有效的命令", commandor);			
-			#ifdef _WIN32
-			Beep(750,100);
-			#else
-			#endif
 		}
 		printf("\033[1;37m");
 		Prints("MADE IN CHINA,BAIGEPING", 75);
@@ -1141,8 +1146,6 @@ int main()
 	}
 	else
 	{
-		// printf("\033[1;37m");
-		// puts("由于你是危险人物，我们强行退出");
 		throw PasswordorUsernameError();
 		return 0;
 	}
