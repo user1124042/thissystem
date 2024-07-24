@@ -1,15 +1,10 @@
 // this is a wonderful windows 19.2.2
-#include <bits/stdc++.h>
+#include <stdio.h> // 别用bits/stdc++
 #include <unistd.h>
 #include <fstream>
-#ifdef _WIN32
-#include <windows.h>
-#else
-#endif
-#ifdef __linux__
-	bool islinux = true;
-#else
-#endif
+#include <thread>
+#include <chrono>
+#include <string>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
@@ -49,7 +44,7 @@ void OpenWeb(string url)
 
 void Prints(string text, int speed) // 自动换行
 {
-	for (int i = 0; i < text.size(); i++)
+	for (int i = 0; i < text.size(); ++i)
 	{
 		printf("%c", text[i]);
 		sleep(speed / 1000);
@@ -79,7 +74,7 @@ void leetcode()
 	Prints("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生使用！！！", 300);
 	puts("确定？(Y/N)");
 	char c;
-	cin >> c;
+	scanf("%c", &c);
 	if (c == 'Y')
 	{
 		puts("你确定的话，我就不管你了"); // eeeeeeeee6
@@ -98,7 +93,7 @@ void coutrlor()
 	puts("计算机，用作两数的运算，先输入符号，后输入两个数");
 	int xv, zxcv;
 	char yyy;
-	cin >> yyy; // idk
+	scanf("%c", &yyy);
 	scanf("%d %d", &xv, &zxcv);
 	if (yyy = '+')
 	{
@@ -133,7 +128,8 @@ void alpjsq()
 {
   string shuanshu;
   printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
-  cin >> shuanshu;
+  shuanshu.resize(10000000000);
+  scanf("%s", &shuanshu[0]);
   if (shuanshu.find('+') != string::npos)
   {
     int left, right;
@@ -223,17 +219,20 @@ void mail()
 {
 	puts("你自己的未来信箱");
 	string name, things, fut;
-	int ededed;
+	int yesorno;
+	name.resize(100);
+	things.resize(1000000);
+	fut.resize(1000000);
 	printf("输入你的名字：");
-	cin >> name;
+	scanf("%s", &name[0]);
 	printf("输入你未来想做的职业：");
-	cin >> things;
+	scanf("%s", &things[0]);
 	printf("输入你的愿望: ");
-	cin >> fut;
+	scanf("%s", &fut[0]);
 	puts("已发送！");
 	puts("是否查看信件(1/0)");
-	cin >> ededed;
-	if (ededed == 0)
+	scanf("%d", &yesorno);
+	if (yesorno == 0)
 	{
 		return;
 	}
@@ -264,7 +263,8 @@ void text()
 	int abc = rand() % (10120 - 1000) + 1000;
 	printf("请输入题号: ");
 	string tihao;
-	cin >> tihao;
+	tihao.resize(100);
+	scanf("%d", &tihao[0]);
 	string allurl = "https://www.luogu.com.cn/problem/" + tihao;
 	OpenWeb(allurl);
 	//	puts("大更改的浏览器");
@@ -308,7 +308,7 @@ void ziyanfa()
 	puts("0.退出 1.钟表 2.团队 3.简介 4.Administrator");
 	while (1)
 	{
-		cin >> sxsxdsx;
+		scanf("%d", &sxsxdsx);
 		if (sxsxdsx == 0)
 		{
 			return;
@@ -340,15 +340,17 @@ void ziyanfa()
 				string one;
 				string two;
 				string mkeddir[10001];
-				cin >> one;
+				one.resize(500);
+				two.resize(500);
+				scanf("%s", &one[0]);
 				if (one == "o")
 				{
 					break;
 				}
 				int y = 1;
 				if (one == "mkd")
-				{
-					cin >> two; // idk
+				{	
+					scanf("%s", &two[0]);
 					printf("您创建了一个名为 %s 的文件夹\n", two.c_str());
 					y = 1;
 					mkeddir[y] = two;
@@ -357,27 +359,24 @@ void ziyanfa()
 				if (one == "odd")
 				{
 					puts("请输入您第几个创建-1的文件夹");
-					cin >> y;
+					scanf("%d", &y);
 					printf("这是一个名为 %s 的文件夹\n", mkeddir[y].c_str());
-					cout << "您打开了" << endl;
+					// cout << "您打开了" << endl;
 					break;
 				}
 				if (one == "mkt")
 				{
-					cin >> two;
+					scanf("%s", &two[0]);
 					printf("您创建了一个名为 %s 的TXT文件", two.c_str());
 					printf("输入内容，按 [Q + 回车] 完成");
 					string saving;
-					for (int i = 0; i < 100001; i++)
+					saving.resize(500);
+					char neir;
+					while (scanf("%c", &neir) != 'Q')
 					{
-						cin >> saving[i];
-						if (saving[i] == 'Q')
-						{
-							Prints("完成完成！", 50);
-							break;
-						}
+						saving += neir;
 					}
-					cout << "请您自己复制粘贴您的文件，注意Q" << endl;
+					printf("请您自己复制粘贴您的文件, 注意Q\n");
 				}
 			}
 		}
@@ -386,36 +385,36 @@ void ziyanfa()
 }
 void downcpp()
 {
-	puts("来来来，下c++载来！");
-	string mode;
-	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/VC/CL]");
-	cin >> mode;
-	switch (str2int(mode.c_str()))
+	// puts("来来来，下c++载来！");
+	char mode;
+	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/V/L]");
+	scanf("%c", &mode);
+	switch (mode)
 	{
-	case str2int("D"):
+	case 'D':
 		OpenWeb("www.onlinedown.net/soft/9500.htm");
 		break;
-	case str2int("M"):
+	case 'M':
 	{
-		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/MG]");
-		cin >> mode;
-		switch (str2int(mode.c_str()))
+		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/M]");
+		scanf("%c", &mode);
+		switch (mode)
 		{
-			case str2int("G"): OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
-			case str2int("MG"): OpenWeb("https://www.mingw-w64.org/"); break;
+			case 'G': OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
+			case 'M': OpenWeb("https://www.mingw-w64.org/"); break;
 		}
 		break;
 	} // 这里只能用括号包起来
-	case str2int("VC"):
+	case 'V':
 		OpenWeb("http://visualstudio.microsoft.com");
 		break;
-	case str2int("CL"):
+	case 'L':
 		printf("访问可能比较慢, 请稍等\n我们将给你两个下载渠道 一个是Github 一个是官网\n");
 		OpenWeb("https://github.com/llvm/llvm-project/releases");
 		OpenWeb("https://clang.llvm.org/");
 		break;
 	default:
-		printf("错误: 模式 %s 不存在", mode.c_str());
+		printf("错误: 模式 %s 不存在", mode);
 		break;
 	}
 	// sleep(2);
@@ -469,13 +468,34 @@ void txt(string q)
 	sleep(1);
 	printf("\033[2J\033[1;1H");
 	Prints("这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束，注意，需要最后自己复制文本的，没有任何东西监视你，请放心使用（好骂，大胆骂）", 30);
-	for (int i = 0; i <= 10000; i++)
+	char neir;
+	char* all;
+	while (scanf("%c", &neir) != '/')
 	{
-		cin >> commandor[i];
-		if (commandor[i] == '/')
-		{
-			break;
-		}
+		all += neir;
+	}
+	printf("是否要保存[y/n](默认不保存): ");
+	char yesorno;
+	scanf("%c", &yesorno);
+	switch (yesorno)
+	{
+	case 'y':
+	{
+		char* filename;
+		scanf("%s", &filename);
+		FILE *file = fopen(filename, "w");
+		if (file == nullptr) {printf("错误： 无法打开文件\n"); break;}
+		fprintf(file, all);
+		fclose(file);
+		printf("保存成功\n");
+		break;
+	}
+	case 'n':
+	{
+		break;
+	}
+	default:
+		break;
 	}
 	return;
 }
@@ -506,8 +526,8 @@ void input_zll()
 {
 	puts("智能指令开启网站！！！");
 	puts("输入");
-	string url;
-	cin >> url;
+	char url[1000];
+	scanf("%s", &url);
 	OpenWeb(url);
 	//	char str2[1024];
 	// cin.getline(str2,1024);//读入char数组
@@ -564,10 +584,10 @@ void state()
 	puts("RAM: 64GB  ROM: 12TB");
 	puts("16位 DOS式系统     CN-QX-OS V12.1.2");
 	puts("状态");
-	cout << "CPU " << rand() % 15 << "%" << endl;
-	cout << "GPU " << rand() % 15 << "%" << endl;
-	cout << "RAM " << rand() % 10 << "%" << endl;
-	cout << "ROM 1%" << endl;
+	printf("CPU %d%", rand() % 15);
+	printf("GPU %d%", rand() % 15);
+	printf("RAM %d%", rand() % 10);
+	printf("ROM %d%", rand() % 5);
 	return;
 }
 void prog()
@@ -663,8 +683,9 @@ void looking()
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
 	sleep(3);
 	string url;
+	url.resize(10000);
 	puts("输入浏览网页网址:");
-	cin >> url;
+	scanf("%s", &url[0]);
 	OpenWeb(url);
 	return;
 }
@@ -683,7 +704,7 @@ void bat()
 	{
 		puts("ok bye");
 		#ifdef _WIN32
-		ExitWindowsEx(EWX_SHUTDOWN | EWX_FORCE, 0);
+		
 		#elif __linux__
 		system("sudo shutdown now");
 		#elif
@@ -693,7 +714,7 @@ void bat()
 	{
 		puts("你没得选(:");
 		#ifdef _WIN32
-		ExitWindowsEx(EWX_SHUTDOWN | EWX_FORCE, 0);
+		
         #elif __linux__
 		system("sudo shutdown now");
 		#else
@@ -778,8 +799,9 @@ void hzhz()
 	puts("Hydro Online Judge，原名H，是世界知名的OJ");
 	sleep(1);
 	string tihao;
-	cout << "输入题号！！！";
-	cin >> tihao;
+	printf("请输入题号: ");
+	tihao.resize(100);
+	scanf("%d", &tihao[0]);
 	string allurl = "hydro.ac/p/" + tihao;
 	OpenWeb(allurl);
 	Prints("Its OK!", 300);
@@ -860,8 +882,8 @@ int main()
 		#endif
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
-		cout << "开机时间：" << nowtm() << endl;
-		sleep(1);
+		printf("开机时间：%d\n", nowtm());
+		sleep(1); // no
 		#ifdef _WIN32
 		system("color 17");
 		#else
@@ -899,30 +921,30 @@ int main()
 		#endif
 		sleep(1);
 		commandor = "";
-		#ifdef _WIN32
+	/*	#ifdef _WIN32
 		Beep(550,400);
 		Beep(605,400);
 		Beep(660,400);
 		Beep(715,400);
 		Beep(770,400);
 		#else
-		#endif
+		#endif */ // close 
 		printf("\033[2J\033[3J\033[1;1H");
 		commandor = "loading......";
-		for (int i = 0; i < commandor.size(); i++)
+		for (int i = 0; i < commandor.size(); ++i)
 		{
 			printf("%c", commandor[i]);
 			sleep(100 / 1000);
 		}
 		sleep(500 / 1000);
-		for (int i = 1; i <= 100; i += 1)
+		for (int i = 1; i <= 100; ++i) // i += 1 = i = i + 1 = i++ = ++i
 		{
 			printf("\033[2J\033[3J\033[1;1H");
 			#ifdef _WIN32
 			system("color 17");
 			#else
 			#endif
-			for (int j = 1; j <= i; j++)
+			for (int j = 1; j <= i; ++j)
 			{
 				printf("-");
 			}
@@ -985,9 +1007,10 @@ int main()
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
     puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
+    puts("ahaoj...........啊哈添柴在线OJ刷题网站");
 		while (1)
 		{
-			cout << "TBS-FXS19.1.2(weveDIR)>>>";
+			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			cin >> commandor;
 			switch (str2int(commandor.c_str()))
 			{
@@ -1131,11 +1154,11 @@ int main()
 				ahaoj();
 				continue;
 			default:
-				printf("%s 不是一个有效的命令", commandor);	
-				#ifdef _WIN32
-				Beep(750,100);
-				#else
-				#endif
+				printf("%s 不是一个有效的命令", commandor.c_str());	
+				// #ifdef _WIN32
+				// Beep(750,100);
+				// #else
+				// #endif
 			}
 		}
 		printf("\033[1;37m");
