@@ -2,7 +2,7 @@ you cant use it with windows7
 
 i no can do this thing
 
-so i find some men.
+so, I got a couple people.
 
 they and i, we are create this system.
 
