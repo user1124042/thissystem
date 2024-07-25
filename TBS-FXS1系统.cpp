@@ -28,6 +28,11 @@ constexpr unsigned int str2int(const char *str, int h = 0)
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
 
+void 清理缓存() // 某位不会英语的这下能看懂了吧
+{
+	while(getchar() != '\n')
+    	continue; // 清空缓存区
+}
 void OpenWeb(string url)
 {
 	string command[2] = {"start " + url, "xdg-open " + url};
@@ -47,7 +52,7 @@ void Prints(string text, int speed) // 自动换行
 	for (int i = 0; i < text.size(); ++i)
 	{
 		printf("%c", text[i]);
-		sleep(speed / 1000);
+		this_thread::sleep_for(chrono::seconds(speed / 1000));
 	}
 	puts("");
 	return;
@@ -78,7 +83,7 @@ void leetcode()
 	if (c == 'Y')
 	{
 		puts("你确定的话，我就不管你了"); // eeeeeeeee6
-		sleep(1);
+		this_thread::sleep_for(chrono::seconds(1));
 		OpenWeb("leetcode.cn/");
 	}
 	else
@@ -211,7 +216,7 @@ void alpjsq()
 void CPS()
 {
 	printf("测试你的每秒点击速度---------点击更多，KB越小！！！\n");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("clickpersecond.com/cn/1-second/");
 	return;
 }
@@ -248,7 +253,7 @@ void mail()
 void bd()
 {
 	printf("百度一下\n");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("www.baidu.com/");
 	return;
 }
@@ -259,7 +264,7 @@ void ahaoj()
 void text()
 {
 	printf("刷题时间到了，刷题吧！\n");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));
 	int abc = rand() % (10120 - 1000) + 1000;
 	printf("请输入题号: ");
 	string tihao;
@@ -281,16 +286,18 @@ void text()
 	// 用法 OpenWeb(目标网址)
 	return;
 }
-static string nowtm()
+char* nowtm()
 {
-	time_t t = time(NULL);
-	char ch[64] = {0};
-	strftime(ch, sizeof(ch) - 1, "%Y-%m-%d %H:%M:%S", localtime(&t));
-	return ch;
+	auto time = chrono::system_clock::now();
+	time_t nowtime = chrono::system_clock::to_time_t(time);
+	auto locate = localtime(&nowtime);
+	static char crte[9];
+	sprintf(crte, "%02d:%02d:%02d", locate -> tm_hour, locate -> tm_min, locate -> tm_sec);
+	return crte;
 }
 void presenter()
 {
-	printf("朋友们大家好，现在的时间是:\n%s\n\n", nowtm().c_str());
+	printf("朋友们大家好，现在的时间是:\n%s\n\n", nowtm());
 	puts("");
 	puts("");
 	puts("世界那么大，我想去看看");
@@ -417,21 +424,21 @@ void downcpp()
 		printf("错误: 模式 %s 不存在", mode);
 		break;
 	}
-	// sleep(2);
+	// this_thread::sleep_for(chrono::seconds(2));;
 	// OpenWeb("www.onlinedown.net/soft/9500.htm");
 	return;
 }
 void chinajy()
 {
 	puts("国家云教育平台");
-	sleep(2);
+	this_thread::sleep_for(chrono::seconds(2));
 	OpenWeb("basic.smartedu.cn/");
 	return;
 }
 void funnyth()
 {
 	printf("神奇的事情");
-	sleep(2);
+	this_thread::sleep_for(chrono::seconds(2));;
 	OpenWeb("lglg.top/61884");
 	return;
 }
@@ -465,45 +472,39 @@ void gametwo()
 void txt(string q)
 {
 	puts("文本编辑器");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));
 	printf("\033[2J\033[1;1H");
-	Prints("这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束，注意，需要最后自己复制文本的，没有任何东西监视你，请放心使用（好骂，大胆骂）", 30);
-	char neir;
-	char* all;
-	while (scanf("%c", &neir) != '/')
+	printf("这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束\n");
+	char all[999999];
+	int i = 0;
+	scanf("%[^/]", all);
+	清理缓存();
+	printf("是否要保存[y/n]: ");
+	char yon;
+	scanf("%c", &yon);
+	清理缓存();
+	if (yon == 'y')
 	{
-		all += neir;
-	}
-	printf("是否要保存[y/n](默认不保存): ");
-	char yesorno;
-	scanf("%c", &yesorno);
-	switch (yesorno)
-	{
-	case 'y':
-	{
-		char* filename;
-		scanf("%s", &filename);
-		FILE *file = fopen(filename, "w");
-		if (file == nullptr) {printf("错误： 无法打开文件\n"); break;}
-		fprintf(file, all);
-		fclose(file);
-		printf("保存成功\n");
-		break;
-	}
-	case 'n':
-	{
-		break;
-	}
-	default:
-		break;
+		printf("请输入文件名称: ");
+		char filename[100];
+		scanf("%[^\n]", &filename);
+		清理缓存();
+		FILE *file;
+		file = fopen(filename, "w+");
+		if (all[0] == '\n') {
+            fprintf(file, "%s", all + 1);
+        } else {
+            fprintf(file, "%s", all);
+        }
+        fclose(file);
 	}
 	return;
 }
-
+ 
 void qwqw()
 {
 	puts("系统之家---一键下载");
-	sleep(0.5);
+	this_thread::sleep_for(chrono::milliseconds(500));
 	OpenWeb("windows.ycgxgy.cn/");
 	return;
 }
@@ -547,7 +548,7 @@ void catstore()
 void jd()
 {
 	puts("来买东西吧！");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));
 	system("https://www.jd.com/");
 }
 
@@ -593,7 +594,7 @@ void state()
 void prog()
 {
 	puts("好用的编程软件--洛谷IDE");
-	sleep(3);
+	this_thread::sleep_for(chrono::seconds(3));;
 	OpenWeb("www.luogu.com.cn/ide");
 	return;
 }
@@ -676,12 +677,12 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
-  puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
+    puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 }
 void looking()
 {
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
-	sleep(3);
+	this_thread::sleep_for(chrono::seconds(3));;
 	string url;
 	url.resize(10000);
 	puts("输入浏览网页网址:");
@@ -695,47 +696,21 @@ void sd()
 	OpenWeb("bangong.360.cn/index.html#");
 	return;
 }
-void bat()
-{
-	puts("如果你不介意的话，你能让我关一下你的电脑吗(yes/no)");
-	string qeew;
-	cin >> qeew;
-	if (qeew == "yes")
-	{
-		puts("ok bye");
-		#ifdef _WIN32
-		
-		#elif __linux__
-		system("sudo shutdown now");
-		#elif
-		#endif
-	}
-	else if (qeew == "no")
-	{
-		puts("你没得选(:");
-		#ifdef _WIN32
-		
-        #elif __linux__
-		system("sudo shutdown now");
-		#else
-		#endif
-	}
-	return;
-}
+
 void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-	sleep(0.01);
+	this_thread::sleep_for(chrono::milliseconds(10));
 	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
 	srand(time(NULL));
 	int o = rand() % 7;
-	sleep(0.01);
+	this_thread::sleep_for(chrono::milliseconds(10));
 	srand(time(NULL));
 	printf("建议运行系统：%s %d\n", os[o].c_str(), rand()); // 这里我写个彩蛋
 	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 	printf("建议运行CPU: %s %s\n", cpu[rand() % 5].c_str(), cpucore[rand() % 12].c_str());
-	sleep(0.01);
+	this_thread::sleep_for(chrono::milliseconds(10));
 	o = rand() % 7;
 	printf("系统类别：基于%s 的指令操作系统\n", os[o].c_str());
 	srand(time(NULL));
@@ -772,16 +747,17 @@ void pblktct()
 void look()
 {
 	puts("浏览");
-	sleep(1); // 43.6 is lowest
+	this_thread::sleep_for(chrono::seconds(1));; // 43.6 is lowest
 	OpenWeb("www.bing.com"); // 还是推荐用微软必应
 	return;
 }
 void taotao()
 {
-	string sss;
+	string yesorno;
+	yesorno.resize(2);
 	puts("是否购物");
-	cin >> sss;
-	if (sss == "no")
+	scanf("%s", &yesorno[0]);
+	if (yesorno == "no")
 	{
 		printf("谢谢惠顾");
 		return;
@@ -789,7 +765,7 @@ void taotao()
 	else
 	{
 		printf("66666666666666666666");
-		sleep(2);
+		this_thread::sleep_for(chrono::seconds(2));;
 		OpenWeb("www.taobao.com/");
 	}
 	return;
@@ -797,7 +773,7 @@ void taotao()
 void hzhz()
 {
 	puts("Hydro Online Judge，原名H，是世界知名的OJ");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));;
 	string tihao;
 	printf("请输入题号: ");
 	tihao.resize(100);
@@ -810,7 +786,7 @@ void hzhz()
 void kkk()
 {
 	puts("累了吗？刷会视频吧！");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));;
 	OpenWeb("www.bilibili.com"); // 建议Bilibili
 	return;
 }
@@ -818,9 +794,9 @@ void ybt()
 {
 
 	puts("信息学奥赛在线练习网站！！！");
-	sleep(2);
+	this_thread::sleep_for(chrono::seconds(2));;
 	// puts("开发者 sunyuhao"); ?????????????????
-	sleep(2);
+	this_thread::sleep_for(chrono::seconds(2));;
 	OpenWeb("ybt.ssoier.cn:8088/");
 	return;
 }
@@ -838,21 +814,21 @@ void TBS()
 void ys()
 {
 	puts("来添加一个163邮箱吧！！");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));;
 	OpenWeb("mail.163.com/");
 	return;
 }
 void ajy()
 {
 	puts("想刷剧了吗？来爱奇艺吧！");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));;
 	OpenWeb("www.iqiyi.com/ ");
 	return;
 }
 void jjxrb()
 {
 	// puts("狙击小日本无敌版！");
-	sleep(1);
+	this_thread::sleep_for(chrono::seconds(1));;
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
 	OpenWeb("www.2344.com/flash/28135.htm");
 }
@@ -865,9 +841,9 @@ int main()
 	#endif
 	puts("请您先登陆");
 	puts("请输入账号与密码");
-	string qaz, wsx;
-	cin >> qaz >> wsx;
-	if (qaz == "alanyufeng" && wsx == "bgp20130427")
+	char qaz[100], wsx[100];
+	scanf("%s %s", &qaz, &wsx);
+	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
 		#ifdef _WIN32
 		system("color 17");
@@ -875,7 +851,7 @@ int main()
 		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
-		sleep(5);
+		this_thread::sleep_for(chrono::seconds(5));;
 		#ifdef _WIN32
 		system("color 17");
 		#else
@@ -883,7 +859,7 @@ int main()
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
 		printf("开机时间：%d\n", nowtm());
-		sleep(1); // no
+		this_thread::sleep_for(chrono::seconds(1));; // no
 		#ifdef _WIN32
 		system("color 17");
 		#else
@@ -914,12 +890,12 @@ int main()
 		puts("*  *  *   ********   *        *        *     *   *  *  *  *******  *");
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
-		sleep(5);
+		this_thread::sleep_for(chrono::seconds(5));;
 		#ifdef _WIN32
 		system("color 17");
 		#else
 		#endif
-		sleep(1);
+		this_thread::sleep_for(chrono::seconds(1));;
 		commandor = "";
 	/*	#ifdef _WIN32
 		Beep(550,400);
@@ -934,9 +910,9 @@ int main()
 		for (int i = 0; i < commandor.size(); ++i)
 		{
 			printf("%c", commandor[i]);
-			sleep(100 / 1000);
+			this_thread::sleep_for(chrono::milliseconds(100));
 		}
-		sleep(500 / 1000);
+		this_thread::sleep_for(chrono::milliseconds(500));
 		for (int i = 1; i <= 100; ++i) // i += 1 = i = i + 1 = i++ = ++i
 		{
 			printf("\033[2J\033[3J\033[1;1H");
@@ -949,7 +925,7 @@ int main()
 				printf("-");
 			}
 			printf("%d%", i);
-			sleep((rand() % 15) / 1000);
+			this_thread::sleep_for(chrono::seconds((rand() % 15) / 1000));
 		}
 		#ifdef _WIN32
 		system("color 17");
@@ -957,7 +933,7 @@ int main()
 		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
-		sleep(5);
+		this_thread::sleep_for(chrono::seconds(5));;
 		#ifdef _WIN32
 		system("color 17");
 		#else
@@ -985,7 +961,6 @@ int main()
 		puts("game·············玩游戏");
 		puts("game2············ 玩游戏2");
 		puts("looking··········· 大更改的浏览器");
-		puts("bat············· 大更改的关机");
 		puts("leetcode···········力扣网站，编程");
 		puts("input_zll·········· 自己输入网站打开");
 		puts("4399game···········4399");
@@ -1006,12 +981,13 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-    puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-    puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+        puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
+        puts("ahaoj...........啊哈添柴在线OJ刷题网站");
 		while (1)
 		{
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
-			cin >> commandor;
+			commandor.resize(1000);
+			scanf("%s", &commandor[0]);
 			switch (str2int(commandor.c_str()))
 			{
 			case str2int("shut"):
@@ -1077,9 +1053,6 @@ int main()
 				continue;
 			case str2int("input_zll"):
 				input_zll();
-				continue;
-			case str2int("bat"):
-				bat();
 				continue;
 			case str2int("game2"):
 				gametwo();
@@ -1165,7 +1138,7 @@ int main()
 		Prints("MADE IN CHINA,BAIGEPING", 75);
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
-		sleep(1);
+		this_thread::sleep_for(chrono::seconds(1));;
 	}
 	else
 	{
