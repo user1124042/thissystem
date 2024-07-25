@@ -781,7 +781,7 @@ void pblktct()
 void look()
 {
 	puts("浏览");
-	this_thread::sleep_for(chrono::seconds(1));; // 43.6 is lowest
+	this_thread::sleep_for(chrono::seconds(1)); // 43.6 is lowest
 	OpenWeb("www.bing.com"); // 还是推荐用微软必应
 	return;
 }
