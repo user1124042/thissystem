@@ -1,16 +1,15 @@
 // this is a wonderful windows 19.2.2
-#include <stdio.h> // 别用bits/stdc++
-#include <unistd.h>
+#include <cstdio> // 别用bits/stdc++
 #include <fstream>
 #include <thread>
 #include <chrono>
-#include <string>
+#include <cstring>
+#include <random>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-string commandor;
 string o;
 string c;
 int abc;
@@ -49,10 +48,20 @@ void OpenWeb(string url)
 
 void Prints(string text, int speed) // 自动换行
 {
-	for (int i = 0; i < text.size(); ++i)
+	// for (int i = 0; i < text.size(); ++i)
+	// {
+	// 	printf("%c", text[i]);
+	// 	this_thread::sleep_for(chrono::seconds(speed / 1000));
+	// }
+	if (0 < text.size())
 	{
-		printf("%c", text[i]);
-		this_thread::sleep_for(chrono::seconds(speed / 1000));
+		int i;
+		do
+		{
+			printf("%c", text[i]);
+			this_thread::sleep_for(chrono::seconds(speed / 1000));
+			++i;
+		} while (i < text.size());
 	}
 	puts("");
 	return;
@@ -126,14 +135,14 @@ long long cifang(long long number,long long cishu)
 {
     if(cishu == 0) return 1;
     else if(cishu == 1) return number;
-    else if(cishu % 2 == 0) return cifang(number * number, cishu / 2);
-    return cifang(number * number, cishu / 2) * number;
+    else if(cishu % 2 == 0) return cifang(number * number, cishu * 0.5); // 将除法改成乘法
+    return cifang(number * number, cishu * 0.5) * number; // 将除法改成乘法
 }
 void alpjsq()
 {
   string shuanshu;
   printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
-  shuanshu.resize(10000000000);
+  shuanshu.resize(100);
   scanf("%s", &shuanshu[0]);
   if (shuanshu.find('+') != string::npos)
   {
@@ -223,30 +232,30 @@ void CPS()
 void mail()
 {
 	puts("你自己的未来信箱");
-	string name, things, fut;
+	char name[20], things[50], fut[100];
 	int yesorno;
-	name.resize(100);
-	things.resize(1000000);
-	fut.resize(1000000);
 	printf("输入你的名字：");
-	scanf("%s", &name[0]);
+	清理缓存();
+	scanf("%[^\n]", &name[0]);
 	printf("输入你未来想做的职业：");
-	scanf("%s", &things[0]);
+	清理缓存();
+	scanf("%[^\n]", &things);
 	printf("输入你的愿望: ");
-	scanf("%s", &fut[0]);
+	清理缓存();
+	scanf("%[^\n]", &fut[0]);
 	puts("已发送！");
 	puts("是否查看信件(1/0)");
 	scanf("%d", &yesorno);
 	if (yesorno == 0)
 	{
 		return;
-	}
-	else
+	} else
 	{
-		printf("%s:", name.c_str());
-		printf("你好，未来的 %s ，我希望你成为一名 %s ，我想你 %s ，希望你能完成！！！\n", name.c_str(), things.c_str(), fut.c_str());
+		printf("Dear %s:", name);
+		puts(" ");
+		printf("你好，未来的 %s ，我希望你成为一名 %s ，我想你 %s ，希望你能完成！！！\n", name, things, fut);
 		puts("");
-		printf("                                                                                             %s\n", name.c_str());
+		printf("                                                                             ----------------- %s\n", name);
 	}
 	return;
 }
@@ -395,7 +404,9 @@ void downcpp()
 	// puts("来来来，下c++载来！");
 	char mode;
 	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/V/L]");
+	清理缓存();
 	scanf("%c", &mode);
+	清理缓存();
 	switch (mode)
 	{
 	case 'D':
@@ -469,15 +480,15 @@ void gametwo()
 	OpenWeb("dinorunner.com/zh/");
 	return;
 }
-void txt(string q)
+void txt()
 {
 	puts("文本编辑器");
 	this_thread::sleep_for(chrono::seconds(1));
 	printf("\033[2J\033[1;1H");
-	printf("这是一个文本自由写作器，可以在这里写作，最后要敲“/”+ enter结束\n");
+	printf("这是一个文本自由写作器，可以在这里写作，最后要敲'|'+ enter结束\n");
 	char all[999999];
 	int i = 0;
-	scanf("%[^/]", all);
+	scanf("%[^|]", all);
 	清理缓存();
 	printf("是否要保存[y/n]: ");
 	char yon;
@@ -684,7 +695,7 @@ void looking()
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
 	this_thread::sleep_for(chrono::seconds(3));;
 	string url;
-	url.resize(10000);
+	url.resize(200);
 	puts("输入浏览网页网址:");
 	scanf("%s", &url[0]);
 	OpenWeb(url);
@@ -700,38 +711,61 @@ void sd()
 void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-	this_thread::sleep_for(chrono::milliseconds(10));
 	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
-	srand(time(NULL));
-	int o = rand() % 7;
-	this_thread::sleep_for(chrono::milliseconds(10));
-	srand(time(NULL));
-	printf("建议运行系统：%s %d\n", os[o].c_str(), rand()); // 这里我写个彩蛋
+	
 	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
-	printf("建议运行CPU: %s %s\n", cpu[rand() % 5].c_str(), cpucore[rand() % 12].c_str());
-	this_thread::sleep_for(chrono::milliseconds(10));
-	o = rand() % 7;
-	printf("系统类别：基于%s 的指令操作系统\n", os[o].c_str());
-	srand(time(NULL));
+	// 进入随机数阶段
+	random_device randev;
+	mt19937 gen(randev());
+	uniform_int_distribution<> dis(0, 6);
+	uniform_int_distribution<> dis2(0, 4);
+	uniform_int_distribution<> dis3(0, 11);
+	uniform_int_distribution<> dis4(5, 17);
+	uniform_int_distribution<> dis5(0, 25);
+	uniform_int_distribution<> dis6(1, 7);
+	uniform_int_distribution<> dis7(1, 6);
+	// end
+	printf("建议运行系统：%s %d\n", os[dis(gen)].c_str(), rand()); // 这里我写个彩蛋
+	printf("建议运行CPU: %s %s\n", cpu[dis2(gen)].c_str(), cpucore[dis3(gen)].c_str());
+	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)].c_str());
 	string PCNAME = "";
-    for (int i = 0; i < rand() % 12 + 5; ++i) {
-        char rdc = 'a' + rand() % 26;
-        PCNAME += rdc;
-    }
-	char rdc = 'a' + rand() % 26;
+	if (0 < dis4(gen))
+	{
+		int i = 0;
+		do
+		{
+			char rdc = 'a' + dis4(gen);
+			PCNAME += rdc;
+			++i;
+		} while (i < dis4(gen));
+		
+	}
+	char rdc = 'a' + dis4(gen);
 	PCNAME += "'";
 	PCNAME += rdc;
 	PCNAME += "-";
-	for (int i = 0; i < rand() % 6 + 1; ++i) {
-        char rdc = 'a' + rand() % 26; 
-        PCNAME += rdc;
-    }
+	if (0 < dis6(gen))
+	{
+		int i = 0;
+		do
+		{
+			char rdc = 'a' + dis4(gen);
+			PCNAME += rdc;
+			++i;
+		} while (i < dis6(gen));
+	}
 	PCNAME += "-";
-    for (int i = 0; i < rand() % 5 + 1; ++i) {
-        char rdc = 'a' + rand() % 26; 
-        PCNAME += rdc;
-    }
+	if (0 < dis7(gen))
+	{
+		int i = 0;
+		do
+		{
+			char rdc = 'a' + dis4(gen);
+		    PCNAME += rdc;
+		    ++i;
+		} while (i < dis7(gen));		
+	}
 	printf("名称: %s\n", PCNAME.c_str());
 	return;
 }
@@ -896,7 +930,6 @@ int main()
 		#else
 		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
-		commandor = "";
 	/*	#ifdef _WIN32
 		Beep(550,400);
 		Beep(605,400);
@@ -906,10 +939,10 @@ int main()
 		#else
 		#endif */ // close 
 		printf("\033[2J\033[3J\033[1;1H");
-		commandor = "loading......";
-		for (int i = 0; i < commandor.size(); ++i)
+		const string loading = "loading......";
+		for (int i = 0; i < 13; ++i)
 		{
-			printf("%c", commandor[i]);
+			printf("%c", loading[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
 		}
 		this_thread::sleep_for(chrono::milliseconds(500));
@@ -983,12 +1016,13 @@ int main()
 		puts("weyf·············系统");
         puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
         puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+		string command;
 		while (1)
 		{
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
-			commandor.resize(1000);
-			scanf("%s", &commandor[0]);
-			switch (str2int(commandor.c_str()))
+			command.resize(15);
+			scanf("%s", &command[0]);
+			switch (str2int(command.c_str()))
 			{
 			case str2int("shut"):
 				printf("\033[2J\033[1;1H");
@@ -1085,7 +1119,7 @@ int main()
 				presenter();
 				continue;
 			case str2int("write"):
-				txt(c);
+				txt();
 				continue;
 			case str2int("tct"):
 				text();
@@ -1127,7 +1161,7 @@ int main()
 				ahaoj();
 				continue;
 			default:
-				printf("%s 不是一个有效的命令", commandor.c_str());	
+				printf("%s 不是一个有效的命令\n", command.c_str());	
 				// #ifdef _WIN32
 				// Beep(750,100);
 				// #else
