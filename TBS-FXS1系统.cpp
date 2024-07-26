@@ -51,7 +51,7 @@ void Prints(string text, int speed) // 自动换行
     if (!text.empty()) {
         for (size_t i = 0; i < text.size(); ++i) {
             putchar(text[i]);
-	    std::fflush(stdout);
+	        std::fflush(stdout);
             std::this_thread::sleep_for(std::chrono::milliseconds(speed));
         }
     }
@@ -651,7 +651,7 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
-        puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
+    puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 }
 void looking()
 {
@@ -956,8 +956,8 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-                puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-                puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+        puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
+        puts("ahaoj...........啊哈添柴在线OJ刷题网站");
 		string command;
 		while (1)
 		{
