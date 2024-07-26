@@ -11,9 +11,6 @@ using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-string o;
-string c;
-int abc;
 const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 
@@ -471,11 +468,10 @@ void txt()
 		Clearce();
 		FILE *file;
 		file = fopen(filename, "w+");
-		if (all[0] == '\n') {
+		if (all[0] == '\n') 
             fprintf(file, "%s", all + 1);
-        } else {
+        else
             fprintf(file, "%s", all);
-        }
         fclose(file);
 	}
 	return;
@@ -705,7 +701,6 @@ void about_windows()
 			PCNAME += rdc;
 			++i;
 		} while (i < dis4(gen));
-		
 	}
 	char rdc = 'a' + dis4(gen);
 	PCNAME += "'";
@@ -897,14 +892,12 @@ int main()
 		#else
 		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
-	/*	#ifdef _WIN32
-		Beep(550,400);
-		Beep(605,400);
-		Beep(660,400);
-		Beep(715,400);
-		Beep(770,400);
-		#else
-		#endif */ // close 
+		_beep(550, 400);
+		_beep(605, 400);
+		_beep(660, 400);
+		_beep(715, 400);
+		_beep(770, 400);
+		// printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
 		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
@@ -1106,11 +1099,9 @@ int main()
 				ahaoj();
 				continue;
 			default:
-				printf("%s 不是一个有效的命令\n", command.c_str());	
-				// #ifdef _WIN32
-				// Beep(750,100);
-				// #else
-				// #endif
+				printf("%s 不是一个有效的命令\n", command.c_str());
+				_beep(750, 100);
+				// printf("\a");
 			}
 		}
 		printf("\033[1;37m");
