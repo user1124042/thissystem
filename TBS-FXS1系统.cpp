@@ -27,7 +27,7 @@ constexpr unsigned int str2int(const char *str, int h = 0)
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
 
-void 清理缓存() // 某位不会英语的这下能看懂了吧
+void Clearce()
 {
 	while(getchar() != '\n')
     	continue; // 清空缓存区
@@ -235,13 +235,13 @@ void mail()
 	char name[20], things[50], fut[100];
 	int yesorno;
 	printf("输入你的名字：");
-	清理缓存();
+	Clearce();
 	scanf("%[^\n]", &name[0]);
 	printf("输入你未来想做的职业：");
-	清理缓存();
+	Clearce();
 	scanf("%[^\n]", &things);
 	printf("输入你的愿望: ");
-	清理缓存();
+	Clearce();
 	scanf("%[^\n]", &fut[0]);
 	puts("已发送！");
 	puts("是否查看信件(1/0)");
@@ -404,9 +404,9 @@ void downcpp()
 	// puts("来来来，下c++载来！");
 	char mode;
 	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/V/L]");
-	清理缓存();
+	Clearce();
 	scanf("%c", &mode);
-	清理缓存();
+	Clearce();
 	switch (mode)
 	{
 	case 'D':
@@ -489,17 +489,17 @@ void txt()
 	char all[999999];
 	int i = 0;
 	scanf("%[^|]", all);
-	清理缓存();
+	Clearce();
 	printf("是否要保存[y/n]: ");
 	char yon;
 	scanf("%c", &yon);
-	清理缓存();
+	Clearce();
 	if (yon == 'y')
 	{
 		printf("请输入文件名称: ");
 		char filename[100];
 		scanf("%[^\n]", &filename);
-		清理缓存();
+		Clearce();
 		FILE *file;
 		file = fopen(filename, "w+");
 		if (all[0] == '\n') {
