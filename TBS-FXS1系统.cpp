@@ -14,7 +14,6 @@ using namespace std;
 const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 
-
 class Username_or_password_is_incorrect: public exception  
 {  
     virtual const char* what() const throw()  
@@ -52,6 +51,7 @@ void Prints(string text, int speed) // 自动换行
     if (!text.empty()) {
         for (size_t i = 0; i < text.size(); ++i) {
             putchar(text[i]);
+			std::fflush(stdout);
             std::this_thread::sleep_for(std::chrono::milliseconds(speed));
         }
     }
@@ -76,15 +76,16 @@ void gameku()
 void leetcode()
 {
 	puts("力扣网站-----全世界人(精神病患者)的选择");
-	Prints("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生使用！！！", 300);
+	Prints("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生使用！！！", 30);
 	puts("确定？(Y/N)");
-	char c;
-	scanf("%c", &c);
+	Clearce();
+	char c = getchar();
+	Clearce();
 	if (c == 'Y')
 	{
 		puts("你确定的话，我就不管你了"); // eeeeeeeee6
 		this_thread::sleep_for(chrono::seconds(1));
-		OpenWeb("leetcode.cn/");
+		OpenWeb("https://www.leetcode.cn/");
 	}
 	else
 	{
@@ -367,10 +368,9 @@ void ziyanfa()
 void downcpp()
 {
 	// puts("来来来，下c++载来！");
-	char mode;
 	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/V/L]");
 	Clearce();
-	scanf("%c", &mode);
+	char mode = getchar();
 	Clearce();
 	switch (mode)
 	{
@@ -380,7 +380,8 @@ void downcpp()
 	case 'M':
 	{
 		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/M]");
-		scanf("%c", &mode);
+		mode = getchar();
+		Clearce();
 		switch (mode)
 		{
 			case 'G': OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
@@ -457,8 +458,7 @@ void txt()
 	scanf("%[^|]", all);
 	Clearce();
 	printf("是否要保存[y/n]: ");
-	char yon;
-	scanf("%c", &yon);
+	char yon = getchar();
 	Clearce();
 	if (yon == 'y')
 	{
@@ -675,8 +675,6 @@ void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
 	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
-	
-	
 	// 进入随机数阶段
 	random_device randev;
 	mt19937 gen(randev());
@@ -854,7 +852,7 @@ int main()
 		#endif
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
-		printf("开机时间：%d\n", nowtm());
+		printf("开机时间：%s\n", nowtm());
 		this_thread::sleep_for(chrono::seconds(1));; // no
 		#ifdef _WIN32
 		system("color 17");
