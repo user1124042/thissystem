@@ -892,12 +892,12 @@ int main()
 		#else
 		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
-		_beep(550, 400);
-		_beep(605, 400);
-		_beep(660, 400);
-		_beep(715, 400);
-		_beep(770, 400);
-		// printf("\a");
+		// _beep(550, 400);
+		// _beep(605, 400);
+		// _beep(660, 400);
+		// _beep(715, 400);
+		// _beep(770, 400);
+		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
 		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
@@ -1100,8 +1100,8 @@ int main()
 				continue;
 			default:
 				printf("%s 不是一个有效的命令\n", command.c_str());
-				_beep(750, 100);
-				// printf("\a");
+				// _beep(750, 100);
+				printf("\a");
 			}
 		}
 		printf("\033[1;37m");
