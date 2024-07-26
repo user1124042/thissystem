@@ -13,7 +13,6 @@ using namespace std;
 // 声音：Beep(频率,时间);
 const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
-
 class Username_or_password_is_incorrect: public exception  
 {  
     virtual const char* what() const throw()  
@@ -70,7 +69,7 @@ void gameku()
 	while (getchar() != '\n')
 		continue;
 	getchar();
-	OpenWeb("www.4399.com");
+	OpenWeb("https://www.4399.com");
 	return;
 }
 void leetcode()
@@ -195,7 +194,7 @@ void CPS()
 {
 	printf("测试你的每秒点击速度---------点击更多，KB越小！！！\n");
 	this_thread::sleep_for(chrono::seconds(1));
-	OpenWeb("clickpersecond.com/cn/1-second/");
+	OpenWeb("https://www.clickpersecond.com/cn/1-second/");
 	return;
 }
 void mail()
@@ -232,12 +231,12 @@ void bd()
 {
 	printf("百度一下\n");
 	this_thread::sleep_for(chrono::seconds(1));
-	OpenWeb("www.baidu.com/");
+	OpenWeb("https://www.baidu.com/");
 	return;
 }
 void ahaoj()
 {
-	OpenWeb("www.acoj.com");
+	OpenWeb("https://www.acoj.com");
 }
 void text()
 {
@@ -258,7 +257,7 @@ void text()
 	// 参照他的 wushaochen yi Edogawa_Conan
 	// 某AR曰:
 	// 我改了一下
-	// 建议使用OpenWeb 怎么使用呢? 假如我要让它打开www.bing.com, 那么就OpenWeb("www.bing.com");
+	// 建议使用OpenWeb 怎么使用呢? 假如我要让它打开https://www.bing.com, 那么就OpenWeb("https://www.bing.com");
 	// 用法 OpenWeb(目标网址)
 	return;
 }
@@ -277,7 +276,7 @@ void presenter()
 	puts("");
 	puts("世界那么大，我想去看看");
 	puts("来来来");
-	OpenWeb("www.luogu.com.cn/team/71582");
+	OpenWeb("https://www.luogu.com.cn/team/71582");
 	return;
 }
 void ziyanfa()
@@ -375,7 +374,7 @@ void downcpp()
 	switch (mode)
 	{
 	case 'D':
-		OpenWeb("www.onlinedown.net/soft/9500.htm");
+		OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 		break;
 	case 'M':
 	{
@@ -384,7 +383,7 @@ void downcpp()
 		Clearce();
 		switch (mode)
 		{
-			case 'G': OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
+			case 'G': OpenWeb("http://https://www.github.com/niXman/mingw-builds-binaries/releases"); break;
 			case 'M': OpenWeb("https://www.mingw-w64.org/"); break;
 		}
 		break;
@@ -402,7 +401,7 @@ void downcpp()
 		break;
 	}
 	// this_thread::sleep_for(chrono::seconds(2));;
-	// OpenWeb("www.onlinedown.net/soft/9500.htm");
+	// OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 	return;
 }
 void chinajy()
@@ -529,7 +528,7 @@ void jd()
 void kfcid()
 {
 	Prints("QQ腾讯网-----搜索更多的事情", 500);
-	OpenWeb("www.qq.com/");
+	OpenWeb("https://www.qq.com/");
 	Prints("66666", 500);
 	Prints("666666666666666666666", 500);
 	// Prints("QQ腾讯网-----搜索更多的事情66666666666666666666666666", 500); // 为什么要输很多"6"
@@ -569,7 +568,7 @@ void prog()
 {
 	puts("好用的编程软件--洛谷IDE");
 	this_thread::sleep_for(chrono::seconds(3));;
-	OpenWeb("www.luogu.com.cn/ide");
+	OpenWeb("https://www.luogu.com.cn/ide");
 	return;
 }
 void update()
@@ -733,7 +732,7 @@ void pblktct()
 	puts("alanbecker代码输出，sunyuhao负责编辑，tongyifeng负责试用。此版权为sunyuhao与alanbecker所有，请勿在未获得权限");
 	puts("的情况下私自在各网站上发布，谢谢");
 	puts("洛谷网站                        alanbecker联系洛谷alanbecker");
-	puts("www.luogu.com                  sunyuhao联系洛谷stzhl");
+	puts("https://www.luogu.com                  sunyuhao联系洛谷stzhl");
 	puts("Copyright by sunyuhao and alanbecker C");
 	return;
 }
@@ -741,7 +740,7 @@ void look()
 {
 	puts("浏览");
 	this_thread::sleep_for(chrono::seconds(1)); // 43.6 is lowest
-	OpenWeb("www.bing.com"); // 还是推荐用微软必应
+	OpenWeb("https://www.bing.com"); // 还是推荐用微软必应
 	return;
 }
 void taotao()
@@ -759,13 +758,13 @@ void taotao()
 	{
 		printf("66666666666666666666");
 		this_thread::sleep_for(chrono::seconds(2));;
-		OpenWeb("www.taobao.com/");
+		OpenWeb("https://www.taobao.com/");
 	}
 	return;
 }
 void hzhz()
 {
-	puts("Hydro Online Judge，原名H，是世界知名的OJ");
+	puts("Hydro Online Judge, 原名H, 是世界知名的OJ");
 	this_thread::sleep_for(chrono::seconds(1));;
 	string tihao;
 	printf("请输入题号: ");
@@ -780,7 +779,7 @@ void kkk()
 {
 	puts("累了吗？刷会视频吧！");
 	this_thread::sleep_for(chrono::seconds(1));;
-	OpenWeb("www.bilibili.com"); // 建议Bilibili
+	OpenWeb("https://www.bilibili.com"); // 建议Bilibili
 	return;
 }
 void ybt()
@@ -815,7 +814,7 @@ void ajy()
 {
 	puts("想刷剧了吗？来爱奇艺吧！");
 	this_thread::sleep_for(chrono::seconds(1));;
-	OpenWeb("www.iqiyi.com/ ");
+	OpenWeb("https://www.iqiyi.com/ ");
 	return;
 }
 void jjxrb()
@@ -823,8 +822,58 @@ void jjxrb()
 	// puts("狙击小日本无敌版！");
 	this_thread::sleep_for(chrono::seconds(1));;
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
-	OpenWeb("www.2344.com/flash/28135.htm");
+	OpenWeb("https://www.2344.com/flash/28135.htm");
 }
+struct CommandStruct
+{
+	void (*func)();
+	char key[15];
+} Command[43] = {
+	{[]()
+	 { printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
+	{cpu, "st"},
+	{catstore, "catstore"},
+	{pblktct, "pblktct"},
+	{ziyanfa, "weyf"},
+	{jd, "jd"},
+	{kfcid, "qq"},
+	{mail, "ML"},
+	{CPS, "CPS"},
+	{hzhz, "hzhz"},
+	{game, "game"},
+	{jjxrb, "jjxrb"},
+	{looking, "looking"},
+	{fy, "sllfy"},
+	{chinajy, "cnjy"},
+	{leetcode, "leetcode"},
+	{sd, "sd"},
+	{gameku, "4399game"},
+	{input_zll, "input_zll"},
+	{gametwo, "game2"},
+	{taotao, "maimaimai"},
+	{downcpp, "downloadcpp"},
+	{state, "state"},
+	{update, "update"},
+	{address, "address"},
+	{funnyth, "fn"},
+	{codeforces, "CODEFORCES"},
+	{copyright, "copy"},
+	{presenter, "showshow"},
+	{txt, "write"},
+	{text, "tct"},
+	{look, "look"},
+	{prog, "prog"},
+	{wechat, "wtc"},
+	{bd, "baidu"},
+	{about_windows, "aboutthe"},
+	{kkk, "kkk"},
+	{ybt, "ybt"},
+	{TBS, "TBS"},
+	{ys, "ys"},
+	{ajy, "ajy"},
+	{alpjsq, "alpcl"},
+	{ahaoj, "ahaoj"}
+};
 int main()
 {
 	#ifdef _WIN32
@@ -958,149 +1007,37 @@ int main()
 		puts("weyf·············系统");
 		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
-		string command;
+		char command[15];
+		bool isfound = false;
 		while (1)
 		{
+			memset(command, 0, sizeof(command));
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
-			command.resize(15);
-			scanf("%s", &command[0]);
-			switch (str2int(command.c_str()))
+			Clearce();
+			scanf("%s", &command);
+			bool found = false;
+			if (0 < 42)
 			{
-			case str2int("shut"):
-				printf("\033[2J\033[1;1H");
-				printf("\033[1;37m");
-				continue;
-			case str2int("st"):
-				cpu();
-				continue;
-			case str2int("catstore"):
-				catstore();
-				continue;
-			case str2int("pblktct"):
-				pblktct();
-				continue;
-			case str2int("weyf"):
-				ziyanfa();
-				continue;
-			case str2int("jd"):
-				jd();
-				continue;
-			case str2int("qq"):
-				kfcid();
-				continue;
-			case str2int("ML"):
-				mail();
-				continue;
-			case str2int("CPS"):
-				CPS();
-				continue;
-			case str2int("hzhz"):
-				hzhz();
-				continue;
-			case str2int("game"):
-				game();
-				continue;
-			case str2int("jjxrb"):
-				jjxrb();
-				continue;
-			case str2int("looking"):
-				looking();
-				continue;
-			case str2int("sllfy"):
-				fy();
-				continue;
-			case str2int("cnjy"):
-				chinajy();
-				continue;
-			case str2int("leetcode"):
-				leetcode();
-				continue;
-			case str2int("sd"):
-				sd();
-				continue;
-			case str2int("4399game"):
-				gameku();
-				continue;
-			case str2int("input_zll"):
-				input_zll();
-				continue;
-			case str2int("game2"):
-				gametwo();
-				continue;
-			case str2int("maimaimai"):
-				taotao();
-				continue;
-			case str2int("downloadcpp"):
-				downcpp();
-				continue;
-			case str2int("state"):
-				state();
-				continue;
-			case str2int("update"):
-				update();
-				continue;
-			case str2int("address"):
-				address();
-				continue;
-			case str2int("fn"):
-				funnyth();
-				continue;
-			case str2int("CODEFORCES"):
-				codeforces();
-				continue;
-			case str2int("copy"):
-				copyright();
-				continue;
-			case str2int("showshow"):
-				presenter();
-				continue;
-			case str2int("write"):
-				txt();
-				continue;
-			case str2int("tct"):
-				text();
-				continue;
-			case str2int("look"):
-				look();
-				continue;
-			case str2int("prog"):
-				prog();
-				continue;
-			case str2int("wtc"):
-				wechat();
-				continue;
-			case str2int("baidu"):
-				bd();
-				continue; // My friend is wushaochen
-			case str2int("aboutthe"):
-				about_windows();
-				continue;
-			case str2int("kkk"):
-				kkk();
-				continue;
-			case str2int("ybt"):
-				ybt();
-				continue;
-			case str2int("TBS"):
-				TBS();
-				continue;
-			case str2int("ys"):
-				ys();
-				continue;
-			case str2int("ajy"):
-				ajy();
-				continue;
-      		case str2int("alpcl"):
-        		alpjsq();
-        		continue;
-			case str2int("ahaoj"):
-				ahaoj();
-				continue;
-			default:
-				printf("%s 不是一个有效的命令\n", command.c_str());
-				// _beep(750, 100);
-				printf("\a");
+				int i = 0;
+				do
+				{
+					if (strcmp(Command[i].key, command) == 0)
+					{
+						Command[i].func();
+						isfound = true;
+						break;
+					}
+					++i;
+				} while (i <= 42);
 			}
+			if (!isfound)
+			{
+				printf("错误: %s 不是一个有效的命令\n", command);
+			}
+			// if (command == "leetcode")
+			// {
+			// 	printf("8798er932bdt8qwr");
+			// }
 		}
 		printf("\033[1;37m");
 		Prints("MADE IN CHINA,BAIGEPING", 75);
@@ -1113,3 +1050,4 @@ int main()
 	}
 	return 0;
 }
+
