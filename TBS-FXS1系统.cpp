@@ -5,6 +5,7 @@
 #include <chrono>
 #include <cstring>
 #include <random>
+#include <setjmp.h>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
@@ -13,6 +14,17 @@ using namespace std;
 string o;
 string c;
 int abc;
+const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
+const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
+
+
+class Username_or_password_is_incorrect: public exception  
+{  
+    virtual const char* what() const throw()  
+    {  
+        return "错误: 用户名或密码不正确";  
+    }  
+}PasswordorUsernameError; // Password or Username not right 
 
 constexpr unsigned int str2int(const char *str, int h = 0)
 {
@@ -40,22 +52,12 @@ void OpenWeb(string url)
 
 void Prints(string text, int speed) // 自动换行
 {
-	// for (int i = 0; i < text.size(); ++i)
-	// {
-	// 	printf("%c", text[i]);
-	// 	this_thread::sleep_for(chrono::seconds(speed / 1000));
-	// }
-	if (0 < text.size())
-	{
-		int i;
-		do
-		{
-			printf("%c", text[i]);
-			this_thread::sleep_for(chrono::seconds(speed / 1000));
-			++i;
-		} while (i < text.size());
-	}
-	puts("");
+    if (!text.empty()) {
+        for (size_t i = 0; i < text.size(); ++i) {
+            putchar(text[i]);
+            std::this_thread::sleep_for(std::chrono::milliseconds(speed));
+        }
+    }
 	return;
 }
 void wechat()
@@ -94,13 +96,19 @@ void leetcode()
 	return;
 }
 
-long long cifang(long long number,long long cishu)
-{
-    if(cishu == 0) return 1;
-    else if(cishu == 1) return number;
-    else if(cishu % 2 == 0) return cifang(number * number, cishu * 0.5); // 将除法改成乘法
-    return cifang(number * number, cishu * 0.5) * number; // 将除法改成乘法
+long long cifang(long long number, long long cishu) {
+    if (cishu == 0) return 1;
+    long long result = 1;
+    while (cishu > 0) {
+        if (cishu & 1) {
+            result *= number;
+        }
+        number *= number;
+        cishu >>= 1;
+    }
+    return result;
 }
+
 void alpjsq()
 {
   string shuanshu;
@@ -281,7 +289,7 @@ void ziyanfa()
 	int sxsxdsx;
 	puts("请输入数字");
 	puts("列表：");
-	puts("0.退出 1.钟表 2.团队 3.简介 4.Administrator");
+	puts("0.退出 1.钟表 2.团队 3.简介");
 	while (1)
 	{
 		scanf("%d", &sxsxdsx);
@@ -291,71 +299,71 @@ void ziyanfa()
 		}
 		if (sxsxdsx == 1)
 		{
-			printf("时间%s", nowtm());
+			printf("时间%s\n", nowtm());
 		}
 		if (sxsxdsx == 2)
 		{
 			puts("我们的研发团队: TBS-FXS团队");
 			puts("详情见QQ群908658106");
-			Prints("若想退出，请在这段文字结束后按 [0] 退出", 100);
+			Prints("若想退出，请在这段文字结束后按 [0] 退出\n", 100);
 		}
 		if (sxsxdsx == 3)
 		{
 			puts("系统已实现自研发！！！");
 			puts("这是一个系统");
 			puts("系统高效又好笑");
-			Prints("若想退出，请在这段文字结束后按 [0] 退出", 100);
+			Prints("若想退出，请在这段文字结束后按 [0] 退出\n", 100);
 		}
-		if (sxsxdsx == 4)
-		{
-			puts("Administrator");
-			puts("指令：");
-			puts("按 [mkd] + 文件夹名字(只输入一个字母) 创建文件夹 按 [odd] + 文件夹名字 打开文件夹(只输入一个字母) 按[mkt] + 文件名字创建文件(只输入一个字母) 按 [o] 退出 (指令需要按回车，退出不用)");
-			while (1)
-			{
-				string one;
-				string two;
-				string mkeddir[10001];
-				one.resize(500);
-				two.resize(500);
-				scanf("%s", &one[0]);
-				if (one == "o")
-				{
-					break;
-				}
-				int y = 1;
-				if (one == "mkd")
-				{	
-					scanf("%s", &two[0]);
-					printf("您创建了一个名为 %s 的文件夹\n", two.c_str());
-					y = 1;
-					mkeddir[y] = two;
-					y++;
-				}
-				if (one == "odd")
-				{
-					puts("请输入您第几个创建-1的文件夹");
-					scanf("%d", &y);
-					printf("这是一个名为 %s 的文件夹\n", mkeddir[y].c_str());
-					// cout << "您打开了" << endl;
-					break;
-				}
-				if (one == "mkt")
-				{
-					scanf("%s", &two[0]);
-					printf("您创建了一个名为 %s 的TXT文件", two.c_str());
-					printf("输入内容，按 [Q + 回车] 完成");
-					string saving;
-					saving.resize(500);
-					char neir;
-					while (scanf("%c", &neir) != 'Q')
-					{
-						saving += neir;
-					}
-					printf("请您自己复制粘贴您的文件, 注意Q\n");
-				}
-			}
-		}
+		// if (sxsxdsx == 4)
+		// {
+		// 	puts("Administrator");
+		// 	puts("指令：");
+		// 	puts("按 [mkd] + 文件夹名字(只输入一个字母) 创建文件夹 按 [odd] + 文件夹名字 打开文件夹(只输入一个字母) 按[mkt] + 文件名字创建文件(只输入一个字母) 按 [o] 退出 (指令需要按回车，退出不用)");
+		// 	while (1)
+		// 	{
+		// 		string one;
+		// 		string two;
+		// 		string mkeddir[10001];
+		// 		one.resize(500);
+		// 		two.resize(500);
+		// 		scanf("%s", &one[0]);
+		// 		if (one == "o")
+		// 		{
+		// 			break;
+		// 		}
+		// 		int y = 1;
+		// 		if (one == "mkd")
+		// 		{	
+		// 			scanf("%s", &two[0]);
+		// 			printf("您创建了一个名为 %s 的文件夹\n", two.c_str());
+		// 			y = 1;
+		// 			mkeddir[y] = two;
+		// 			++y;
+		// 		}
+		// 		if (one == "odd")
+		// 		{
+		// 			puts("请输入您第几个创建-1的文件夹");
+		// 			scanf("%d", &y);
+		// 			printf("这是一个名为 %s 的文件夹\n", mkeddir[y].c_str());
+		// 			// cout << "您打开了" << endl;
+		// 			break;
+		// 		}
+		// 		if (one == "mkt")
+		// 		{
+		// 			scanf("%s", &two[0]);
+		// 			printf("您创建了一个名为 %s 的TXT文件", two.c_str());
+		// 			printf("输入内容，按 [Q + 回车] 完成");
+		// 			string saving;
+		// 			saving.resize(500);
+		// 			char neir;
+		// 			while (scanf("%c", &neir) != 'Q')
+		// 			{
+		// 				saving += neir;
+		// 			}
+		// 			printf("请您自己复制粘贴您的文件, 注意Q\n");
+		// 		}
+		// 	}
+		// }
 	}
 	return;
 }
@@ -392,7 +400,7 @@ void downcpp()
 		OpenWeb("https://clang.llvm.org/");
 		break;
 	default:
-		printf("错误: 模式 %s 不存在", mode);
+		printf("错误: 模式 %s 不存在\n", mode);
 		break;
 	}
 	// this_thread::sleep_for(chrono::seconds(2));;
@@ -432,8 +440,9 @@ void game()
 }
 void gametwo()
 {
-	Prints("轻松时刻-------游戏时刻", 300);
-	system("echo google小恐龙在线版本！！！");
+	Prints("轻松时刻-------游戏时刻\n", 300);
+	// system("echo google小恐龙在线版本！！！"); 666
+	puts("google小恐龙在线版本\n");
 	while (getchar() != '\n')
 		continue;
 	getchar();
@@ -471,27 +480,25 @@ void txt()
 	}
 	return;
 }
- 
-void qwqw()
-{
-	puts("系统之家---一键下载");
-	this_thread::sleep_for(chrono::milliseconds(500));
-	OpenWeb("windows.ycgxgy.cn/");
-	return;
-}
 
 void cpu()
 {
-	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
-	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
-	printf("CPU配置: %s %s\n", cpu[rand() % 5].c_str(), cpucore[rand() % 12].c_str());
+	
+	// random, start!
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> dis(0, 4);
+	uniform_int_distribution<> dis2(0, 11);
+	uniform_int_distribution<> dis3(100, 999);
+	uniform_int_distribution<> dis4(1, 999);
+	printf("cpu_xh配置: %s %s\n", cpu_xh[dis(gen)].c_str(), cpu_xhcore[dis2(gen)].c_str());
 	// (:
-	printf("ip地址：%d.%d.%d.%d\n", rand() % 899 + 100, rand() % 899 + 100, rand() % 998 + 1, rand() % 998 + 1);
+	printf("ip地址：%d.%d.%d.%d\n", dis3(gen), dis3(gen), dis4(gen), dis4(gen));
 	return;
 }
 void copyright()
 {
-	puts("copyright by longlong Co.,Ltd..");
+	puts("Copyright by sunyuhao and alanbecker C");
 	return;
 }
 void input_zll()
@@ -551,12 +558,12 @@ void address()
 void state()
 {
 	puts("配置");
-	puts("CPU：CNQXZ-C9000S 3.2THZ");
+	puts("cpu_xh：CNQXZ-C9000S 3.2THZ");
 	puts("GPU：CNQXZ-G9000S 5GB存储 2.33THZ  30.2兆 图形渲染/秒");
 	puts("RAM: 64GB  ROM: 12TB");
 	puts("16位 DOS式系统     CN-QX-OS V12.1.2");
 	puts("状态");
-	printf("CPU %d%", rand() % 15);
+	printf("cpu_xh %d%", rand() % 15);
 	printf("GPU %d%", rand() % 15);
 	printf("RAM %d%", rand() % 10);
 	printf("ROM %d%", rand() % 5);
@@ -673,8 +680,7 @@ void about_windows()
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
 	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
 	
-	string cpu[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
-	string cpucore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
+	
 	// 进入随机数阶段
 	random_device randev;
 	mt19937 gen(randev());
@@ -687,7 +693,7 @@ void about_windows()
 	uniform_int_distribution<> dis7(1, 6);
 	// end
 	printf("建议运行系统：%s %d\n", os[dis(gen)].c_str(), rand()); // 这里我写个彩蛋
-	printf("建议运行CPU: %s %s\n", cpu[dis2(gen)].c_str(), cpucore[dis3(gen)].c_str());
+	printf("建议运行cpu_xh: %s %s\n", cpu_xh[dis2(gen)].c_str(), cpu_xhcore[dis3(gen)].c_str());
 	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)].c_str());
 	string PCNAME = "";
 	if (0 < dis4(gen))
@@ -772,9 +778,9 @@ void hzhz()
 	printf("请输入题号: ");
 	tihao.resize(100);
 	scanf("%d", &tihao[0]);
-	string allurl = "hydro.ac/p/" + tihao;
+	string allurl = "https://www.hydro.ac/p/" + tihao;
 	OpenWeb(allurl);
-	Prints("Its OK!", 300);
+	Prints("Its OK!\n", 300);
 	return;
 }
 void kkk()
@@ -837,6 +843,7 @@ int main()
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
 	scanf("%s %s", &qaz, &wsx);
+	
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
 		#ifdef _WIN32
@@ -900,31 +907,10 @@ int main()
 		#endif */ // close 
 		printf("\033[2J\033[3J\033[1;1H");
 		const string loading = "loading......";
-		for (int i = 0; i < 13; ++i)
+		for (size_t i = 0; i < 13; ++i)
 		{
-			printf("%c", loading[i]);
+			putchar(loading[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
-		}
-		this_thread::sleep_for(chrono::milliseconds(500));
-		for (int i = 1; i <= 100; ++i) // i += 1 = i = i + 1 = i++ = ++i
-		{
-			printf("\033[2J\033[3J\033[1;1H");
-			#ifdef _WIN32
-			system("color 17");
-			#else
-			#endif
-			if (1 <= i)
-			{
-				int j = 1;
-				do
-				{
-					printf("-");
-					++j;
-				} while (j <= i);
-				
-			}
-			printf("%d%", i);
-			this_thread::sleep_for(chrono::seconds((rand() % 15) / 1000));
 		}
 		#ifdef _WIN32
 		system("color 17");
@@ -971,7 +957,6 @@ int main()
 		puts("TBS············· TBS公司介绍");
 		puts("ys·············  163邮箱");
 		puts("ajy············· 爱奇艺");
-		puts("xtzj·············系统之家");
 		puts("jjxrb············ 狙击小日本");
 		puts("jd··············京东");
 		puts("qq··············腾讯网");
@@ -1044,9 +1029,6 @@ int main()
 				continue;
 			case str2int("4399game"):
 				gameku();
-				continue;
-			case str2int("xtzj"):
-				qwqw();
 				continue;
 			case str2int("input_zll"):
 				input_zll();
@@ -1136,6 +1118,9 @@ int main()
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
 		this_thread::sleep_for(chrono::seconds(1));;
+	} else {
+		throw PasswordorUsernameError;
+		return 0;
 	}
 	return 0;
 }
