@@ -5,7 +5,6 @@
 #include <chrono>
 #include <cstring>
 #include <random>
-#include <setjmp.h>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
