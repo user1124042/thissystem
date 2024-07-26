@@ -51,7 +51,7 @@ void Prints(string text, int speed) // 自动换行
     if (!text.empty()) {
         for (size_t i = 0; i < text.size(); ++i) {
             putchar(text[i]);
-			std::fflush(stdout);
+	    std::fflush(stdout);
             std::this_thread::sleep_for(std::chrono::milliseconds(speed));
         }
     }
