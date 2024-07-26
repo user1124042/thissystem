@@ -14,14 +14,6 @@ string o;
 string c;
 int abc;
 
-struct PasswordorUsernameError : public exception
-{
-	const char *what() const throw()
-	{
-		return "用户名或密码错误";
-	}
-};
-
 constexpr unsigned int str2int(const char *str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
@@ -102,35 +94,6 @@ void leetcode()
 	return;
 }
 
-void coutrlor()
-{
-	puts("计算机，用作两数的运算，先输入符号，后输入两个数");
-	int xv, zxcv;
-	char yyy;
-	scanf("%c", &yyy);
-	scanf("%d %d", &xv, &zxcv);
-	if (yyy = '+')
-	{
-		printf("%d\n", xv + zxcv);
-	}
-	else if (yyy = '-')
-	{
-		printf("%d\n", xv - zxcv);
-	}
-	else if (yyy = '*')
-	{
-		printf("%d\n", xv * zxcv);
-	}
-	else if (yyy = '/')
-	{
-		printf("%d\n", xv / zxcv);
-	}
-	else
-	{
-		printf("无效符号\n");
-		return;
-	}
-}
 long long cifang(long long number,long long cishu)
 {
     if(cishu == 0) return 1;
@@ -274,13 +237,11 @@ void text()
 {
 	printf("刷题时间到了，刷题吧！\n");
 	this_thread::sleep_for(chrono::seconds(1));
-	int abc = rand() % (10120 - 1000) + 1000;
 	printf("请输入题号: ");
 	string tihao;
 	tihao.resize(100);
 	scanf("%d", &tihao[0]);
-	string allurl = "https://www.luogu.com.cn/problem/" + tihao;
-	OpenWeb(allurl);
+	OpenWeb("https://www.luogu.com.cn/problem/" + tihao);
 	//	puts("大更改的浏览器");
 	//	sleep(3000);
 	//	string s;
@@ -306,8 +267,7 @@ char* nowtm()
 }
 void presenter()
 {
-	printf("朋友们大家好，现在的时间是:\n%s\n\n", nowtm());
-	puts("");
+	printf("朋友们大家好，现在的时间是: %s", nowtm());
 	puts("");
 	puts("世界那么大，我想去看看");
 	puts("来来来");
@@ -560,7 +520,7 @@ void jd()
 {
 	puts("来买东西吧！");
 	this_thread::sleep_for(chrono::seconds(1));
-	system("https://www.jd.com/");
+	OpenWeb("https://www.jd.com/");
 }
 
 void kfcid()
@@ -953,9 +913,15 @@ int main()
 			system("color 17");
 			#else
 			#endif
-			for (int j = 1; j <= i; ++j)
+			if (1 <= i)
 			{
-				printf("-");
+				int j = 1;
+				do
+				{
+					printf("-");
+					++j;
+				} while (j <= i);
+				
 			}
 			printf("%d%", i);
 			this_thread::sleep_for(chrono::seconds((rand() % 15) / 1000));
@@ -1070,9 +1036,6 @@ int main()
 			case str2int("cnjy"):
 				chinajy();
 				continue;
-			case str2int("ctl"):
-				coutrlor();
-				continue;
 			case str2int("leetcode"):
 				leetcode();
 				continue;
@@ -1173,11 +1136,6 @@ int main()
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
 		this_thread::sleep_for(chrono::seconds(1));;
-	}
-	else
-	{
-		throw PasswordorUsernameError();
-		return 0;
 	}
 	return 0;
 }
