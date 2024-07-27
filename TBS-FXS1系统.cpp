@@ -10,8 +10,8 @@ using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
-const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
+const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
+const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
 {  
     virtual const char* what() const throw()  
@@ -19,11 +19,6 @@ class Username_or_password_is_incorrect: public exception
         return "错误: 用户名或密码不正确";  
     }  
 }PasswordorUsernameError; // Password or Username not right 
-
-constexpr unsigned int str2int(const char *str, int h = 0)
-{
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
 
 void Clearce()
 {
@@ -126,17 +121,16 @@ void alpjsq()
   }
   if (shuanshu.find('-') != string::npos)
   {
-    int right, leftt;
+    int right, left;
     try {
       int lc = shuanshu.find('-');
       right = stoi(shuanshu.substr(0, lc));
-      // 
-      leftt = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
     }
     catch (const std::exception& e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
-    printf("%d - %d = %d\n", right, leftt, right - leftt);
+    printf("%d - %d = %d\n", right, left, right - left);
   }
   if (shuanshu.find('*') != string::npos)
   {
@@ -155,12 +149,12 @@ void alpjsq()
   {
     int right, left;
     try {
-      int lc = shuanshu.find('/');
-      right = stoi(shuanshu.substr(0, lc));
+        int lc = shuanshu.find('/');
+        right = stoi(shuanshu.substr(0, lc));
 	    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
-	  }
+	}
     catch (const std::exception& e) {
-		  printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d / %d = %d\n", right, left, right / left);
   }
@@ -485,7 +479,7 @@ void cpu()
 	uniform_int_distribution<> dis2(0, 11);
 	uniform_int_distribution<> dis3(100, 999);
 	uniform_int_distribution<> dis4(1, 999);
-	printf("cpu_xh配置: %s %s\n", cpu_xh[dis(gen)].c_str(), cpu_xhcore[dis2(gen)].c_str());
+	printf("cpuh配置: %s %s\n", cpu_xh[dis(gen)], cpu_xhcore[dis2(gen)]);
 	// (:
 	printf("ip地址：%d.%d.%d.%d\n", dis3(gen), dis3(gen), dis4(gen), dis4(gen));
 	return;
@@ -650,6 +644,7 @@ void update()
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
+	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
 }
 void looking()
 {
@@ -672,7 +667,7 @@ void sd()
 void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
+	char os[7][9] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
 	// 进入随机数阶段
 	random_device randev;
 	mt19937 gen(randev());
@@ -683,10 +678,11 @@ void about_windows()
 	uniform_int_distribution<> dis5(0, 25);
 	uniform_int_distribution<> dis6(1, 7);
 	uniform_int_distribution<> dis7(1, 6);
+	uniform_int_distribution<> dis8(0, 999999);
 	// end
-	printf("建议运行系统：%s %d\n", os[dis(gen)].c_str(), rand()); // 这里我写个彩蛋
-	printf("建议运行cpu_xh: %s %s\n", cpu_xh[dis2(gen)].c_str(), cpu_xhcore[dis3(gen)].c_str());
-	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)].c_str());
+	printf("建议运行系统：%s %d\n", os[dis(gen)], dis8(gen));
+	printf("建议运行cpu_xh: %s %s\n", cpu_xh[dis2(gen)], cpu_xhcore[dis3(gen)]);
+	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)]);
 	string PCNAME = "";
 	if (0 < dis4(gen))
 	{
@@ -1010,39 +1006,31 @@ int main()
 		bool isfound = false;
 		while (1)
 		{
-			memset(command, 0, sizeof(command));
+			isfound = false;
+			// memset(command, 0, sizeof(command));
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			Clearce();
 			scanf("%s", &command);
-			bool found = false;
-			if (0 < 42)
+			for (int i = 0; i < 43; i++)
 			{
-				int i = 0;
-				do
+				if (strcmp(Command[i].key, command) == 0)
 				{
-					if (strcmp(Command[i].key, command) == 0)
-					{
-						Command[i].func();
-						isfound = true;
-						break;
-					}
-					++i;
-				} while (i <= 42);
+					isfound = true;
+					Command[i].func();
+					break;
+				}
 			}
 			if (!isfound)
 			{
-				printf("错误: %s 不是一个有效的命令\n", command);
+				printf("错误： %s 不是一个有效的命令\n", command);
 			}
-			// if (command == "leetcode")
-			// {
-			// 	printf("8798er932bdt8qwr");
-			// }
 		}
 		printf("\033[1;37m");
 		Prints("MADE IN CHINA,BAIGEPING", 75);
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
-		this_thread::sleep_for(chrono::seconds(1));;
+		this_thread::sleep_for(chrono::seconds(1));
+		free(hash_list);
 	} else {
 		throw PasswordorUsernameError;
 		return 0;
