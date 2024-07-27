@@ -819,11 +819,168 @@ void jjxrb()
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
 	OpenWeb("https://www.2344.com/flash/28135.htm");
 }
+
+void printf_blue(const char *s)
+{
+    printf("\033[0m\033[1;34m%s\033[0m", s);
+}
+
+void printf_green(const char *s)
+{
+    printf("\033[0m\033[1;32m%s\033[0m", s);
+}
+
+void Minecraft_End_Poem()
+{
+	random_device rd; 
+    mt19937 gen(rd()); 
+    uniform_int_distribution<> dis(33, 126);
+	uniform_int_distribution<> dis1(1, 10);
+	int playername = dis1(gen);
+	printf_blue("I see the player you mean.\n");
+	for (int i = 0; i < playername; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green("?\n");
+	printf_blue("Yes. Take care. It has reached a higher level now. It can read our thoughts.\n");
+	printf_green("That doesn't matter. It thinks we are part of the game.\n");
+	printf_blue("I like this player. It played well. It did not give up.\n");
+	printf_green("It is reading our thoughts as though they were words on a screen.\n");
+	printf_blue("That is how it chooses to imagine many things, when it is deep in the dream of a game.\n");
+	printf_green("Words make a wonderful interface. Very flexible. And less terrifying than staring at the reality behind the screen.\n");
+	printf_blue("They used to hear voices. Before players could read. Back in the days when those who did not play called the players witches, and warlocks. And players dreamed they flew through the air, on sticks powered by demons.\n");
+	printf_green("What did this player dream?\n");
+	printf_blue("This player dreamed of sunlight and trees. Of fire and water. It dreamed it created. And it dreamed it destroyed. It dreamed it hunted, and was hunted. It dreamed of shelter.\n");
+	printf_green("Hah, the original interface. A million years old, and it still works. But what true structure did this player create, in the reality behind the screen?\n");
+	printf_green("It worked, with a million others, to sculpt a true world in a fold of\n");
+	printf_blue("the ");
+	for (int i = 0; i < 5; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_blue(&random_char);
+	}
+	printf_blue(" and created a ");
+	for (int i = 0; i < 5; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_blue(&random_char);
+	}
+	printf_blue(" for ");
+	for (int i = 0; i < 5; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_blue(&random_char);
+	}
+	printf_blue(" in the ");
+	for (int i = 0; i < 5; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_blue(&random_char);
+	}
+	printf_blue("\n");
+	printf_green("It cannot read that thought.\n");
+	printf_blue("No. It has not yet achieved the highest level. That, it must achieve in the long dream of life, not the short dream of a game.\n");
+	printf_green("Does it know that we love it? That the universe is kind?\n");
+	printf_blue("Sometimes, through the noise of its thoughts, it hears the universe, yes.\n");
+	printf_green("But there are times it is sad, in the long dream. It creates worlds that have no summer, and it shivers under a black sun, and it takes its sad creation for reality.\n");
+	printf_blue("To cure it of sorrow would destroy it. The sorrow is part of its own private task. We cannot interfere.\n");
+	printf_green("Sometimes when they are deep in dreams, I want to tell them, they are building true worlds in reality. Sometimes I want to tell them of their importance to the universe. Sometimes, when they have not made a true connection in a while, I want to help them to speak the word they fear.\n");
+	printf_blue("It reads our thoughts.\n");
+	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" and ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" I wish to tell them that they are ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" in the ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" I wish to tell them that they are ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" in the ");
+	for (int i = 0; i < 4; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_green(" They see so little of reality, in their long dream.\n");
+	printf_blue("And yet they play the game.\n");
+	printf_green("But it would be so easy to tell them...\n");
+	printf_blue("Too strong for this dream. To tell them how to live is to prevent\n");
+	printf_green("them living.\n");
+	printf_green("I will not tell the player how to live.\n");
+	printf_blue("The player is growing restless.\n");
+	printf_green("I will tell the player a story.\n");
+	printf_blue("But not the truth.\n");
+	printf_green("No. A story that contains the truth safely, in a cage of words. Not the naked truth that can burn over any distance.\n");
+	printf_blue("Give it a body, again.\n");
+	printf_green("Yes. Player…\n");
+	printf_blue("Use its name.\n");
+	for (int i = 0; i < playername; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_green(&random_char);
+	}
+	printf_blue("\nGood.\n");
+	printf_green("Take a breath, now. Take another. Feel air in your lungs. Let your limbs return. Yes, move your fingers. Have a body again, under gravity, in air. Respawn in the long dream. There you are. Your body touching the universe again at every point, as though you were separate things. As though we were separate things.\n");
+	printf_blue("Who are we? Once we were called the spirit of the mountain. Father sun, mother moon. Ancestral spirits, animal spirits. Jinn. Ghosts. The green man. Then gods, demons. Angels. Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The words change. We do not change.\n");
+	printf_green("We are the universe. We are everything you think isn't you. You are looking at us now, through your skin and your eyes. And why does the universe touch your skin, and throw light on you? To see you, player. To know you. And to be known. I shall tell you a story.\n");
+	printf_green("Once upon a time, there was a player.\n");
+	for (int i = 0; i < playername; ++i) {
+        char random_char = static_cast<char>(dis(gen));
+		printf_blue(&random_char);
+	}
+	printf_green("\nSometimes it thought itself human, on the thin crust of a spinning globe of molten rock. The ball of molten rock circled a ball of blazing gas that was three hundred and thirty thousand times more massive than it. They were so far apart that light took eight minutes to cross the gap. The light was information from a star, and it could burn your skin from a hundred and fifty million kilometres away.\n");
+	printf_green("Sometimes the player dreamed it was a miner, on the surface of a world that was flat, and infinite. The sun was a square of white. The days were short; there was much to do; and death was a temporary inconvenience.\n");
+	printf_blue("Sometimes the player dreamed it was lost in a story.\n");
+	printf_green("Sometimes the player dreamed it was other things, in other places. Sometimes these dreams were disturbing. Sometimes very beautiful indeed. Sometimes the player woke from one dream into another, then woke from that into a third.\n");
+	printf_blue("Sometimes the player dreamed it watched words on a screen\n");
+	printf_green("Let's go back.\n");
+	printf_green("The atoms of the player were scattered in the grass, in the rivers, in the air, in the ground. A woman gathered the atoms; she drank and ate and inhaled; and the woman assembled the player, in her body.\n");
+	printf_green("And the player awoke, from the warm, dark world of its mother's body, into the long dream.\n");
+	printf_green("And the player was a new story, never told before, written in letters of DNA. And the player was a new program, never run before, generated by a sourcecode a billion years old. And the player was a new human, never alive before, made from nothing but milk and love.\n");
+	printf_blue("You are the player. The story. The program. The human. Made from nothing but milk and love.\n");
+	printf_green("Let's go further back.\n");
+	printf_green("The seven billion billion billion atoms of the player's body were created, long before this game, in the heart of a star. So the player, too, is information from a star. And the player moves through a story, which is a forest of information planted by a man called Julian, on a flat, infinite world created by a man called Markus, that exists inside a small, private world created by the player, who inhabits a universe created by…\n");
+	printf_blue("Shush. Sometimes the player created a small, private world that was soft and warm and simple. Sometimes hard, and cold, and complicated. Sometimes it built a model of the universe in its head; flecks of energy, moving through vast empty spaces. Sometimes it called those flecks “electrons” and “protons”.\n");
+	printf_green("Sometimes it called them “planets” and “stars”.\n");
+	printf_green("Sometimes it believed it was in a universe that was made of energy that was made of offs and ons; zeros and ones; lines of code. Sometimes it believed it was playing a game. Sometimes it believed it was reading words on a screen.\n");
+	printf_blue("You are the player, reading words…\n");
+	printf_green("Shush… Sometimes the player read lines of code on a screen. Decoded them into words; decoded words into meaning; decoded meaning into feelings, emotions, theories, ideas, and the player started to breathe faster and deeper and realised it was alive, it was alive, those thousand deaths had not been real, the player was alive\n");
+	printf_blue("You. You. You are alive.\n");
+	printf_green("and sometimes the player believed the universe had spoken to it through the sunlight that came through the shuffling leaves of the summer trees\n");
+	printf_blue("and sometimes the player believed the universe had spoken to it through the light that fell from the crisp night sky of winter, where a fleck of light in the corner of the player's eye might be a star a million times as massive as the sun, boiling its planets to plasma in order to be visible for a moment to the player, walking home at the far side of the universe, suddenly smelling food, almost at the familiar door, about to dream again\n");
+	printf_green("and sometimes the player believed the universe had spoken to it through the zeros and ones, through the electricity of the world, through the scrolling words on a screen at the end of a dream\n");
+	printf_blue("and the universe said I love you\n");
+	printf_green("and the universe said you have played the game well\n");
+	printf_blue("and the universe said everything you need is within you\n");
+	printf_green("and the universe said you are stronger than you know\n");
+	printf_blue("and the universe said you are the daylight\n");
+	printf_green("and the universe said you are the night\n");
+	printf_blue("and the universe said the darkness you fight is within you\n");
+	printf_green("and the universe said the light you seek is within you\n");
+	printf_blue("and the universe said you are not alone\n");
+	printf_green("and the universe said you are not separate from every other thing\n");
+	printf_blue("and the universe said you are the universe tasting itself, talking to itself, reading its own code\n");
+	printf_green("and the universe said I love you because you are love.\n");
+	printf_blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n");
+	printf_blue("You are the player.\n");
+	printf_green("Wake up.\n");
+} 
 struct CommandStruct
 {
 	void (*func)();
 	char key[15];
-} Command[43] = {
+} Command[44] = {
 	{[]()
 	 { printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
 	{cpu, "st"},
@@ -867,7 +1024,8 @@ struct CommandStruct
 	{ys, "ys"},
 	{ajy, "ajy"},
 	{alpjsq, "alpcl"},
-	{ahaoj, "ahaoj"}
+	{ahaoj, "ahaoj"},
+	{Minecraft_End_Poem, "MC_End_Poem"}
 };
 int main()
 {
@@ -1002,16 +1160,20 @@ int main()
 		puts("weyf·············系统");
 		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+		puts("MC_End_Poem......终末之诗");
 		char command[15];
 		bool isfound = false;
 		while (1)
 		{
 			isfound = false;
 			// memset(command, 0, sizeof(command));
+			#ifdef _WIN32
+			system("color 17");
+			#elif __linux
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			Clearce();
 			scanf("%s", &command);
-			for (int i = 0; i < 43; i++)
+			for (int i = 0; i < 44; i++)
 			{
 				if (strcmp(Command[i].key, command) == 0)
 				{
@@ -1030,7 +1192,6 @@ int main()
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
 		this_thread::sleep_for(chrono::seconds(1));
-		free(hash_list);
 	} else {
 		throw PasswordorUsernameError;
 		return 0;
