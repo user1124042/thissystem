@@ -1029,11 +1029,6 @@ struct CommandStruct
 };
 int main()
 {
-	#ifdef _WIN32
-	system("color 17");
-	#elif __linux
-	printf("使用Windows操作系统体验最佳\n");
-	#endif
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
@@ -1041,25 +1036,13 @@ int main()
 	
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
 		printf("开机时间：%s\n", nowtm());
 		this_thread::sleep_for(chrono::seconds(1));; // no
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("************* ************  *************               ************* *          *  *************      **     *************     *************");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *                 *");
@@ -1087,10 +1070,6 @@ int main()
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
 		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
 		// _beep(550, 400);
 		// _beep(605, 400);
@@ -1105,17 +1084,9 @@ int main()
 			putchar(loading[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
 		}
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
 		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("fn··············笑话");
 		puts("catstore···········商店");
@@ -1167,9 +1138,6 @@ int main()
 		{
 			isfound = false;
 			// memset(command, 0, sizeof(command));
-			#ifdef _WIN32
-			system("color 17");
-			#elif __linux
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			Clearce();
 			scanf("%s", &command);
