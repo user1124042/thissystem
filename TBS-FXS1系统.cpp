@@ -32,7 +32,6 @@ void OpenWeb(string url)
 		system(command[0].c_str());
 	#else
 	#endif
-
 	#if __linux__
 		system(command[1].c_str());
 	#endif
