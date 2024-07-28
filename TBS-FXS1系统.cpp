@@ -10,6 +10,7 @@ using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
+char username[15];
 const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
@@ -831,16 +832,13 @@ void printf_green(const char *s)
 
 void Minecraft_End_Poem()
 {
+	const char *name = username;
 	random_device rd; 
     mt19937 gen(rd()); 
     uniform_int_distribution<> dis(33, 126);
 	uniform_int_distribution<> dis1(1, 10);
-	int playername = dis1(gen);
 	printf_blue("I see the player you mean.\n");
-	for (int i = 0; i < playername; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
+	printf_green(name);
 	printf_green("?\n");
 	printf_blue("Yes. Take care. It has reached a higher level now. It can read our thoughts.\n");
 	printf_green("That doesn't matter. It thinks we are part of the game.\n");
@@ -853,26 +851,10 @@ void Minecraft_End_Poem()
 	printf_blue("This player dreamed of sunlight and trees. Of fire and water. It dreamed it created. And it dreamed it destroyed. It dreamed it hunted, and was hunted. It dreamed of shelter.\n");
 	printf_green("Hah, the original interface. A million years old, and it still works. But what true structure did this player create, in the reality behind the screen?\n");
 	printf_green("It worked, with a million others, to sculpt a true world in a fold of\n");
-	printf_blue("the ");
-	for (int i = 0; i < 5; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_blue(&random_char);
-	}
-	printf_blue(" and created a ");
-	for (int i = 0; i < 5; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_blue(&random_char);
-	}
-	printf_blue(" for ");
-	for (int i = 0; i < 5; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_blue(&random_char);
-	}
-	printf_blue(" in the ");
-	for (int i = 0; i < 5; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_blue(&random_char);
-	}
+	printf_blue("the <Error>");
+	printf_blue(" and created a <Error>");
+	printf_blue(" for <Error>");
+	printf_blue(" in the <Error>");
 	printf_blue("\n");
 	printf_green("It cannot read that thought.\n");
 	printf_blue("No. It has not yet achieved the highest level. That, it must achieve in the long dream of life, not the short dream of a game.\n");
@@ -882,36 +864,12 @@ void Minecraft_End_Poem()
 	printf_blue("To cure it of sorrow would destroy it. The sorrow is part of its own private task. We cannot interfere.\n");
 	printf_green("Sometimes when they are deep in dreams, I want to tell them, they are building true worlds in reality. Sometimes I want to tell them of their importance to the universe. Sometimes, when they have not made a true connection in a while, I want to help them to speak the word they fear.\n");
 	printf_blue("It reads our thoughts.\n");
-	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
-	printf_green(" and ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
-	printf_green(" I wish to tell them that they are ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
-	printf_green(" in the ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
-	printf_green(" I wish to tell them that they are ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
-	printf_green(" in the ");
-	for (int i = 0; i < 4; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
+	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error>");
+	printf_green(" and <Error>");
+	printf_green(" I wish to tell them that they are <Error>");
+	printf_green(" in the <Error>");
+	printf_green(" I wish to tell them that they are <Error>");
+	printf_green(" in the <Error>");
 	printf_green(" They see so little of reality, in their long dream.\n");
 	printf_blue("And yet they play the game.\n");
 	printf_green("But it would be so easy to tell them...\n");
@@ -925,19 +883,13 @@ void Minecraft_End_Poem()
 	printf_blue("Give it a body, again.\n");
 	printf_green("Yes. Player…\n");
 	printf_blue("Use its name.\n");
-	for (int i = 0; i < playername; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_green(&random_char);
-	}
+	printf_green(name);
 	printf_blue("\nGood.\n");
 	printf_green("Take a breath, now. Take another. Feel air in your lungs. Let your limbs return. Yes, move your fingers. Have a body again, under gravity, in air. Respawn in the long dream. There you are. Your body touching the universe again at every point, as though you were separate things. As though we were separate things.\n");
 	printf_blue("Who are we? Once we were called the spirit of the mountain. Father sun, mother moon. Ancestral spirits, animal spirits. Jinn. Ghosts. The green man. Then gods, demons. Angels. Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The words change. We do not change.\n");
 	printf_green("We are the universe. We are everything you think isn't you. You are looking at us now, through your skin and your eyes. And why does the universe touch your skin, and throw light on you? To see you, player. To know you. And to be known. I shall tell you a story.\n");
 	printf_green("Once upon a time, there was a player.\n");
-	for (int i = 0; i < playername; ++i) {
-        char random_char = static_cast<char>(dis(gen));
-		printf_blue(&random_char);
-	}
+	printf_blue(name);
 	printf_green("\nSometimes it thought itself human, on the thin crust of a spinning globe of molten rock. The ball of molten rock circled a ball of blazing gas that was three hundred and thirty thousand times more massive than it. They were so far apart that light took eight minutes to cross the gap. The light was information from a star, and it could burn your skin from a hundred and fifty million kilometres away.\n");
 	printf_green("Sometimes the player dreamed it was a miner, on the surface of a world that was flat, and infinite. The sun was a square of white. The days were short; there was much to do; and death was a temporary inconvenience.\n");
 	printf_blue("Sometimes the player dreamed it was lost in a story.\n");
@@ -1035,13 +987,37 @@ int main()
 	
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
+		// username
+		if (fopen("username.list", "r") == NULL)
+		{
+			printf("请输入账户名: ");
+			Clearce();
+			scanf("%s", &username);
+			Clearce();
+			FILE *file;
+			file = fopen("username.list", "w+");
+			if (username[0] == '\n')
+				fprintf(file, "s", username + 1);
+			else
+				fprintf(file, "%s", username);
+			fclose(file);
+		} else {
+			FILE *file;
+			file = fopen("username.list", "r");
+			if (fgets(username, sizeof(username), file) != NULL)
+			{
+				printf("欢迎回来, %s", username);
+				this_thread::sleep_for(chrono::seconds(2));
+			}
+			fclose(file);
+		}
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
-		this_thread::sleep_for(chrono::seconds(5));;
+		this_thread::sleep_for(chrono::seconds(5));
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
 		printf("开机时间：%s\n", nowtm());
-		this_thread::sleep_for(chrono::seconds(1));; // no
+		this_thread::sleep_for(chrono::seconds(1)); // no
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("************* ************  *************               ************* *          *  *************      **     *************     *************");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *                 *");
