@@ -5,18 +5,13 @@
 #include <chrono>
 #include <cstring>
 #include <random>
-#include <setjmp.h>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-string o;
-string c;
-int abc;
 const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
-
 
 class Username_or_password_is_incorrect: public exception  
 {  
@@ -55,6 +50,7 @@ void Prints(string text, int speed) // 自动换行
     if (!text.empty()) {
         for (size_t i = 0; i < text.size(); ++i) {
             putchar(text[i]);
+	        std::fflush(stdout);
             std::this_thread::sleep_for(std::chrono::milliseconds(speed));
         }
     }
@@ -79,15 +75,16 @@ void gameku()
 void leetcode()
 {
 	puts("力扣网站-----全世界人(精神病患者)的选择");
-	Prints("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生使用！！！", 300);
+	Prints("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生使用！！！", 30);
 	puts("确定？(Y/N)");
-	char c;
-	scanf("%c", &c);
+	Clearce();
+	char c = getchar();
+	Clearce();
 	if (c == 'Y')
 	{
 		puts("你确定的话，我就不管你了"); // eeeeeeeee6
 		this_thread::sleep_for(chrono::seconds(1));
-		OpenWeb("leetcode.cn/");
+		OpenWeb("https://www.leetcode.cn/");
 	}
 	else
 	{
@@ -370,10 +367,9 @@ void ziyanfa()
 void downcpp()
 {
 	// puts("来来来，下c++载来！");
-	char mode;
 	printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. 下载MinGW\n3. 用微软的Visual Studio(或MSVC)\n4. 下载Clang(和LLVM)\n请选择你的模式[D/M/V/L]");
 	Clearce();
-	scanf("%c", &mode);
+	char mode = getchar();
 	Clearce();
 	switch (mode)
 	{
@@ -383,7 +379,8 @@ void downcpp()
 	case 'M':
 	{
 		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/M]");
-		scanf("%c", &mode);
+		mode = getchar();
+		Clearce();
 		switch (mode)
 		{
 			case 'G': OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
@@ -460,8 +457,7 @@ void txt()
 	scanf("%[^|]", all);
 	Clearce();
 	printf("是否要保存[y/n]: ");
-	char yon;
-	scanf("%c", &yon);
+	char yon = getchar();
 	Clearce();
 	if (yon == 'y')
 	{
@@ -471,11 +467,10 @@ void txt()
 		Clearce();
 		FILE *file;
 		file = fopen(filename, "w+");
-		if (all[0] == '\n') {
+		if (all[0] == '\n') 
             fprintf(file, "%s", all + 1);
-        } else {
+        else
             fprintf(file, "%s", all);
-        }
         fclose(file);
 	}
 	return;
@@ -655,7 +650,7 @@ void update()
 	puts("2024-6-10  19.2.2 改again");
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
-    puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
+	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 }
 void looking()
 {
@@ -679,8 +674,6 @@ void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
 	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
-	
-	
 	// 进入随机数阶段
 	random_device randev;
 	mt19937 gen(randev());
@@ -705,7 +698,6 @@ void about_windows()
 			PCNAME += rdc;
 			++i;
 		} while (i < dis4(gen));
-		
 	}
 	char rdc = 'a' + dis4(gen);
 	PCNAME += "'";
@@ -859,7 +851,7 @@ int main()
 		#endif
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
-		printf("开机时间：%d\n", nowtm());
+		printf("开机时间：%s\n", nowtm());
 		this_thread::sleep_for(chrono::seconds(1));; // no
 		#ifdef _WIN32
 		system("color 17");
@@ -897,14 +889,12 @@ int main()
 		#else
 		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
-	/*	#ifdef _WIN32
-		Beep(550,400);
-		Beep(605,400);
-		Beep(660,400);
-		Beep(715,400);
-		Beep(770,400);
-		#else
-		#endif */ // close 
+		// _beep(550, 400);
+		// _beep(605, 400);
+		// _beep(660, 400);
+		// _beep(715, 400);
+		// _beep(770, 400);
+		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
 		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
@@ -965,8 +955,8 @@ int main()
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-        puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-        puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
+		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
 		string command;
 		while (1)
 		{
@@ -1106,11 +1096,9 @@ int main()
 				ahaoj();
 				continue;
 			default:
-				printf("%s 不是一个有效的命令\n", command.c_str());	
-				// #ifdef _WIN32
-				// Beep(750,100);
-				// #else
-				// #endif
+				printf("%s 不是一个有效的命令\n", command.c_str());
+				// _beep(750, 100);
+				printf("\a");
 			}
 		}
 		printf("\033[1;37m");
