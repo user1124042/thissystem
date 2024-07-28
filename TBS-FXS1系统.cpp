@@ -394,7 +394,7 @@ void downcpp()
 		printf("错误: 模式 %s 不存在\n", mode);
 		break;
 	}
-	// this_thread::sleep_for(chrono::seconds(2));;
+	// this_thread::sleep_for(chrono::seconds(2));
 	// OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 	return;
 }
@@ -408,7 +408,7 @@ void chinajy()
 void funnyth()
 {
 	printf("神奇的事情");
-	this_thread::sleep_for(chrono::seconds(2));;
+	this_thread::sleep_for(chrono::seconds(2));
 	OpenWeb("lglg.top/61884");
 	return;
 }
@@ -560,9 +560,9 @@ void state()
 }
 void prog()
 {
-	puts("好用的编程软件--洛谷IDE");
-	this_thread::sleep_for(chrono::seconds(3));;
-	OpenWeb("https://www.luogu.com.cn/ide");
+	puts("好用的在线编译网站--Programiz");
+	this_thread::sleep_for(chrono::seconds(3));
+	OpenWeb("https://www.programiz.com/");
 	return;
 }
 void update()
@@ -657,7 +657,7 @@ void bg()
 void looking()
 {
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
-	this_thread::sleep_for(chrono::seconds(3));;
+	this_thread::sleep_for(chrono::seconds(3));
 	string url;
 	url.resize(200);
 	puts("输入浏览网页网址:");
@@ -760,7 +760,7 @@ void taotao()
 	else
 	{
 		printf("66666666666666666666");
-		this_thread::sleep_for(chrono::seconds(2));;
+		this_thread::sleep_for(chrono::seconds(2));
 		OpenWeb("https://www.taobao.com/");
 	}
 	return;
@@ -768,7 +768,7 @@ void taotao()
 void hzhz()
 {
 	puts("Hydro Online Judge, 原名H, 是世界知名的OJ");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	string tihao;
 	printf("请输入题号: ");
 	tihao.resize(100);
@@ -781,7 +781,7 @@ void hzhz()
 void kkk()
 {
 	puts("累了吗？刷会视频吧！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("https://www.bilibili.com"); // 建议Bilibili
 	return;
 }
@@ -789,9 +789,9 @@ void ybt()
 {
 
 	puts("信息学奥赛在线练习网站！！！");
-	this_thread::sleep_for(chrono::seconds(2));;
+	this_thread::sleep_for(chrono::seconds(2));
 	// puts("开发者 sunyuhao"); ?????????????????
-	this_thread::sleep_for(chrono::seconds(2));;
+	this_thread::sleep_for(chrono::seconds(2));
 	OpenWeb("ybt.ssoier.cn:8088/");
 	return;
 }
@@ -809,21 +809,21 @@ void TBS()
 void ys()
 {
 	puts("来添加一个163邮箱吧！！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("mail.163.com/");
 	return;
 }
 void ajy()
 {
 	puts("想刷剧了吗？来爱奇艺吧！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("https://www.iqiyi.com/ ");
 	return;
 }
 void jjxrb()
 {
 	// puts("狙击小日本无敌版！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
 	OpenWeb("https://www.2344.com/flash/28135.htm");
 }
@@ -1073,7 +1073,7 @@ int main()
 		}
 		printf("\033[2J\033[3J\033[1;1H");
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
-		this_thread::sleep_for(chrono::seconds(5));;
+		this_thread::sleep_for(chrono::seconds(5));
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("fn··············笑话");
 		puts("catstore···········商店");
