@@ -10,9 +10,9 @@ using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
-const string cpu_xh[5] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
-const string cpu_xhcore[12] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
-
+char username[15];
+const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
+const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
 {  
     virtual const char* what() const throw()  
@@ -20,11 +20,6 @@ class Username_or_password_is_incorrect: public exception
         return "错误: 用户名或密码不正确";  
     }  
 }PasswordorUsernameError; // Password or Username not right 
-
-constexpr unsigned int str2int(const char *str, int h = 0)
-{
-	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
-}
 
 void Clearce()
 {
@@ -38,7 +33,6 @@ void OpenWeb(string url)
 		system(command[0].c_str());
 	#else
 	#endif
-
 	#if __linux__
 		system(command[1].c_str());
 	#endif
@@ -69,7 +63,7 @@ void gameku()
 	while (getchar() != '\n')
 		continue;
 	getchar();
-	OpenWeb("www.4399.com");
+	OpenWeb("https://www.4399.com");
 	return;
 }
 void leetcode()
@@ -127,17 +121,16 @@ void alpjsq()
   }
   if (shuanshu.find('-') != string::npos)
   {
-    int right, leftt;
+    int right, left;
     try {
       int lc = shuanshu.find('-');
       right = stoi(shuanshu.substr(0, lc));
-      // 
-      leftt = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
     }
     catch (const std::exception& e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
-    printf("%d - %d = %d\n", right, leftt, right - leftt);
+    printf("%d - %d = %d\n", right, left, right - left);
   }
   if (shuanshu.find('*') != string::npos)
   {
@@ -156,12 +149,12 @@ void alpjsq()
   {
     int right, left;
     try {
-      int lc = shuanshu.find('/');
-      right = stoi(shuanshu.substr(0, lc));
+        int lc = shuanshu.find('/');
+        right = stoi(shuanshu.substr(0, lc));
 	    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
-	  }
+	}
     catch (const std::exception& e) {
-		  printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d / %d = %d\n", right, left, right / left);
   }
@@ -194,7 +187,7 @@ void CPS()
 {
 	printf("测试你的每秒点击速度---------点击更多，KB越小！！！\n");
 	this_thread::sleep_for(chrono::seconds(1));
-	OpenWeb("clickpersecond.com/cn/1-second/");
+	OpenWeb("https://www.clickpersecond.com/cn/1-second/");
 	return;
 }
 void mail()
@@ -231,12 +224,12 @@ void bd()
 {
 	printf("百度一下\n");
 	this_thread::sleep_for(chrono::seconds(1));
-	OpenWeb("www.baidu.com/");
+	OpenWeb("https://www.baidu.com/");
 	return;
 }
 void ahaoj()
 {
-	OpenWeb("www.acoj.com");
+	OpenWeb("https://www.acoj.com");
 }
 void text()
 {
@@ -257,7 +250,7 @@ void text()
 	// 参照他的 wushaochen yi Edogawa_Conan
 	// 某AR曰:
 	// 我改了一下
-	// 建议使用OpenWeb 怎么使用呢? 假如我要让它打开www.bing.com, 那么就OpenWeb("www.bing.com");
+	// 建议使用OpenWeb 怎么使用呢? 假如我要让它打开https://www.bing.com, 那么就OpenWeb("https://www.bing.com");
 	// 用法 OpenWeb(目标网址)
 	return;
 }
@@ -276,7 +269,7 @@ void presenter()
 	puts("");
 	puts("世界那么大，我想去看看");
 	puts("来来来");
-	OpenWeb("www.luogu.com.cn/team/71582");
+	OpenWeb("https://www.luogu.com.cn/team/71582");
 	return;
 }
 void ziyanfa()
@@ -374,7 +367,7 @@ void downcpp()
 	switch (mode)
 	{
 	case 'D':
-		OpenWeb("www.onlinedown.net/soft/9500.htm");
+		OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 		break;
 	case 'M':
 	{
@@ -383,7 +376,7 @@ void downcpp()
 		Clearce();
 		switch (mode)
 		{
-			case 'G': OpenWeb("http://www.github.com/niXman/mingw-builds-binaries/releases"); break;
+			case 'G': OpenWeb("http://https://www.github.com/niXman/mingw-builds-binaries/releases"); break;
 			case 'M': OpenWeb("https://www.mingw-w64.org/"); break;
 		}
 		break;
@@ -401,7 +394,7 @@ void downcpp()
 		break;
 	}
 	// this_thread::sleep_for(chrono::seconds(2));;
-	// OpenWeb("www.onlinedown.net/soft/9500.htm");
+	// OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 	return;
 }
 void chinajy()
@@ -486,7 +479,7 @@ void cpu()
 	uniform_int_distribution<> dis2(0, 11);
 	uniform_int_distribution<> dis3(100, 999);
 	uniform_int_distribution<> dis4(1, 999);
-	printf("cpu_xh配置: %s %s\n", cpu_xh[dis(gen)].c_str(), cpu_xhcore[dis2(gen)].c_str());
+	printf("cpuh配置: %s %s\n", cpu_xh[dis(gen)], cpu_xhcore[dis2(gen)]);
 	// (:
 	printf("ip地址：%d.%d.%d.%d\n", dis3(gen), dis3(gen), dis4(gen), dis4(gen));
 	return;
@@ -528,7 +521,7 @@ void jd()
 void kfcid()
 {
 	Prints("QQ腾讯网-----搜索更多的事情", 500);
-	OpenWeb("www.qq.com/");
+	OpenWeb("https://www.qq.com/");
 	Prints("66666", 500);
 	Prints("666666666666666666666", 500);
 	// Prints("QQ腾讯网-----搜索更多的事情66666666666666666666666666", 500); // 为什么要输很多"6"
@@ -568,7 +561,7 @@ void prog()
 {
 	puts("好用的编程软件--洛谷IDE");
 	this_thread::sleep_for(chrono::seconds(3));;
-	OpenWeb("www.luogu.com.cn/ide");
+	OpenWeb("https://www.luogu.com.cn/ide");
 	return;
 }
 void update()
@@ -651,6 +644,7 @@ void update()
 	puts("2024-7-17  No Version 某AR在他的Fork上把这个系统的一些地方重置了一遍");
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
+	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
 }
 void looking()
 {
@@ -673,7 +667,7 @@ void sd()
 void about_windows()
 {
 	puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-	string os[7] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
+	char os[7][9] = {"Windows", "Linux", "MacOS", "Unix", "MS-DOS", "FreeBSD", "TempleOS"};
 	// 进入随机数阶段
 	random_device randev;
 	mt19937 gen(randev());
@@ -684,10 +678,11 @@ void about_windows()
 	uniform_int_distribution<> dis5(0, 25);
 	uniform_int_distribution<> dis6(1, 7);
 	uniform_int_distribution<> dis7(1, 6);
+	uniform_int_distribution<> dis8(0, 999999);
 	// end
-	printf("建议运行系统：%s %d\n", os[dis(gen)].c_str(), rand()); // 这里我写个彩蛋
-	printf("建议运行cpu_xh: %s %s\n", cpu_xh[dis2(gen)].c_str(), cpu_xhcore[dis3(gen)].c_str());
-	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)].c_str());
+	printf("建议运行系统：%s %d\n", os[dis(gen)], dis8(gen));
+	printf("建议运行cpu_xh: %s %s\n", cpu_xh[dis2(gen)], cpu_xhcore[dis3(gen)]);
+	printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)]);
 	string PCNAME = "";
 	if (0 < dis4(gen))
 	{
@@ -732,7 +727,7 @@ void pblktct()
 	puts("alanbecker代码输出，sunyuhao负责编辑，tongyifeng负责试用。此版权为sunyuhao与alanbecker所有，请勿在未获得权限");
 	puts("的情况下私自在各网站上发布，谢谢");
 	puts("洛谷网站                        alanbecker联系洛谷alanbecker");
-	puts("www.luogu.com                  sunyuhao联系洛谷stzhl");
+	puts("https://www.luogu.com                  sunyuhao联系洛谷stzhl");
 	puts("Copyright by sunyuhao and alanbecker C");
 	return;
 }
@@ -740,7 +735,7 @@ void look()
 {
 	puts("浏览");
 	this_thread::sleep_for(chrono::seconds(1)); // 43.6 is lowest
-	OpenWeb("www.bing.com"); // 还是推荐用微软必应
+	OpenWeb("https://www.bing.com"); // 还是推荐用微软必应
 	return;
 }
 void taotao()
@@ -758,13 +753,13 @@ void taotao()
 	{
 		printf("66666666666666666666");
 		this_thread::sleep_for(chrono::seconds(2));;
-		OpenWeb("www.taobao.com/");
+		OpenWeb("https://www.taobao.com/");
 	}
 	return;
 }
 void hzhz()
 {
-	puts("Hydro Online Judge，原名H，是世界知名的OJ");
+	puts("Hydro Online Judge, 原名H, 是世界知名的OJ");
 	this_thread::sleep_for(chrono::seconds(1));;
 	string tihao;
 	printf("请输入题号: ");
@@ -779,7 +774,7 @@ void kkk()
 {
 	puts("累了吗？刷会视频吧！");
 	this_thread::sleep_for(chrono::seconds(1));;
-	OpenWeb("www.bilibili.com"); // 建议Bilibili
+	OpenWeb("https://www.bilibili.com"); // 建议Bilibili
 	return;
 }
 void ybt()
@@ -814,7 +809,7 @@ void ajy()
 {
 	puts("想刷剧了吗？来爱奇艺吧！");
 	this_thread::sleep_for(chrono::seconds(1));;
-	OpenWeb("www.iqiyi.com/ ");
+	OpenWeb("https://www.iqiyi.com/ ");
 	return;
 }
 void jjxrb()
@@ -822,15 +817,169 @@ void jjxrb()
 	// puts("狙击小日本无敌版！");
 	this_thread::sleep_for(chrono::seconds(1));;
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
-	OpenWeb("www.2344.com/flash/28135.htm");
+	OpenWeb("https://www.2344.com/flash/28135.htm");
 }
+
+void printf_blue(const char *s)
+{
+    printf("\033[0m\033[1;34m%s\033[0m", s);
+}
+
+void printf_green(const char *s)
+{
+    printf("\033[0m\033[1;32m%s\033[0m", s);
+}
+
+void Minecraft_End_Poem()
+{
+	const char *name = username;
+	random_device rd; 
+    mt19937 gen(rd()); 
+    uniform_int_distribution<> dis(33, 126);
+	uniform_int_distribution<> dis1(1, 10);
+	printf_blue("I see the player you mean.\n");
+	printf_green(name);
+	printf_green("?\n");
+	printf_blue("Yes. Take care. It has reached a higher level now. It can read our thoughts.\n");
+	printf_green("That doesn't matter. It thinks we are part of the game.\n");
+	printf_blue("I like this player. It played well. It did not give up.\n");
+	printf_green("It is reading our thoughts as though they were words on a screen.\n");
+	printf_blue("That is how it chooses to imagine many things, when it is deep in the dream of a game.\n");
+	printf_green("Words make a wonderful interface. Very flexible. And less terrifying than staring at the reality behind the screen.\n");
+	printf_blue("They used to hear voices. Before players could read. Back in the days when those who did not play called the players witches, and warlocks. And players dreamed they flew through the air, on sticks powered by demons.\n");
+	printf_green("What did this player dream?\n");
+	printf_blue("This player dreamed of sunlight and trees. Of fire and water. It dreamed it created. And it dreamed it destroyed. It dreamed it hunted, and was hunted. It dreamed of shelter.\n");
+	printf_green("Hah, the original interface. A million years old, and it still works. But what true structure did this player create, in the reality behind the screen?\n");
+	printf_green("It worked, with a million others, to sculpt a true world in a fold of\n");
+	printf_blue("the <Error>");
+	printf_blue(" and created a <Error>");
+	printf_blue(" for <Error>");
+	printf_blue(" in the <Error>");
+	printf_blue("\n");
+	printf_green("It cannot read that thought.\n");
+	printf_blue("No. It has not yet achieved the highest level. That, it must achieve in the long dream of life, not the short dream of a game.\n");
+	printf_green("Does it know that we love it? That the universe is kind?\n");
+	printf_blue("Sometimes, through the noise of its thoughts, it hears the universe, yes.\n");
+	printf_green("But there are times it is sad, in the long dream. It creates worlds that have no summer, and it shivers under a black sun, and it takes its sad creation for reality.\n");
+	printf_blue("To cure it of sorrow would destroy it. The sorrow is part of its own private task. We cannot interfere.\n");
+	printf_green("Sometimes when they are deep in dreams, I want to tell them, they are building true worlds in reality. Sometimes I want to tell them of their importance to the universe. Sometimes, when they have not made a true connection in a while, I want to help them to speak the word they fear.\n");
+	printf_blue("It reads our thoughts.\n");
+	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error>");
+	printf_green(" and <Error>");
+	printf_green(" I wish to tell them that they are <Error>");
+	printf_green(" in the <Error>");
+	printf_green(" I wish to tell them that they are <Error>");
+	printf_green(" in the <Error>");
+	printf_green(" They see so little of reality, in their long dream.\n");
+	printf_blue("And yet they play the game.\n");
+	printf_green("But it would be so easy to tell them...\n");
+	printf_blue("Too strong for this dream. To tell them how to live is to prevent\n");
+	printf_green("them living.\n");
+	printf_green("I will not tell the player how to live.\n");
+	printf_blue("The player is growing restless.\n");
+	printf_green("I will tell the player a story.\n");
+	printf_blue("But not the truth.\n");
+	printf_green("No. A story that contains the truth safely, in a cage of words. Not the naked truth that can burn over any distance.\n");
+	printf_blue("Give it a body, again.\n");
+	printf_green("Yes. Player…\n");
+	printf_blue("Use its name.\n");
+	printf_green(name);
+	printf_blue("\nGood.\n");
+	printf_green("Take a breath, now. Take another. Feel air in your lungs. Let your limbs return. Yes, move your fingers. Have a body again, under gravity, in air. Respawn in the long dream. There you are. Your body touching the universe again at every point, as though you were separate things. As though we were separate things.\n");
+	printf_blue("Who are we? Once we were called the spirit of the mountain. Father sun, mother moon. Ancestral spirits, animal spirits. Jinn. Ghosts. The green man. Then gods, demons. Angels. Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The words change. We do not change.\n");
+	printf_green("We are the universe. We are everything you think isn't you. You are looking at us now, through your skin and your eyes. And why does the universe touch your skin, and throw light on you? To see you, player. To know you. And to be known. I shall tell you a story.\n");
+	printf_green("Once upon a time, there was a player.\n");
+	printf_blue(name);
+	printf_green("\nSometimes it thought itself human, on the thin crust of a spinning globe of molten rock. The ball of molten rock circled a ball of blazing gas that was three hundred and thirty thousand times more massive than it. They were so far apart that light took eight minutes to cross the gap. The light was information from a star, and it could burn your skin from a hundred and fifty million kilometres away.\n");
+	printf_green("Sometimes the player dreamed it was a miner, on the surface of a world that was flat, and infinite. The sun was a square of white. The days were short; there was much to do; and death was a temporary inconvenience.\n");
+	printf_blue("Sometimes the player dreamed it was lost in a story.\n");
+	printf_green("Sometimes the player dreamed it was other things, in other places. Sometimes these dreams were disturbing. Sometimes very beautiful indeed. Sometimes the player woke from one dream into another, then woke from that into a third.\n");
+	printf_blue("Sometimes the player dreamed it watched words on a screen\n");
+	printf_green("Let's go back.\n");
+	printf_green("The atoms of the player were scattered in the grass, in the rivers, in the air, in the ground. A woman gathered the atoms; she drank and ate and inhaled; and the woman assembled the player, in her body.\n");
+	printf_green("And the player awoke, from the warm, dark world of its mother's body, into the long dream.\n");
+	printf_green("And the player was a new story, never told before, written in letters of DNA. And the player was a new program, never run before, generated by a sourcecode a billion years old. And the player was a new human, never alive before, made from nothing but milk and love.\n");
+	printf_blue("You are the player. The story. The program. The human. Made from nothing but milk and love.\n");
+	printf_green("Let's go further back.\n");
+	printf_green("The seven billion billion billion atoms of the player's body were created, long before this game, in the heart of a star. So the player, too, is information from a star. And the player moves through a story, which is a forest of information planted by a man called Julian, on a flat, infinite world created by a man called Markus, that exists inside a small, private world created by the player, who inhabits a universe created by…\n");
+	printf_blue("Shush. Sometimes the player created a small, private world that was soft and warm and simple. Sometimes hard, and cold, and complicated. Sometimes it built a model of the universe in its head; flecks of energy, moving through vast empty spaces. Sometimes it called those flecks “electrons” and “protons”.\n");
+	printf_green("Sometimes it called them “planets” and “stars”.\n");
+	printf_green("Sometimes it believed it was in a universe that was made of energy that was made of offs and ons; zeros and ones; lines of code. Sometimes it believed it was playing a game. Sometimes it believed it was reading words on a screen.\n");
+	printf_blue("You are the player, reading words…\n");
+	printf_green("Shush… Sometimes the player read lines of code on a screen. Decoded them into words; decoded words into meaning; decoded meaning into feelings, emotions, theories, ideas, and the player started to breathe faster and deeper and realised it was alive, it was alive, those thousand deaths had not been real, the player was alive\n");
+	printf_blue("You. You. You are alive.\n");
+	printf_green("and sometimes the player believed the universe had spoken to it through the sunlight that came through the shuffling leaves of the summer trees\n");
+	printf_blue("and sometimes the player believed the universe had spoken to it through the light that fell from the crisp night sky of winter, where a fleck of light in the corner of the player's eye might be a star a million times as massive as the sun, boiling its planets to plasma in order to be visible for a moment to the player, walking home at the far side of the universe, suddenly smelling food, almost at the familiar door, about to dream again\n");
+	printf_green("and sometimes the player believed the universe had spoken to it through the zeros and ones, through the electricity of the world, through the scrolling words on a screen at the end of a dream\n");
+	printf_blue("and the universe said I love you\n");
+	printf_green("and the universe said you have played the game well\n");
+	printf_blue("and the universe said everything you need is within you\n");
+	printf_green("and the universe said you are stronger than you know\n");
+	printf_blue("and the universe said you are the daylight\n");
+	printf_green("and the universe said you are the night\n");
+	printf_blue("and the universe said the darkness you fight is within you\n");
+	printf_green("and the universe said the light you seek is within you\n");
+	printf_blue("and the universe said you are not alone\n");
+	printf_green("and the universe said you are not separate from every other thing\n");
+	printf_blue("and the universe said you are the universe tasting itself, talking to itself, reading its own code\n");
+	printf_green("and the universe said I love you because you are love.\n");
+	printf_blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n");
+	printf_blue("You are the player.\n");
+	printf_green("Wake up.\n");
+} 
+struct CommandStruct
+{
+	void (*func)();
+	char key[15];
+} Command[44] = {
+	{[]()
+	 { printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
+	{cpu, "st"},
+	{catstore, "catstore"},
+	{pblktct, "pblktct"},
+	{ziyanfa, "weyf"},
+	{jd, "jd"},
+	{kfcid, "qq"},
+	{mail, "ML"},
+	{CPS, "CPS"},
+	{hzhz, "hzhz"},
+	{game, "game"},
+	{jjxrb, "jjxrb"},
+	{looking, "looking"},
+	{fy, "sllfy"},
+	{chinajy, "cnjy"},
+	{leetcode, "leetcode"},
+	{sd, "sd"},
+	{gameku, "4399game"},
+	{input_zll, "input_zll"},
+	{gametwo, "game2"},
+	{taotao, "maimaimai"},
+	{downcpp, "downloadcpp"},
+	{state, "state"},
+	{update, "update"},
+	{address, "address"},
+	{funnyth, "fn"},
+	{codeforces, "CODEFORCES"},
+	{copyright, "copy"},
+	{presenter, "showshow"},
+	{txt, "write"},
+	{text, "tct"},
+	{look, "look"},
+	{prog, "prog"},
+	{wechat, "wtc"},
+	{bd, "baidu"},
+	{about_windows, "aboutthe"},
+	{kkk, "kkk"},
+	{ybt, "ybt"},
+	{TBS, "TBS"},
+	{ys, "ys"},
+	{ajy, "ajy"},
+	{alpjsq, "alpcl"},
+	{ahaoj, "ahaoj"},
+	{Minecraft_End_Poem, "MC_End_Poem"}
+};
 int main()
 {
-	#ifdef _WIN32
-	system("color 17");
-	#elif __linux
-	printf("使用Windows操作系统体验最佳\n");
-	#endif
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
@@ -838,25 +987,37 @@ int main()
 	
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
+		// username
+		if (fopen("username.list", "r") == NULL)
+		{
+			printf("请输入账户名: ");
+			Clearce();
+			scanf("%s", &username);
+			Clearce();
+			FILE *file;
+			file = fopen("username.list", "w+");
+			if (username[0] == '\n')
+				fprintf(file, "s", username + 1);
+			else
+				fprintf(file, "%s", username);
+			fclose(file);
+		} else {
+			FILE *file;
+			file = fopen("username.list", "r");
+			if (fgets(username, sizeof(username), file) != NULL)
+			{
+				printf("欢迎回来, %s", username);
+				this_thread::sleep_for(chrono::seconds(2));
+			}
+			fclose(file);
+		}
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
-		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
+		this_thread::sleep_for(chrono::seconds(5));
 		srand(time(0));
 		printf("\033[2J\033[3J\033[1;1H");
 		printf("开机时间：%s\n", nowtm());
-		this_thread::sleep_for(chrono::seconds(1));; // no
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
+		this_thread::sleep_for(chrono::seconds(1)); // no
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("************* ************  *************               ************* *          *  *************      **     *************     *************");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *                 *");
@@ -884,10 +1045,6 @@ int main()
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
 		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		this_thread::sleep_for(chrono::seconds(1));;
 		// _beep(550, 400);
 		// _beep(605, 400);
@@ -902,17 +1059,9 @@ int main()
 			putchar(loading[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
 		}
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
 		this_thread::sleep_for(chrono::seconds(5));;
-		#ifdef _WIN32
-		system("color 17");
-		#else
-		#endif
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("fn··············笑话");
 		puts("catstore···········商店");
@@ -957,158 +1106,39 @@ int main()
 		puts("weyf·············系统");
 		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
-		string command;
+		puts("MC_End_Poem......终末之诗");
+		char command[15];
+		bool isfound = false;
 		while (1)
 		{
+			isfound = false;
+			// memset(command, 0, sizeof(command));
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
-			command.resize(15);
-			scanf("%s", &command[0]);
-			switch (str2int(command.c_str()))
+			Clearce();
+			scanf("%s", &command);
+			for (int i = 0; i < 44; i++)
 			{
-			case str2int("shut"):
-				printf("\033[2J\033[1;1H");
-				printf("\033[1;37m");
-				continue;
-			case str2int("st"):
-				cpu();
-				continue;
-			case str2int("catstore"):
-				catstore();
-				continue;
-			case str2int("pblktct"):
-				pblktct();
-				continue;
-			case str2int("weyf"):
-				ziyanfa();
-				continue;
-			case str2int("jd"):
-				jd();
-				continue;
-			case str2int("qq"):
-				kfcid();
-				continue;
-			case str2int("ML"):
-				mail();
-				continue;
-			case str2int("CPS"):
-				CPS();
-				continue;
-			case str2int("hzhz"):
-				hzhz();
-				continue;
-			case str2int("game"):
-				game();
-				continue;
-			case str2int("jjxrb"):
-				jjxrb();
-				continue;
-			case str2int("looking"):
-				looking();
-				continue;
-			case str2int("sllfy"):
-				fy();
-				continue;
-			case str2int("cnjy"):
-				chinajy();
-				continue;
-			case str2int("leetcode"):
-				leetcode();
-				continue;
-			case str2int("sd"):
-				sd();
-				continue;
-			case str2int("4399game"):
-				gameku();
-				continue;
-			case str2int("input_zll"):
-				input_zll();
-				continue;
-			case str2int("game2"):
-				gametwo();
-				continue;
-			case str2int("maimaimai"):
-				taotao();
-				continue;
-			case str2int("downloadcpp"):
-				downcpp();
-				continue;
-			case str2int("state"):
-				state();
-				continue;
-			case str2int("update"):
-				update();
-				continue;
-			case str2int("address"):
-				address();
-				continue;
-			case str2int("fn"):
-				funnyth();
-				continue;
-			case str2int("CODEFORCES"):
-				codeforces();
-				continue;
-			case str2int("copy"):
-				copyright();
-				continue;
-			case str2int("showshow"):
-				presenter();
-				continue;
-			case str2int("write"):
-				txt();
-				continue;
-			case str2int("tct"):
-				text();
-				continue;
-			case str2int("look"):
-				look();
-				continue;
-			case str2int("prog"):
-				prog();
-				continue;
-			case str2int("wtc"):
-				wechat();
-				continue;
-			case str2int("baidu"):
-				bd();
-				continue; // My friend is wushaochen
-			case str2int("aboutthe"):
-				about_windows();
-				continue;
-			case str2int("kkk"):
-				kkk();
-				continue;
-			case str2int("ybt"):
-				ybt();
-				continue;
-			case str2int("TBS"):
-				TBS();
-				continue;
-			case str2int("ys"):
-				ys();
-				continue;
-			case str2int("ajy"):
-				ajy();
-				continue;
-      		case str2int("alpcl"):
-        		alpjsq();
-        		continue;
-			case str2int("ahaoj"):
-				ahaoj();
-				continue;
-			default:
-				printf("%s 不是一个有效的命令\n", command.c_str());
-				// _beep(750, 100);
-				printf("\a");
+				if (strcmp(Command[i].key, command) == 0)
+				{
+					isfound = true;
+					Command[i].func();
+					break;
+				}
+			}
+			if (!isfound)
+			{
+				printf("错误： %s 不是一个有效的命令\n", command);
 			}
 		}
 		printf("\033[1;37m");
 		Prints("MADE IN CHINA,BAIGEPING", 75);
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
-		this_thread::sleep_for(chrono::seconds(1));;
+		this_thread::sleep_for(chrono::seconds(1));
 	} else {
 		throw PasswordorUsernameError;
 		return 0;
 	}
 	return 0;
 }
+
