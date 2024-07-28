@@ -11,6 +11,7 @@ using namespace std;
 // 等待：sleep();
 // 声音：Beep(频率,时间);
 char username[15];
+bool isnewnow = false;
 const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
@@ -646,6 +647,13 @@ void update()
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
 }
+void bg()
+{
+	#ifdef _WIN32
+	system("color 17");
+	#else
+	#endif
+}
 void looking()
 {
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
@@ -832,6 +840,10 @@ void printf_green(const char *s)
 
 void Minecraft_End_Poem()
 {
+	if (isnewnow)
+	{
+		printf("由于 <Error>, 请重新输入命令\n");
+	}
 	const char *name = username;
 	random_device rd; 
     mt19937 gen(rd()); 
@@ -851,11 +863,7 @@ void Minecraft_End_Poem()
 	printf_blue("This player dreamed of sunlight and trees. Of fire and water. It dreamed it created. And it dreamed it destroyed. It dreamed it hunted, and was hunted. It dreamed of shelter.\n");
 	printf_green("Hah, the original interface. A million years old, and it still works. But what true structure did this player create, in the reality behind the screen?\n");
 	printf_green("It worked, with a million others, to sculpt a true world in a fold of\n");
-	printf_blue("the <Error>");
-	printf_blue(" and created a <Error>");
-	printf_blue(" for <Error>");
-	printf_blue(" in the <Error>");
-	printf_blue("\n");
+	printf_blue("the <Error> and created a <Error> for <Error> in the <Error>\n");
 	printf_green("It cannot read that thought.\n");
 	printf_blue("No. It has not yet achieved the highest level. That, it must achieve in the long dream of life, not the short dream of a game.\n");
 	printf_green("Does it know that we love it? That the universe is kind?\n");
@@ -864,13 +872,7 @@ void Minecraft_End_Poem()
 	printf_blue("To cure it of sorrow would destroy it. The sorrow is part of its own private task. We cannot interfere.\n");
 	printf_green("Sometimes when they are deep in dreams, I want to tell them, they are building true worlds in reality. Sometimes I want to tell them of their importance to the universe. Sometimes, when they have not made a true connection in a while, I want to help them to speak the word they fear.\n");
 	printf_blue("It reads our thoughts.\n");
-	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error>");
-	printf_green(" and <Error>");
-	printf_green(" I wish to tell them that they are <Error>");
-	printf_green(" in the <Error>");
-	printf_green(" I wish to tell them that they are <Error>");
-	printf_green(" in the <Error>");
-	printf_green(" They see so little of reality, in their long dream.\n");
+	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error> and <Error> I wish to tell them that they are <Error> in the <Error> I wish to tell them that they are <Error> in the <Error> They see so little of reality, in their long dream.\n");
 	printf_blue("And yet they play the game.\n");
 	printf_green("But it would be so easy to tell them...\n");
 	printf_blue("Too strong for this dream. To tell them how to live is to prevent\n");
@@ -926,6 +928,11 @@ void Minecraft_End_Poem()
 	printf_blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n");
 	printf_blue("You are the player.\n");
 	printf_green("Wake up.\n");
+	for (int i = 0; i < 28;++i)
+		puts(" ");
+	printf("因为特殊原因, 请往上翻以查看");
+	puts(" ");
+	bg();
 } 
 struct CommandStruct
 {
@@ -980,6 +987,7 @@ struct CommandStruct
 };
 int main()
 {
+	bg();
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
@@ -988,11 +996,12 @@ int main()
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
 		// username
+		bg();
 		if (fopen("username.list", "r") == NULL)
 		{
 			printf("请输入账户名: ");
 			Clearce();
-			scanf("%s", &username);
+			scanf("%[^\n]", &username);
 			Clearce();
 			FILE *file;
 			file = fopen("username.list", "w+");
@@ -1001,6 +1010,7 @@ int main()
 			else
 				fprintf(file, "%s", username);
 			fclose(file);
+			isnewnow = true;
 		} else {
 			FILE *file;
 			file = fopen("username.list", "r");
@@ -1011,6 +1021,7 @@ int main()
 			}
 			fclose(file);
 		}
+		bg();
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		this_thread::sleep_for(chrono::seconds(5));
@@ -1044,8 +1055,8 @@ int main()
 		puts("*  *  *   ********   *        *        *     *   *  *  *  *******  *");
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
-		this_thread::sleep_for(chrono::seconds(5));;
-		this_thread::sleep_for(chrono::seconds(1));;
+		this_thread::sleep_for(chrono::seconds(5));
+		this_thread::sleep_for(chrono::seconds(1));
 		// _beep(550, 400);
 		// _beep(605, 400);
 		// _beep(660, 400);
@@ -1053,6 +1064,7 @@ int main()
 		// _beep(770, 400);
 		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
+		bg();
 		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
 		{
