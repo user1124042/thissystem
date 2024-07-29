@@ -1058,10 +1058,9 @@ int main()
 		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
 		bg();
-		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
 		{
-			putchar(loading[i]);
+			putchar("loading......"[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
 		}
 		printf("\033[2J\033[3J\033[1;1H");
