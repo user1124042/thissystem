@@ -11,7 +11,6 @@ using namespace std;
 // 等待：sleep();
 // 声音：Beep(频率,时间);
 char username[15];
-bool isnewnow = false;
 const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
@@ -402,20 +401,20 @@ void chinajy()
 {
 	puts("国家云教育平台");
 	this_thread::sleep_for(chrono::seconds(2));
-	OpenWeb("basic.smartedu.cn/");
+	OpenWeb("https://basic.smartedu.cn/");
 	return;
 }
 void funnyth()
 {
 	printf("神奇的事情");
 	this_thread::sleep_for(chrono::seconds(2));
-	OpenWeb("lglg.top/61884");
+	OpenWeb("https://www.lglg.top/61884");
 	return;
 }
 void codeforces()
 {
 	printf("CODEFORCES----百万编程人士的信赖");
-	OpenWeb("codeforces.com/");
+	OpenWeb("https://www.codeforces.com/");
 	return;
 }
 void game()
@@ -425,7 +424,7 @@ void game()
 	while (getchar() != '\n')
 		continue;
 	getchar();
-	OpenWeb("ws.imc.re/");
+	OpenWeb("https://ws.imc.re/");
 	// puts("哎呦我，老得劲了！！"); sunyuhao你这写的太抽象了吧 --- 某A
 	return;
 }
@@ -531,8 +530,8 @@ void kfcid()
 }
 void fy()
 {
-	puts("360翻译------难题翻译我最行！");
-	OpenWeb("fanyi.so.com/#");
+	puts("Deepl翻译------难题翻译我最行！");
+	OpenWeb("https://www.deepl.com/");
 	puts("66666666666666666");
 	Prints("666666666666666666666", 200);
 	return;
@@ -646,6 +645,7 @@ void update()
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
+	puts("2024-7-29 20.0.0 修复了在输入用户名之后第一次无法使用命令的问题");
 }
 void bg()
 {
@@ -810,7 +810,7 @@ void ys()
 {
 	puts("来添加一个163邮箱吧！！");
 	this_thread::sleep_for(chrono::seconds(1));
-	OpenWeb("mail.163.com/");
+	OpenWeb("https://mail.163.com/");
 	return;
 }
 void ajy()
@@ -840,15 +840,11 @@ void printf_green(const char *s)
 
 void Minecraft_End_Poem()
 {
-	if (isnewnow)
-	{
-		printf("由于 <Error>, 请重新输入命令\n");
-	}
 	const char *name = username;
-	random_device rd; 
-    mt19937 gen(rd()); 
+	std::mt19937 gen(static_cast<unsigned int>(std::time(NULL)));
     uniform_int_distribution<> dis(33, 126);
 	uniform_int_distribution<> dis1(1, 10);
+	printf("\n");
 	printf_blue("I see the player you mean.\n");
 	printf_green(name);
 	printf_green("?\n");
@@ -1000,9 +996,7 @@ int main()
 		if (fopen("username.list", "r") == NULL)
 		{
 			printf("请输入账户名: ");
-			Clearce();
 			scanf("%[^\n]", &username);
-			Clearce();
 			FILE *file;
 			file = fopen("username.list", "w+");
 			if (username[0] == '\n')
@@ -1010,7 +1004,6 @@ int main()
 			else
 				fprintf(file, "%s", username);
 			fclose(file);
-			isnewnow = true;
 		} else {
 			FILE *file;
 			file = fopen("username.list", "r");
@@ -1111,14 +1104,14 @@ int main()
 		puts("jjxrb············ 狙击小日本");
 		puts("jd··············京东");
 		puts("qq··············腾讯网");
-		puts("sllfy············ 360翻译");
+		puts("sllfy············ Deepl翻译");
 		puts("CPS············· CPS测试");
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
-		puts("MC_End_Poem......终末之诗");
+		puts("alpcl........... 处于阿尔法(Alpha)版本的一个小计算器");
+		puts("ahaoj........... 啊哈添柴在线OJ刷题网站");
+		puts("MC_End_Poem...... 终末之诗");
 		char command[15];
 		bool isfound = false;
 		while (1)
