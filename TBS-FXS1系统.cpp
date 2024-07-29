@@ -393,7 +393,7 @@ void downcpp()
 		printf("错误: 模式 %s 不存在\n", mode);
 		break;
 	}
-	// this_thread::sleep_for(chrono::seconds(2));;
+	// this_thread::sleep_for(chrono::seconds(2));
 	// OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 	return;
 }
@@ -401,20 +401,20 @@ void chinajy()
 {
 	puts("国家云教育平台");
 	this_thread::sleep_for(chrono::seconds(2));
-	OpenWeb("basic.smartedu.cn/");
+	OpenWeb("https://basic.smartedu.cn/");
 	return;
 }
 void funnyth()
 {
 	printf("神奇的事情");
-	this_thread::sleep_for(chrono::seconds(2));;
-	OpenWeb("lglg.top/61884");
+	this_thread::sleep_for(chrono::seconds(2));
+	OpenWeb("https://www.lglg.top/61884");
 	return;
 }
 void codeforces()
 {
 	printf("CODEFORCES----百万编程人士的信赖");
-	OpenWeb("codeforces.com/");
+	OpenWeb("https://www.codeforces.com/");
 	return;
 }
 void game()
@@ -424,7 +424,7 @@ void game()
 	while (getchar() != '\n')
 		continue;
 	getchar();
-	OpenWeb("ws.imc.re/");
+	OpenWeb("https://ws.imc.re/");
 	// puts("哎呦我，老得劲了！！"); sunyuhao你这写的太抽象了吧 --- 某A
 	return;
 }
@@ -530,8 +530,8 @@ void kfcid()
 }
 void fy()
 {
-	puts("360翻译------难题翻译我最行！");
-	OpenWeb("fanyi.so.com/#");
+	puts("Deepl翻译------难题翻译我最行！");
+	OpenWeb("https://www.deepl.com/");
 	puts("66666666666666666");
 	Prints("666666666666666666666", 200);
 	return;
@@ -559,9 +559,9 @@ void state()
 }
 void prog()
 {
-	puts("好用的编程软件--洛谷IDE");
-	this_thread::sleep_for(chrono::seconds(3));;
-	OpenWeb("https://www.luogu.com.cn/ide");
+	puts("好用的在线编译网站--Programiz");
+	this_thread::sleep_for(chrono::seconds(3));
+	OpenWeb("https://www.programiz.com/");
 	return;
 }
 void update()
@@ -645,11 +645,19 @@ void update()
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
+	puts("2024-7-29 20.0.0 修复了在输入用户名之后第一次无法使用命令的问题");
+}
+void bg()
+{
+	#ifdef _WIN32
+	system("color 17");
+	#else
+	#endif
 }
 void looking()
 {
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
-	this_thread::sleep_for(chrono::seconds(3));;
+	this_thread::sleep_for(chrono::seconds(3));
 	string url;
 	url.resize(200);
 	puts("输入浏览网页网址:");
@@ -752,7 +760,7 @@ void taotao()
 	else
 	{
 		printf("66666666666666666666");
-		this_thread::sleep_for(chrono::seconds(2));;
+		this_thread::sleep_for(chrono::seconds(2));
 		OpenWeb("https://www.taobao.com/");
 	}
 	return;
@@ -760,7 +768,7 @@ void taotao()
 void hzhz()
 {
 	puts("Hydro Online Judge, 原名H, 是世界知名的OJ");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	string tihao;
 	printf("请输入题号: ");
 	tihao.resize(100);
@@ -773,7 +781,7 @@ void hzhz()
 void kkk()
 {
 	puts("累了吗？刷会视频吧！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("https://www.bilibili.com"); // 建议Bilibili
 	return;
 }
@@ -781,9 +789,9 @@ void ybt()
 {
 
 	puts("信息学奥赛在线练习网站！！！");
-	this_thread::sleep_for(chrono::seconds(2));;
+	this_thread::sleep_for(chrono::seconds(2));
 	// puts("开发者 sunyuhao"); ?????????????????
-	this_thread::sleep_for(chrono::seconds(2));;
+	this_thread::sleep_for(chrono::seconds(2));
 	OpenWeb("ybt.ssoier.cn:8088/");
 	return;
 }
@@ -801,21 +809,21 @@ void TBS()
 void ys()
 {
 	puts("来添加一个163邮箱吧！！");
-	this_thread::sleep_for(chrono::seconds(1));;
-	OpenWeb("mail.163.com/");
+	this_thread::sleep_for(chrono::seconds(1));
+	OpenWeb("https://mail.163.com/");
 	return;
 }
 void ajy()
 {
 	puts("想刷剧了吗？来爱奇艺吧！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	OpenWeb("https://www.iqiyi.com/ ");
 	return;
 }
 void jjxrb()
 {
 	// puts("狙击小日本无敌版！");
-	this_thread::sleep_for(chrono::seconds(1));;
+	this_thread::sleep_for(chrono::seconds(1));
 	// puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
 	OpenWeb("https://www.2344.com/flash/28135.htm");
 }
@@ -833,10 +841,10 @@ void printf_green(const char *s)
 void Minecraft_End_Poem()
 {
 	const char *name = username;
-	random_device rd; 
-    mt19937 gen(rd()); 
+	std::mt19937 gen(static_cast<unsigned int>(std::time(NULL)));
     uniform_int_distribution<> dis(33, 126);
 	uniform_int_distribution<> dis1(1, 10);
+	printf("\n");
 	printf_blue("I see the player you mean.\n");
 	printf_green(name);
 	printf_green("?\n");
@@ -851,11 +859,7 @@ void Minecraft_End_Poem()
 	printf_blue("This player dreamed of sunlight and trees. Of fire and water. It dreamed it created. And it dreamed it destroyed. It dreamed it hunted, and was hunted. It dreamed of shelter.\n");
 	printf_green("Hah, the original interface. A million years old, and it still works. But what true structure did this player create, in the reality behind the screen?\n");
 	printf_green("It worked, with a million others, to sculpt a true world in a fold of\n");
-	printf_blue("the <Error>");
-	printf_blue(" and created a <Error>");
-	printf_blue(" for <Error>");
-	printf_blue(" in the <Error>");
-	printf_blue("\n");
+	printf_blue("the <Error> and created a <Error> for <Error> in the <Error>\n");
 	printf_green("It cannot read that thought.\n");
 	printf_blue("No. It has not yet achieved the highest level. That, it must achieve in the long dream of life, not the short dream of a game.\n");
 	printf_green("Does it know that we love it? That the universe is kind?\n");
@@ -864,13 +868,7 @@ void Minecraft_End_Poem()
 	printf_blue("To cure it of sorrow would destroy it. The sorrow is part of its own private task. We cannot interfere.\n");
 	printf_green("Sometimes when they are deep in dreams, I want to tell them, they are building true worlds in reality. Sometimes I want to tell them of their importance to the universe. Sometimes, when they have not made a true connection in a while, I want to help them to speak the word they fear.\n");
 	printf_blue("It reads our thoughts.\n");
-	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error>");
-	printf_green(" and <Error>");
-	printf_green(" I wish to tell them that they are <Error>");
-	printf_green(" in the <Error>");
-	printf_green(" I wish to tell them that they are <Error>");
-	printf_green(" in the <Error>");
-	printf_green(" They see so little of reality, in their long dream.\n");
+	printf_green("Sometimes I do not care. Sometimes I wish to tell them, this world you take for truth is merely <Error> and <Error> I wish to tell them that they are <Error> in the <Error> I wish to tell them that they are <Error> in the <Error> They see so little of reality, in their long dream.\n");
 	printf_blue("And yet they play the game.\n");
 	printf_green("But it would be so easy to tell them...\n");
 	printf_blue("Too strong for this dream. To tell them how to live is to prevent\n");
@@ -926,6 +924,11 @@ void Minecraft_End_Poem()
 	printf_blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n");
 	printf_blue("You are the player.\n");
 	printf_green("Wake up.\n");
+	for (int i = 0; i < 28;++i)
+		puts(" ");
+	printf("因为特殊原因, 请往上翻以查看");
+	puts(" ");
+	bg();
 } 
 struct CommandStruct
 {
@@ -980,6 +983,7 @@ struct CommandStruct
 };
 int main()
 {
+	bg();
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
@@ -988,12 +992,11 @@ int main()
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
 		// username
+		bg();
 		if (fopen("username.list", "r") == NULL)
 		{
 			printf("请输入账户名: ");
-			Clearce();
-			scanf("%s", &username);
-			Clearce();
+			scanf("%[^\n]", &username);
 			FILE *file;
 			file = fopen("username.list", "w+");
 			if (username[0] == '\n')
@@ -1011,6 +1014,7 @@ int main()
 			}
 			fclose(file);
 		}
+		bg();
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		this_thread::sleep_for(chrono::seconds(5));
@@ -1044,8 +1048,8 @@ int main()
 		puts("*  *  *   ********   *        *        *     *   *  *  *  *******  *");
 		puts("*  *  *   *          *        *        *     *   *  *  *  *");
 		puts(" ** **    ********   *******  *******  *******   *  *  *  *******  *");
-		this_thread::sleep_for(chrono::seconds(5));;
-		this_thread::sleep_for(chrono::seconds(1));;
+		this_thread::sleep_for(chrono::seconds(5));
+		this_thread::sleep_for(chrono::seconds(1));
 		// _beep(550, 400);
 		// _beep(605, 400);
 		// _beep(660, 400);
@@ -1053,6 +1057,7 @@ int main()
 		// _beep(770, 400);
 		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
+		bg();
 		const string loading = "loading......";
 		for (size_t i = 0; i < 13; ++i)
 		{
@@ -1061,7 +1066,7 @@ int main()
 		}
 		printf("\033[2J\033[3J\033[1;1H");
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
-		this_thread::sleep_for(chrono::seconds(5));;
+		this_thread::sleep_for(chrono::seconds(5));
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("fn··············笑话");
 		puts("catstore···········商店");
@@ -1099,14 +1104,14 @@ int main()
 		puts("jjxrb············ 狙击小日本");
 		puts("jd··············京东");
 		puts("qq··············腾讯网");
-		puts("sllfy············ 360翻译");
+		puts("sllfy············ Deepl翻译");
 		puts("CPS············· CPS测试");
 		puts("ML··············未来信箱");
 		puts("hzhz·············Hydro Online Judge");
 		puts("weyf·············系统");
-		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
-		puts("MC_End_Poem......终末之诗");
+		puts("alpcl........... 处于阿尔法(Alpha)版本的一个小计算器");
+		puts("ahaoj........... 啊哈添柴在线OJ刷题网站");
+		puts("MC_End_Poem...... 终末之诗");
 		char command[15];
 		bool isfound = false;
 		while (1)
