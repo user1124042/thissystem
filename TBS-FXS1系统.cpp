@@ -830,12 +830,42 @@ void jjxrb()
 
 void printf_blue(const char *s)
 {
-    printf("\033[0m\033[1;34m%s\033[0m", s);
+    putchar('\033');
+    putchar('[');
+    putchar('1');
+    putchar(';');
+    putchar('3');
+    putchar('4');
+    putchar('m');
+    while (*s != '\0')
+    {
+        putchar(*s);
+        s++;
+    }
+    // putchar('\033');
+    // putchar('[');
+    // putchar('0');
+    // putchar('m');
 }
 
 void printf_green(const char *s)
 {
-    printf("\033[0m\033[1;32m%s\033[0m", s);
+    putchar('\033');
+    putchar('[');
+    putchar('1');
+    putchar(';');
+    putchar('3');
+    putchar('2');
+	putchar('m');
+	while (*s != '\0')
+    {
+        putchar(*s);
+        s++;
+    }
+    // putchar('\033');
+    // putchar('[');
+    // putchar('0');
+    // putchar('m');
 }
 
 void Minecraft_End_Poem()
@@ -882,6 +912,7 @@ void Minecraft_End_Poem()
 	printf_green("Yes. Player…\n");
 	printf_blue("Use its name.\n");
 	printf_green(name);
+	printf_green(".  Player of games.");
 	printf_blue("\nGood.\n");
 	printf_green("Take a breath, now. Take another. Feel air in your lungs. Let your limbs return. Yes, move your fingers. Have a body again, under gravity, in air. Respawn in the long dream. There you are. Your body touching the universe again at every point, as though you were separate things. As though we were separate things.\n");
 	printf_blue("Who are we? Once we were called the spirit of the mountain. Father sun, mother moon. Ancestral spirits, animal spirits. Jinn. Ghosts. The green man. Then gods, demons. Angels. Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The words change. We do not change.\n");
