@@ -647,13 +647,7 @@ void update()
 	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
 	puts("2024-7-29 20.0.0 修复了在输入用户名之后第一次无法使用命令的问题");
 }
-void bg()
-{
-	#ifdef _WIN32
-	system("color 17");
-	#else
-	#endif
-}
+
 void looking()
 {
 	puts("大更改的浏览器"); // 个人认为这应该不算浏览器吧..........
@@ -842,10 +836,10 @@ void printf_blue(const char *s)
         putchar(*s);
         s++;
     }
-    // putchar('\033');
-    // putchar('[');
-    // putchar('0');
-    // putchar('m');
+    putchar('\033');
+    putchar('[');
+    putchar('0');
+    putchar('m');
 }
 
 void printf_green(const char *s)
@@ -862,10 +856,10 @@ void printf_green(const char *s)
         putchar(*s);
         s++;
     }
-    // putchar('\033');
-    // putchar('[');
-    // putchar('0');
-    // putchar('m');
+    putchar('\033');
+    putchar('[');
+    putchar('0');
+    putchar('m');
 }
 
 void Minecraft_End_Poem()
@@ -955,11 +949,6 @@ void Minecraft_End_Poem()
 	printf_blue("And the game was over and the player woke up from the dream. And the player began a new dream. And the player dreamed again, dreamed better. And the player was the universe. And the player was love.\n");
 	printf_blue("You are the player.\n");
 	printf_green("Wake up.\n");
-	for (int i = 0; i < 28;++i)
-		puts(" ");
-	printf("因为特殊原因, 请往上翻以查看");
-	puts(" ");
-	bg();
 } 
 struct CommandStruct
 {
@@ -1014,7 +1003,7 @@ struct CommandStruct
 };
 int main()
 {
-	bg();
+	
 	puts("请您先登陆");
 	puts("请输入账号与密码");
 	char qaz[100], wsx[100];
@@ -1023,7 +1012,7 @@ int main()
 	if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0)
 	{
 		// username
-		bg();
+		
 		if (fopen("username.list", "r") == NULL)
 		{
 			printf("请输入账户名: ");
@@ -1045,7 +1034,7 @@ int main()
 			}
 			fclose(file);
 		}
-		bg();
+		
 		printf("\033[2J\033[3J\033[1;1H");
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		this_thread::sleep_for(chrono::seconds(5));
@@ -1088,7 +1077,7 @@ int main()
 		// _beep(770, 400);
 		printf("\a");
 		printf("\033[2J\033[3J\033[1;1H");
-		bg();
+		
 		for (size_t i = 0; i < 13; ++i)
 		{
 			putchar("loading......"[i]);
