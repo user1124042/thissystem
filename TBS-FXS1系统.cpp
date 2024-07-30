@@ -1016,9 +1016,11 @@ int main()
 		if (fopen("username.list", "r") == NULL)
 		{
 			printf("请输入账户名: ");
+			Clearce();
 			scanf("%[^\n]", &username);
 			FILE *file;
 			file = fopen("username.list", "w+");
+			strlen(username) == 0 ? strcpy(username, "Admin") : NULL;
 			if (username[0] == '\n')
 				fprintf(file, "s", username + 1);
 			else
