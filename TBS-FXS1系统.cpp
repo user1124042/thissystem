@@ -3,8 +3,8 @@
 #include <fstream>
 #include <thread>
 #include <chrono>
-#include <cstring>
 #include <random>
+#include <cstring>
 
 using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
@@ -713,11 +713,9 @@ void saol()
                 for (char tx : rw)
                 {
                     if (tx == 'k')
-                    {
-                        printf("1");
-                    } else {
-                        printf("-");
-                    }
+						putchar('1');
+					else
+                        putchar("-");
                 }
                 printf("\n");
             }
@@ -727,8 +725,11 @@ void saol()
             {
                 for (char tx : rw)
                 {
-                    printf("%c ", tx);
-                }
+					if (tx == 'k')
+						putchar('.');
+					else
+						putchar(tx);
+				}
                 printf("\n");
             }
             cail = true;
@@ -745,7 +746,6 @@ void saol()
 					tg = false;
 				}
             }
-            printf("\n");
         }
     } while (!cail);
     if (cail)
@@ -765,7 +765,7 @@ void sd()
 	return;
 }
 
-void clr();
+void clr()
 {
 	#ifdef _WIN32
 	system("cls");
@@ -832,6 +832,7 @@ void about_windows()
 	printf("名称: %s\n", PCNAME.c_str());
 	return;
 }
+
 void pblktct()
 {
 	puts("alanbecker代码输出，sunyuhao负责编辑，tongyifeng负责试用。此版权为sunyuhao与alanbecker所有，请勿在未获得权限");
@@ -1110,6 +1111,7 @@ struct CommandStruct
 	{Minecraft_End_Poem, "MC_End_Poem"},
 	{saol, "sao"}
 };
+
 int main()
 {
 	
@@ -1242,7 +1244,7 @@ int main()
 		puts("alpcl........... 处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj........... 啊哈添柴在线OJ刷题网站");
 		puts("MC_End_Poem...... 终末之诗");
-		puts("sao...............扫雷")
+		puts("sao...............扫雷");
 		char command[15];
 		bool isfound = false;
 		while (1)
