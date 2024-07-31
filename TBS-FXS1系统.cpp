@@ -1062,7 +1062,7 @@ struct CommandStruct
 {
 	void (*func)();
 	char key[15];
-} Command[44] = {
+} Command[45] = {
 	{[]()
 	 { printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
 	{cpu, "st"},
@@ -1107,7 +1107,8 @@ struct CommandStruct
 	{ajy, "ajy"},
 	{alpjsq, "alpcl"},
 	{ahaoj, "ahaoj"},
-	{Minecraft_End_Poem, "MC_End_Poem"}
+	{Minecraft_End_Poem, "MC_End_Poem"},
+	{saol, "sao"}
 };
 int main()
 {
@@ -1241,6 +1242,7 @@ int main()
 		puts("alpcl........... 处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj........... 啊哈添柴在线OJ刷题网站");
 		puts("MC_End_Poem...... 终末之诗");
+		puts("sao...............扫雷")
 		char command[15];
 		bool isfound = false;
 		while (1)
@@ -1250,7 +1252,7 @@ int main()
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			Clearce();
 			scanf("%s", &command);
-			for (int i = 0; i < 44; i++)
+			for (int i = 0; i < 45; i++)
 			{
 				if (strcmp(Command[i].key, command) == 0)
 				{
