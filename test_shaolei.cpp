@@ -15,7 +15,7 @@ int main()
             minemap[i][j] = '.';
         }
     }
-    int Minecou = static_cast<int>(h * w * 0.35);
+    int Minecou = static_cast<int>(h * w * 0.15);
     if (0 < Minecou)
     {
         std::random_device rd;
@@ -41,12 +41,12 @@ int main()
     {
         int ww, hh;
         printf("请输入你要扫的坐标的所属列: ");
-        scanf("%d", &hh);
-        printf("请输入你要扫的坐标的所属行: ");
         scanf("%d", &ww);
+        printf("请输入你要扫的坐标的所属行: ");
+        scanf("%d", &hh);
         if (minemap[ww - 1][hh - 1] != '*')
         {
-            minemap[hh - 1][ww - 1] = 'k';
+            minemap[ww - 1][hh - 1] = 'k';
             printf("你很幸运 没中雷\n");
             for (auto& rw : minemap)
             {
@@ -75,6 +75,9 @@ int main()
             break;
         }
     } while (!cail);
-    
+    if (cail)
+    {
+        printf("很不幸运 你中雷了");
+    }
     return 0;
 }

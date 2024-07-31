@@ -19,7 +19,7 @@ class Username_or_password_is_incorrect: public exception
     {  
         return "错误: 用户名或密码不正确";  
     }  
-}PasswordorUsernameError; // Password or Username not right 
+}PasswordorUsernameError; // Password or Username not right
 
 void Clearce()
 {
@@ -659,11 +659,119 @@ void looking()
 	OpenWeb(url);
 	return;
 }
+
+void saol()
+{
+	bool tg = false;
+	int w, h, m, ls, al;
+    printf("请输入行数: ");
+    scanf("%d", &w);
+    printf("请输入列数: ");
+    scanf("%d", &h);
+    char minemap[h][w];
+    for (int i = 0; i < h; ++i) {
+        for (int j = 0; j < w;++j)
+        {
+            minemap[i][j] = '.';
+        }
+    }
+    int Minecou = static_cast<int>(h * w * 0.15);
+    if (0 < Minecou)
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> wrd(0, w - 1);
+        std::uniform_int_distribution<> hrd(0, h - 1);
+        int minepld = 0, i = 0;
+        do
+        {
+            int wl, hl;
+            do
+            {
+                wl = wrd(gen);
+                hl = hrd(gen);
+            } while (minemap[hl][wl] == '*');
+            minemap[hl][wl] = '*';
+            ++ls;
+            ++i;
+        } while (i < Minecou);        
+    }
+    bool cail = false;
+    do
+    {
+        int ww, hh;
+        printf("请输入你要扫的坐标的所属列: ");
+        scanf("%d", &ww);
+        printf("请输入你要扫的坐标的所属行: ");
+        scanf("%d", &hh);
+        if (minemap[ww - 1][hh - 1] != '*')
+        {
+            minemap[ww - 1][hh - 1] = 'k';
+            printf("你很幸运 没中雷\n");
+            for (auto& rw : minemap)
+            {
+                for (char tx : rw)
+                {
+                    if (tx == 'k')
+                    {
+                        printf("1");
+                    } else {
+                        printf("-");
+                    }
+                }
+                printf("\n");
+            }
+        } else {
+            printf("你中雷了!\n");
+            for (auto& rw : minemap)
+            {
+                for (char tx : rw)
+                {
+                    printf("%c ", tx);
+                }
+                printf("\n");
+            }
+            cail = true;
+            break;
+        }
+		for (auto& rw : minemap)
+        {
+            for (char tx : rw)
+            {
+                if (tx != '.')
+                {
+					tg = true;
+				} else {
+					tg = false;
+				}
+            }
+            printf("\n");
+        }
+    } while (!cail);
+    if (cail)
+    {
+        printf("很不幸运 你中雷了\n");
+    }
+	if (tg)
+	{
+		printf("恭喜你成功通关\n");
+	}
+}
+
 void sd()
 {
 	puts("苏达办公------线上工具");
 	OpenWeb("bangong.360.cn/index.html#");
 	return;
+}
+
+void clr();
+{
+	#ifdef _WIN32
+	system("cls");
+	#else
+	printf("\033[2J\033[3J\033[1;1H");
+	#endif
 }
 
 void about_windows()
@@ -1037,14 +1145,14 @@ int main()
 			fclose(file);
 		}
 		
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
 		this_thread::sleep_for(chrono::seconds(5));
 		srand(time(0));
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		printf("开机时间：%s\n", nowtm());
 		this_thread::sleep_for(chrono::seconds(1)); // no
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		puts("************* ************  *************               ************* *          *  *************      **     *************     *************");
 		puts("      *       *           * *                           *              *        *   *               *   *     *           *                 *");
 		puts("      *       *           * *                           *               *      *    *             *     *     *           *                 *");
@@ -1078,17 +1186,17 @@ int main()
 		// _beep(715, 400);
 		// _beep(770, 400);
 		printf("\a");
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		
 		for (size_t i = 0; i < 13; ++i)
 		{
 			putchar("loading......"[i]);
 			this_thread::sleep_for(chrono::milliseconds(100));
 		}
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁抄袭！！严禁抄袭！！！", 50);
 		this_thread::sleep_for(chrono::seconds(5));
-		printf("\033[2J\033[3J\033[1;1H");
+		clr();
 		puts("fn··············笑话");
 		puts("catstore···········商店");
 		puts("state············ 型号");
