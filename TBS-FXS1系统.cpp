@@ -15,39 +15,39 @@ const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core", "Atom", "Celeron", "Pentium", "Xeon", "Athlon", "Sempron", "Sempron", "Snapdragon", "Scorpion", "Krait", "Grace"};
 class Username_or_password_is_incorrect: public exception  
 {  
-    virtual const char* what() const throw()  
-    {  
-        return "错误: 用户名或密码不正确";  
-    }  
+	virtual const char* what() const throw()  
+	{  
+		return "错误: 用户名或密码不正确";  
+	}  
 }PasswordorUsernameError; // Password or Username not right 
 
 void Clearce()
 {
 	while(getchar() != '\n')
-    	continue; // 清空缓存区
+		continue; // 清空缓存区
 }
 void OpenWeb(string url)
 {
 	string command[2] = {"start " + url, "xdg-open " + url};
-	#if _WIN32
-		system(command[0].c_str());
-	#else
-	#endif
-	#if __linux__
-		system(command[1].c_str());
-	#endif
+#if _WIN32
+	system(command[0].c_str());
+#else
+#endif
+#if __linux__
+	system(command[1].c_str());
+#endif
 }
 
 
 void Prints(string text, int speed) // 自动换行
 {
-    if (!text.empty()) {
-        for (size_t i = 0; i < text.size(); ++i) {
-            putchar(text[i]);
-	        std::fflush(stdout);
-            std::this_thread::sleep_for(std::chrono::milliseconds(speed));
-        }
-    }
+	if (!text.empty()) {
+		for (size_t i = 0; i < text.size(); ++i) {
+			putchar(text[i]);
+			std::fflush(stdout);
+			std::this_thread::sleep_for(std::chrono::milliseconds(speed));
+		}
+	}
 	return;
 }
 void wechat()
@@ -88,100 +88,100 @@ void leetcode()
 }
 
 long long cifang(long long number, long long cishu) {
-    if (cishu == 0) return 1;
-    long long result = 1;
-    while (cishu > 0) {
-        if (cishu & 1) {
-            result *= number;
-        }
-        number *= number;
-        cishu >>= 1;
-    }
-    return result;
+	if (cishu == 0) return 1;
+	long long result = 1;
+	while (cishu > 0) {
+		if (cishu & 1) {
+			result *= number;
+		}
+		number *= number;
+		cishu >>= 1;
+	}
+	return result;
 }
 
 void alpjsq()
 {
-  string shuanshu;
-  printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
-  shuanshu.resize(100);
-  scanf("%s", &shuanshu[0]);
-  if (shuanshu.find('+') != string::npos)
-  {
-    int left, right;
-    try {
-      int lc = shuanshu.find('+');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1));
-    }
-    catch (const std::exception& e) {
-      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
-    }
-    printf("%d + %d = %d\n", right, left, right + left);
-  }
-  if (shuanshu.find('-') != string::npos)
-  {
-    int right, left;
-    try {
-      int lc = shuanshu.find('-');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
-    }
-    catch (const std::exception& e) {
-      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
-    }
-    printf("%d - %d = %d\n", right, left, right - left);
-  }
-  if (shuanshu.find('*') != string::npos)
-  {
-    int right, left;
-    try {
-      int lc = shuanshu.find('*');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
-    }
-    catch (const std::exception& e) {
-      printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
-    }
-    printf("%d * %d = %d\n", right, left, right * left);
-  }
-  if (shuanshu.find('/') != string::npos)
-  {
-    int right, left;
-    try {
-        int lc = shuanshu.find('/');
-        right = stoi(shuanshu.substr(0, lc));
-	    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+	string shuanshu;
+	printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
+	shuanshu.resize(100);
+	scanf("%s", &shuanshu[0]);
+	if (shuanshu.find('+') != string::npos)
+	{
+		int left, right;
+		try {
+			int lc = shuanshu.find('+');
+			right = stoi(shuanshu.substr(0, lc));
+			left = stoi(shuanshu.substr(lc + 1));
+		}
+		catch (const std::exception& e) {
+			printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		}
+		printf("%d + %d = %d\n", right, left, right + left);
 	}
-    catch (const std::exception& e) {
-		printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
-    }
-    printf("%d / %d = %d\n", right, left, right / left);
-  }
-  if (shuanshu.find('^') != string::npos)
-  {
-    long long int right, left;
-    int lc = shuanshu.find('^');
-    right = stoi(shuanshu.substr(0, lc));
-    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
-    printf("%d ^ %d = %lld\n", right, left, cifang(right, left));
-  }
-  if (shuanshu.find('s') != string::npos)
-  {
-    printf("求根运算可能不准确\n");
-    // 以下这些代码选自游戏《Quake-III Arena》
-    double n = stoi(shuanshu.substr(1, shuanshu.length()));
-    double j = n;
-    if (n == 0) printf("sqrt(0) = 0\n");
-    float result = n;
-    float xhalf = 0.5f * result;
-    int i = *(int*) &result;
-    i = 0x5f3759df - (i >> 1);
-    result = *(float*) &i;
-    result = result * (1.5f - xhalf * result * result);
-    result = result * (1.5f - xhalf * result * result);
-    printf("sqrt(%lf) = %lf\n", j, 1.0f / result);
-  }
+	if (shuanshu.find('-') != string::npos)
+	{
+		int right, left;
+		try {
+			int lc = shuanshu.find('-');
+			right = stoi(shuanshu.substr(0, lc));
+			left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+		}
+		catch (const std::exception& e) {
+			printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		}
+		printf("%d - %d = %d\n", right, left, right - left);
+	}
+	if (shuanshu.find('*') != string::npos)
+	{
+		int right, left;
+		try {
+			int lc = shuanshu.find('*');
+			right = stoi(shuanshu.substr(0, lc));
+			left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+		}
+		catch (const std::exception& e) {
+			printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		}
+		printf("%d * %d = %d\n", right, left, right * left);
+	}
+	if (shuanshu.find('/') != string::npos)
+	{
+		int right, left;
+		try {
+			int lc = shuanshu.find('/');
+			right = stoi(shuanshu.substr(0, lc));
+			left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+		}
+		catch (const std::exception& e) {
+			printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
+		}
+		printf("%d / %d = %d\n", right, left, right / left);
+	}
+	if (shuanshu.find('^') != string::npos)
+	{
+		long long int right, left;
+		int lc = shuanshu.find('^');
+		right = stoi(shuanshu.substr(0, lc));
+		left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+		printf("%d ^ %d = %lld\n", right, left, cifang(right, left));
+	}
+	if (shuanshu.find('s') != string::npos)
+	{
+		printf("求根运算可能不准确\n");
+		// 以下这些代码选自游戏《Quake-III Arena》
+		double n = stoi(shuanshu.substr(1, shuanshu.length()));
+		double j = n;
+		if (n == 0) printf("sqrt(0) = 0\n");
+		float result = n;
+		float xhalf = 0.5f * result;
+		int i = *(int*) &result;
+		i = 0x5f3759df - (i >> 1);
+		result = *(float*) &i;
+		result = result * (1.5f - xhalf * result * result);
+		result = result * (1.5f - xhalf * result * result);
+		printf("sqrt(%lf) = %lf\n", j, 1.0f / result);
+	}
 }
 void CPS()
 {
@@ -370,17 +370,17 @@ void downcpp()
 		OpenWeb("https://www.onlinedown.net/soft/9500.htm");
 		break;
 	case 'M':
-	{
-		printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/M]");
-		mode = getchar();
-		Clearce();
-		switch (mode)
 		{
-			case 'G': OpenWeb("http://https://www.github.com/niXman/mingw-builds-binaries/releases"); break;
-			case 'M': OpenWeb("https://www.mingw-w64.org/"); break;
-		}
-		break;
-	} // 这里只能用括号包起来
+			printf("还有两种选择:\n1. 下载Github上的MinGW编译版\n2. 到MinGW64官网下载(Mingw32请自行下载)\n请选择你的模式[G/M]");
+			mode = getchar();
+			Clearce();
+			switch (mode)
+			{
+				case 'G': OpenWeb("http://https://www.github.com/niXman/mingw-builds-binaries/releases"); break;
+				case 'M': OpenWeb("https://www.mingw-w64.org/"); break;
+			}
+			break;
+		} // 这里只能用括号包起来
 	case 'V':
 		OpenWeb("http://visualstudio.microsoft.com");
 		break;
@@ -461,10 +461,10 @@ void txt()
 		FILE *file;
 		file = fopen(filename, "w+");
 		if (all[0] == '\n') 
-            fprintf(file, "%s", all + 1);
-        else
-            fprintf(file, "%s", all);
-        fclose(file);
+			fprintf(file, "%s", all + 1);
+		else
+			fprintf(file, "%s", all);
+		fclose(file);
 	}
 	return;
 }
@@ -715,8 +715,8 @@ void about_windows()
 		do
 		{
 			char rdc = 'a' + dis4(gen);
-		    PCNAME += rdc;
-		    ++i;
+			PCNAME += rdc;
+			++i;
 		} while (i < dis7(gen));		
 	}
 	printf("名称: %s\n", PCNAME.c_str());
@@ -779,7 +779,7 @@ void kkk()
 }
 void ybt()
 {
-
+	
 	puts("信息学奥赛在线练习网站！！！");
 	this_thread::sleep_for(chrono::seconds(2));;
 	// puts("开发者 sunyuhao"); ?????????????????
@@ -822,20 +822,101 @@ void jjxrb()
 
 void printf_blue(const char *s)
 {
-    printf("\033[0m\033[1;34m%s\033[0m", s);
+	printf("\033[0m\033[1;34m%s\033[0m", s);
 }
 
 void printf_green(const char *s)
 {
-    printf("\033[0m\033[1;32m%s\033[0m", s);
+	printf("\033[0m\033[1;32m%s\033[0m", s);
+}
+
+void saolei()
+{
+	int w, h, m, ls, al;
+	printf("请输入行数: ");
+	scanf("%d", &w);
+	printf("请输入列数: ");
+	scanf("%d", &h);
+	char minemap[h][w];
+	for (int i = 0; i < h; ++i) {
+		for (int j = 0; j < w;++j)
+		{
+			minemap[i][j] = '.';
+		}
+	}
+	int Minecou = static_cast<int>(h * w * 0.27);
+	if (0 < Minecou)
+	{
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> wrd(0, w - 1);
+		std::uniform_int_distribution<> hrd(0, h - 1);
+		int minepld = 0, i = 0;
+		do
+		{
+			int wl, hl;
+			do
+			{
+				wl = wrd(gen);
+				hl = hrd(gen);
+			} while (minemap[hl][wl] == '*');
+			minemap[hl][wl] = '*';
+			++ls;
+			++i;
+		} while (i < Minecou);        
+	}
+	bool cail = false;
+	do
+	{
+		int ww, hh;
+		printf("请输入你要扫的坐标的所属列: ");
+		scanf("%d", &hh);
+		printf("请输入你要扫的坐标的所属行: ");
+		scanf("%d", &ww);
+		if (minemap[ww - 1][hh - 1] != '*')
+		{
+			minemap[hh - 1][ww - 1] = 'k';
+			printf("你很幸运 没中雷\n");
+			for (auto& rw : minemap)
+			{
+				for (char tx : rw)
+				{
+					if (tx == 'k')
+					{
+						printf("1");
+					} else {
+						printf("-");
+					}
+				}
+				printf("\n");
+			}
+		} else {
+			printf("你中雷了!\n");
+			for (auto& rw : minemap)
+			{
+				for (char tx : rw)
+				{
+					printf("%c ", tx);
+				}
+				printf("\n");
+			}
+			cail = true;
+			break;
+		}
+	} while (!cail);
+	if (cail)
+	{
+		printf("很不幸运 你中雷了");
+	}
+	return ;
 }
 
 void Minecraft_End_Poem()
 {
 	const char *name = username;
 	random_device rd; 
-    mt19937 gen(rd()); 
-    uniform_int_distribution<> dis(33, 126);
+	mt19937 gen(rd()); 
+	uniform_int_distribution<> dis(33, 126);
 	uniform_int_distribution<> dis1(1, 10);
 	printf_blue("I see the player you mean.\n");
 	printf_green(name);
@@ -931,9 +1012,9 @@ struct CommandStruct
 {
 	void (*func)();
 	char key[15];
-} Command[44] = {
+} Command[46] = {
 	{[]()
-	 { printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
+		{ printf("\033[2J\033[1;1H"); printf("\033[1;37m"); }, "shut"},
 	{cpu, "st"},
 	{catstore, "catstore"},
 	{pblktct, "pblktct"},
@@ -976,7 +1057,8 @@ struct CommandStruct
 	{ajy, "ajy"},
 	{alpjsq, "alpcl"},
 	{ahaoj, "ahaoj"},
-	{Minecraft_End_Poem, "MC_End_Poem"}
+	{Minecraft_End_Poem, "MC_End_Poem"},
+	{saolei, "sao"}
 };
 int main()
 {
@@ -1107,6 +1189,7 @@ int main()
 		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
 		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
 		puts("MC_End_Poem......终末之诗");
+		puts("sao.............扫雷（行列法）");
 		char command[15];
 		bool isfound = false;
 		while (1)
@@ -1116,7 +1199,7 @@ int main()
 			printf("TBS-FXS19.1.2(weveDIR)>> ");
 			Clearce();
 			scanf("%s", &command);
-			for (int i = 0; i < 44; i++)
+			for (int i = 0; i < 46; i++)
 			{
 				if (strcmp(Command[i].key, command) == 0)
 				{
@@ -1141,4 +1224,3 @@ int main()
 	}
 	return 0;
 }
-
