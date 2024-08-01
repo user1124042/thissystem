@@ -645,6 +645,7 @@ void update()
 	puts("2024-7-19 No Version 某AR在他的Fork上把西瓜视频改成了Bilibili");
 	puts("2024-7-19 No Version 某AR又又又又在他的小Fork上制作的一个正处于阿尔法版本的计算器");
 	puts("2024-7-27 Beta 某B在它的Fork上增加了测试版, 并把命令实现方式改成了结构体+搜索法");
+	puts("2024-7-27 Beta 某AL在系统中添加了扫雷(系统第一款单机小游戏)");
 }
 void looking()
 {
@@ -728,7 +729,8 @@ void pblktct()
 	puts("的情况下私自在各网站上发布，谢谢");
 	puts("洛谷网站                        alanbecker联系洛谷alanbecker");
 	puts("https://www.luogu.com                  sunyuhao联系洛谷stzhl");
-	puts("Copyright by sunyuhao and alanbecker C");
+	puts("https://www.luogu.com.cn/           AuroraRealm联系QQ3398817447");
+	puts("Copyright by TBS C");
 	return;
 }
 void look()
@@ -1184,43 +1186,43 @@ int main()
 		puts("sllfy············ 360翻译");
 		puts("CPS············· CPS测试");
 		puts("ML··············未来信箱");
-		puts("hzhz·············Hydro Online Judge");
-		puts("weyf·············系统");
-		puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
-		puts("ahaoj...........啊哈添柴在线OJ刷题网站");
-		puts("MC_End_Poem......终末之诗");
-		puts("sao.............扫雷（行列法）");
-		char command[15];
-		bool isfound = false;
-		while (1)
-		{
-			isfound = false;
-			// memset(command, 0, sizeof(command));
-			printf("TBS-FXS19.1.2(weveDIR)>> ");
-			Clearce();
-			scanf("%s", &command);
-			for (int i = 0; i < 46; i++)
-			{
-				if (strcmp(Command[i].key, command) == 0)
-				{
-					isfound = true;
-					Command[i].func();
-					break;
-				}
-			}
-			if (!isfound)
-			{
-				printf("错误： %s 不是一个有效的命令\n", command);
-			}
-		}
-		printf("\033[1;37m");
-		Prints("MADE IN CHINA,BAIGEPING", 75);
-		Prints("                       ", 100);
-		Prints("Closeing·······", 300);
-		this_thread::sleep_for(chrono::seconds(1));
-	} else {
-		throw PasswordorUsernameError;
-		return 0;
-	}
-	return 0;
+		放入(“hzhz···············Hydro在线评判”);puts("hzhz·············Hydro Online Judge");
+		put("weyf··········系统");puts("weyf·············系统");
+		put("alpcl............一个阿尔法(Alpha)版本的一个小计算器");puts("alpcl...........处于阿尔法(Alpha)版本的一个小计算器");
+		put("ahaoj.........啊哈添柴在线OJ刷题网站");puts("ahaoj...........啊哈添柴在线OJ刷题网站");
+		put("MC_End_Poem……终末之诗");puts("MC_End_Poem......终末之诗");
+		put("sao........................扫雷（行列法）");puts("sao.............扫雷（行列法）");
+		字符命令[15]；[15];
+		bool isfound = false;false;
+		而（1）while (1)
+		{{
+			是否找到 = false;false;
+			//memset（命令， 0，sizeof（命令））；// memset(command, 0, sizeof(command));
+			printf("TBS-FXS19.1.2(weveDIR)>> ");printf("TBS-FXS19.1.2(weveDIR)>> ");
+			清除（）；Clearce();
+			scanf("％s",＆命令);scanf("%s", &command);
+			对于（int i = 0; i < 46; i++）for (int i = 0; i < 46; i++)
+			{{
+				如果 (strcmp(Command[i].key，命令) == 0)if (strcmp(Command[i].key, command) == 0)
+				{{
+					是否找到=真；true;
+					命令[i].func()；[i].func();
+					休息;break;
+				}}
+			}}
+			如果（！找到）if (!isfound)
+			{{
+				printf("错误： %s 不是一个有效的命令\n", command);printf("错误： %s 不是一个有效的命令\n", command);
+			}}
+		}}
+		printf(“\033[1;37m”);printf("\033[1;37m");
+		印刷品(“中国制造,百格平”,75)；Prints("MADE IN CHINA,BAIGEPING", 75);
+		打印（“”，100）；Prints("                       ", 100);
+		打印（“关闭·······”，300）；Prints("Closeing·······", 300);
+		this_thread::sleep_for（chrono::seconds（1））；sleep_for(chrono::seconds(1));
+	} 别的 {} else {
+		抛出密码或用户名错误；throw PasswordorUsernameError;
+		返回0；return 0;
+	}}
+	返回0；return 0;
 }
