@@ -712,11 +712,13 @@ void about_windows() {
 }
 
 void pblktct() {
-  puts("alanbecker代码输出，sunyuhao负责编辑，tongyifeng负责试用。此版权为sunyu"
+  puts("alanbecker代码输出，sunyuhao负责编辑，某BL负责写小型代码(:,"
+       "tongyifeng负责试用。此版权为sunyu"
        "hao与alanbecker所有，请勿在未获得权限");
   puts("的情况下私自在各网站上发布，谢谢");
   puts("洛谷网站                        alanbecker联系洛谷alanbecker");
   puts("https://www.luogu.com                  sunyuhao联系洛谷stzhl");
+  puts("                                       某BL联系QQ: 3398817447 ):");
   puts("Copyright by sunyuhao and alanbecker C");
   return;
 }
@@ -1076,8 +1078,9 @@ int main() {
   puts("请输入账号与密码");
   char qaz[100], wsx[100];
   scanf("%s %s", qaz, wsx);
-  if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0) {
-    if (fopen("username.list", "r") == NULL) {
+  if ((strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0) ||
+      strcmp(qaz, "Guest") == 0) {
+    if (fopen("username.list", "r") == NULL && strcmp(qaz, "Guest") != 0) {
       printf("请输入账户名: ");
       Clearce();
       scanf("%[^\n]", username);
@@ -1092,7 +1095,8 @@ int main() {
     } else {
       FILE *file;
       file = fopen("username.list", "r");
-      if (fgets(username, sizeof(username), file) != NULL) {
+      if (fgets(username, sizeof(username), file) != NULL &&
+          strcmp(qaz, "Guest") != 0) {
         printf("欢迎回来, %s", username);
         this_thread::sleep_for(chrono::seconds(2));
       }
@@ -1161,11 +1165,6 @@ int main() {
         " ** **    ********   *******  *******  *******   *  *  *  *******  *");
     this_thread::sleep_for(chrono::seconds(5));
     this_thread::sleep_for(chrono::seconds(1));
-    // _beep(550, 400);
-    // _beep(605, 400);
-    // _beep(660, 400);
-    // _beep(715, 400);
-    // _beep(770, 400);
     printf("\a");
     clr();
 
@@ -1229,7 +1228,6 @@ int main() {
     bool isfound = false;
     while (1) {
       isfound = false;
-      // memset(command, 0, sizeof(command));
       printf("TBS-FXS19.1.2(weveDIR)>> ");
       Clearce();
       scanf("%s", command);
