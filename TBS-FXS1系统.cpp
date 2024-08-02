@@ -1078,14 +1078,9 @@ int main() {
   puts("请输入账号与密码");
   char qaz[100], wsx[100];
   scanf("%s %s", qaz, wsx);
-<<<<<<< HEAD
   if ((strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0) ||
       strcmp(qaz, "Guest") == 0) {
     if (fopen("username.list", "r") == NULL && strcmp(qaz, "Guest") != 0) {
-=======
-  if (strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0) {
-    if (fopen("username.list", "r") == NULL) {
->>>>>>> 776ef34958586e71c9826f45233d495b44ea59c7
       printf("请输入账户名: ");
       Clearce();
       scanf("%[^\n]", username);
@@ -1100,12 +1095,8 @@ int main() {
     } else {
       FILE *file;
       file = fopen("username.list", "r");
-<<<<<<< HEAD
       if (fgets(username, sizeof(username), file) != NULL &&
           strcmp(qaz, "Guest") != 0) {
-=======
-      if (fgets(username, sizeof(username), file) != NULL) {
->>>>>>> 776ef34958586e71c9826f45233d495b44ea59c7
         printf("欢迎回来, %s", username);
         this_thread::sleep_for(chrono::seconds(2));
       }
