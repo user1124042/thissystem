@@ -647,7 +647,9 @@ void qwbd() {
   printf("Warning!"
          "本系统对“千万要点”所造成的bug和对电脑的伤害概不负责，是否继续操作? "
          "（Y/Y/Y)");
+  Clearce();
   char mode = getchar();
+  Clearce();
   if (mode == 'Y') {
     int modet;
     puts("输入：(0/1/2/3) 1模式禁止使用，后果自负");
@@ -1260,7 +1262,7 @@ int main() {
   puts("请输入账号与密码");
   char qaz[100], wsx[100];
   scanf("%s %s", qaz, wsx);
-  if ((strcmp(qaz, "alanyufeng") == 0 && strcmp(wsx, "bgp20130427") == 0) ||
+  if ((strcmp(qaz, "Ed_Wis_gfzh") == 0 && strcmp(wsx, "gh5ter") == 0) ||
       strcmp(qaz, "Guest") == 0) {
     if (fopen("username.list", "r") == NULL && strcmp(qaz, "Guest") != 0) {
       printf("请输入账户名: ");
