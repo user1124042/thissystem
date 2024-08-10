@@ -562,7 +562,7 @@ void looking() {
 }
 
 void saol() {
-  printf("编写者: BlocksFunction");
+  printf("编写者: BlocksFunction\n");
   bool tg = false;
   int w, h, m, ls, al;
   printf("请输入行数: ");
@@ -772,9 +772,10 @@ void ybt() {
 }
 void TBS() {
   puts("我们TBS公司成立于2023年");
-  puts("内由三名成员组成");
+  puts("由四名成员组成");
   puts("分别是：alanbecker(总代码输出)");
   puts("sunyuhao：总编辑(同时负责部分代码输出 )");
+  puts("某BL: <Error>");
   puts("Tongyifeng：第一试用者");
   puts("此系统由2023-12-23 开始编译，制作不易，请勿抄袭，谢谢！");
   puts("sunyuhao 致敬");
@@ -809,7 +810,7 @@ void printf_blue(const char *s) {
   putchar('m');
   while (*s != '\0') {
     putchar(*s);
-    s++;
+    ++s;
   }
   putchar('\033');
   putchar('[');
@@ -827,7 +828,7 @@ void printf_green(const char *s) {
   putchar('m');
   while (*s != '\0') {
     putchar(*s);
-    s++;
+    ++s;
   }
   putchar('\033');
   putchar('[');
@@ -1167,7 +1168,6 @@ int main() {
     this_thread::sleep_for(chrono::seconds(1));
     printf("\a");
     clr();
-
     for (size_t i = 0; i < 13; ++i) {
       putchar("loading......"[i]);
       this_thread::sleep_for(chrono::milliseconds(100));
