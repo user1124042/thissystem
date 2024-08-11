@@ -20,10 +20,7 @@ class Username_or_password_is_incorrect : public exception {
   }
 } PasswordorUsernameError; // Password or Username not right
 
-void Clearce() {
-  while (getchar() != '\n')
-    continue; // 清空缓存区
-}
+void Clearce() { scanf("%*[^\n]%*c"); }
 void OpenWeb(string url) {
   string command[2] = {"start " + url, "xdg-open " + url};
 #if _WIN32
@@ -562,16 +559,16 @@ void looking() {
 }
 
 void saol() {
-  printf("编写者: BlocksFunction");
+  printf("编写者： BlocksFunction\n");
   bool tg = false;
-  int w, h, m, ls, al;
+  int w, h, m, ls, al, tgcs = 0;
   printf("请输入行数: ");
   scanf("%d", &w);
   printf("请输入列数: ");
   scanf("%d", &h);
   char minemap[h][w];
   for (int i = 0; i < h; ++i) {
-    for (int j = 0; j < w; ++j) {
+    for (int j = 1; j < w + 1; ++j) {
       minemap[i][j] = '.';
     }
   }
@@ -594,62 +591,109 @@ void saol() {
     } while (i < Minecou);
   }
   bool cail = false;
+  puts("当前地图:");
+  for (int i = 0; i < h; ++i) {
+    if (i == 0) {
+      printf("   ");
+      for (int j = 1; j < w + 1; ++j) {
+        printf("%d ", j);
+      }
+      printf("\n");
+    }
+    printf("%d |", i);
+    for (auto &tx : minemap[i]) {
+      printf(". ");
+    }
+    printf("\n");
+  }
   do {
+    tg = true;
+    tgcs = 0;
     int ww, hh;
     printf("请输入你要扫的坐标的所属列: ");
     scanf("%d", &ww);
     printf("请输入你要扫的坐标的所属行: ");
     scanf("%d", &hh);
     if (minemap[ww - 1][hh - 1] != '*') {
-      minemap[ww - 1][hh - 1] = 'k';
+      minemap[ww - 1][hh - 1] = '1';
       printf("你很幸运 没中雷\n");
-      for (auto &rw : minemap) {
-        for (char tx : rw) {
-          if (tx == 'k')
-            putchar('1');
+      for (int i = 0; i < h; ++i) {
+        if (i == 0) {
+          printf("   ");
+          for (int j = 1; j < w + 1; ++j) {
+            printf("%d ", j);
+          }
+          printf("\n");
+        }
+        printf("%d |", i);
+        for (auto &tx : minemap[i]) {
+          if (tx == '1')
+            printf("1 ");
           else
-            putchar('-');
+            printf(". ");
         }
         printf("\n");
       }
     } else {
-      printf("你中雷了!\n");
-      for (auto &rw : minemap) {
-        for (char tx : rw) {
-          if (tx == 'k')
-            putchar('.');
-          else
-            putchar(tx);
-        }
-        printf("\n");
-      }
       cail = true;
       break;
     }
     for (auto &rw : minemap) {
       for (char tx : rw) {
-        if (tx != '.') {
-          tg = true;
-        } else {
+        if (tx == '.') {
           tg = false;
+          break;
         }
       }
+      if (!tg)
+        break;
     }
-  } while (!cail);
+  } while (!cail && !tg);
   if (cail) {
-    printf("很不幸运 你中雷了\n");
+    printf("BOOM! 你中雷了\n");
+    for (int i = 0; i < h; ++i) {
+      if (i == 0) {
+        printf("   ");
+        for (int j = 1; j < w + 1; ++j) {
+          printf("%d ", j);
+        }
+        printf("\n");
+      }
+      printf("%d |", i);
+      for (auto &tx : minemap[i]) {
+        printf("%c ", tx);
+      }
+      printf("\n");
+    }
+    return;
   }
   if (tg) {
     printf("恭喜你成功通关\n");
+    for (int i = 0; i < h; ++i) {
+      if (i == 0) {
+        printf("   ");
+        for (int j = 1; j < w + 1; ++j) {
+          printf("%d ", j);
+        }
+        printf("\n");
+      }
+      printf("%d |", i);
+      for (auto &tx : minemap[i]) {
+        printf("%c ", tx);
+      }
+      printf("\n");
+    }
+    return;
   }
 }
+
 void qwbd() {
   printf("Warning!"
          "本系统对“千万要点”所造成的bug和对电脑的伤害概不负责，是否继续操作? "
          "（Y/Y/Y)");
   Clearce();
-  char mode = getchar();
-  Clearce();
+  char mode;
+  scanf("%c", &mode);
   if (mode == 'Y') {
     int modet;
     puts("输入：(0/1/2/3) 1模式禁止使用，后果自负");
@@ -895,14 +939,13 @@ void about_windows() {
 }
 
 void pblktct() {
-  puts("alanbecker代码输出，sunyuhao负责编辑，某BL负责写小型代码(:,"
-       "tongyifeng负责试用。此版权为sunyu"
-       "hao与alanbecker所有，请勿在未获得权限");
+  puts("alanbecker代码输出，sunyuhao负责编辑，BlocksFunction(AuroraRealm)设计&"
+       "程序员。此版权为Wisterl公司所有，请勿在未获得权限");
   puts("的情况下私自在各网站上发布，谢谢");
   puts("洛谷网站                        alanbecker联系洛谷alanbecker");
   puts("https://www.luogu.com                  sunyuhao联系洛谷stzhl");
-  puts("                                       某BL联系QQ: 3398817447 ):");
-  puts("Copyright by sunyuhao and alanbecker C");
+  puts("https://www.luogu.com.cn/           AuroraRealm联系QQ3398817447");
+  puts("Copyright by Wisterl C");
   return;
 }
 void look() {
@@ -1265,13 +1308,14 @@ struct CommandStruct {
                  {qwbd, "qwbd"}};
 
 int main() {
+  setbuf(stdout, NULL);
   puts("请您先登陆");
   puts("请输入账号与密码");
   char qaz[100], wsx[100];
   scanf("%s %s", qaz, wsx);
   if ((strcmp(qaz, "Ed_Wis_gfzh") == 0 && strcmp(wsx, "gh5ter") == 0) ||
       strcmp(qaz, "Guest") == 0) {
-    if (fopen("username.list", "r") == NULL && strcmp(qaz, "Guest") != 0) {
+    if (fopen("username.list", "r") == NULL) {
       printf("请输入账户名: ");
       Clearce();
       scanf("%[^\n]", username);
@@ -1286,8 +1330,7 @@ int main() {
     } else {
       FILE *file;
       file = fopen("username.list", "r");
-      if (fgets(username, sizeof(username), file) != NULL &&
-          strcmp(qaz, "Guest") != 0) {
+      if (fgets(username, 15, file) != NULL) {
         printf("欢迎回来, %s", username);
         this_thread::sleep_for(chrono::seconds(2));
       }
