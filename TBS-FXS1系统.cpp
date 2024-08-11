@@ -295,7 +295,7 @@ void ziyanfa()
 		}
 		if (sxsxdsx == 2)
 		{
-			puts("我们的研发团队: TBS-FXS团队");
+			puts("我们的研发团队: wisterl团队");
 			puts("详情见QQ群908658106");
 			Prints("若想退出，请在这段文字结束后按 [0] 退出\n", 100);
 		}
@@ -1336,7 +1336,7 @@ int main()
 		Prints("                       ", 100);
 		Prints("Closeing·······", 300);
 		this_thread::sleep_for(chrono::seconds(1));
-		} else {
+	} else {
 		throw PasswordorUsernameError;
 		return 0;
 	}
