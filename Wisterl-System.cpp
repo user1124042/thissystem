@@ -346,6 +346,7 @@ void gametwo() {
   OpenWeb("dinorunner.com/zh/");
   return;
 }
+
 void txt() {
   puts("文本编辑器");
   this_thread::sleep_for(chrono::seconds(1));
@@ -361,7 +362,7 @@ void txt() {
   if (yon == 'y') {
     printf("请输入文件名称: ");
     char filename[100];
-    scanf("%[^\n]", filename);
+    scanf("%s", filename);
     Clearce();
     FILE *file;
     file = fopen(filename, "w+");
@@ -686,16 +687,16 @@ void saol() {
     printf("恭喜你成功通关\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-      printf("   ");
-      for (int j = 1; j < w + 1; ++j) {
-        printf("%d ", j);
-      }
-      printf("\n");
-      printf("  ");
-      for (int j = 0; j < w * 2; ++j) {
-        putchar('-');
-      }
-      printf("\n");
+        printf("   ");
+        for (int j = 1; j < w + 1; ++j) {
+          printf("%d ", j);
+        }
+        printf("\n");
+        printf("  ");
+        for (int j = 0; j < w * 2; ++j) {
+          putchar('-');
+        }
+        printf("\n");
       }
       i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
       for (auto &tx : minemap[i]) {
