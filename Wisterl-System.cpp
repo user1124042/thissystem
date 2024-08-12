@@ -32,10 +32,10 @@ void OpenWeb(string url) {
 #endif
 }
 
-void Prints(string text, int speed) // 自动换行
+void Prints(const char text[500], int speed) // 自动换行
 {
-  if (!text.empty()) {
-    for (size_t i = 0; i < text.size(); ++i) {
+  if (strlen(text) != 0) {
+    for (size_t i = 0; i < strlen(text); ++i) {
       putchar(text[i]);
       std::fflush(stdout);
       std::this_thread::sleep_for(std::chrono::milliseconds(speed));
@@ -599,8 +599,13 @@ void saol() {
         printf("%d ", j);
       }
       printf("\n");
+      printf("  ");
+      for (int j = 0; j < w * 2; ++j) {
+        putchar('-');
+      }
+      printf("\n");
     }
-    printf("%d |", i);
+    i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
     for (auto &tx : minemap[i]) {
       printf(". ");
     }
@@ -624,8 +629,13 @@ void saol() {
             printf("%d ", j);
           }
           printf("\n");
+          printf("  ");
+          for (int j = 0; j < w * 2; ++j) {
+            putchar('-');
+          }
+          printf("\n");
         }
-        printf("%d |", i);
+        i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
         for (auto &tx : minemap[i]) {
           if (tx == '1')
             printf("1 ");
@@ -658,8 +668,13 @@ void saol() {
           printf("%d ", j);
         }
         printf("\n");
+        printf("  ");
+        for (int j = 0; j < w * 2; ++j) {
+          putchar('-');
+        }
+        printf("\n");
       }
-      printf("%d |", i);
+      i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
       for (auto &tx : minemap[i]) {
         printf("%c ", tx);
       }
@@ -671,13 +686,18 @@ void saol() {
     printf("恭喜你成功通关\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-        printf("   ");
-        for (int j = 1; j < w + 1; ++j) {
-          printf("%d ", j);
-        }
-        printf("\n");
+      printf("   ");
+      for (int j = 1; j < w + 1; ++j) {
+        printf("%d ", j);
       }
-      printf("%d |", i);
+      printf("\n");
+      printf("  ");
+      for (int j = 0; j < w * 2; ++j) {
+        putchar('-');
+      }
+      printf("\n");
+      }
+      i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
       for (auto &tx : minemap[i]) {
         printf("%c ", tx);
       }
