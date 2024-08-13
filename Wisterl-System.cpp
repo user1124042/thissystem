@@ -1,11 +1,12 @@
 // this is a wonderful windows 19.2.2
 #include <chrono>
+#include <cstddef>
 #include <cstdio> // 别用bits/stdc++
+#include <cstdlib>
 #include <cstring>
 #include <random>
 #include <thread>
 
-using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
@@ -14,21 +15,24 @@ const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core",       "Atom",     "Celeron", "Pentium",
                                  "Xeon",       "Athlon",   "Sempron", "Sempron",
                                  "Snapdragon", "Scorpion", "Krait",   "Grace"};
-class Username_or_password_is_incorrect : public exception {
+class Username_or_password_is_incorrect : public std::exception {
   virtual const char *what() const throw() {
     return "错误: 用户名或密码不正确";
   }
 } PasswordorUsernameError; // Password or Username not right
 
-void Clearce() { scanf("%*[^\n]%*c"); }
-void OpenWeb(string url) {
-  string command[2] = {"start " + url, "xdg-open " + url};
+void Clearce() { scanf("%*c"); }
+
+void OpenWeb(const char *url) {
+  char command[2][100];
+  snprintf(command[0], sizeof(command[0]), "start %s", url);
+  snprintf(command[1], sizeof(command[1]), "xdg-open %s", url);
 #if _WIN32
-  system(command[0].c_str());
+  system(command[0]);
 #else
 #endif
 #if __linux__
-  system(command[1].c_str());
+  system(command[1]);
 #endif
 }
 
@@ -68,7 +72,7 @@ void leetcode() {
   Clearce();
   if (c == 'Y') {
     puts("你确定的话，我就不管你了"); // eeeeeeeee6
-    this_thread::sleep_for(chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     OpenWeb("https://www.leetcode.cn/");
   } else {
     return;
@@ -91,65 +95,75 @@ long long cifang(long long number, long long cishu) {
 }
 
 void alpjsq() {
-  string shuanshu;
-  printf("欢迎使用某AR写的Alpha版计算器\n请输入算式: ");
-  shuanshu.resize(100);
+  char shuanshu[500];
+  printf("欢迎使用BlocksFunction(AuroraRealm)写的Alpha版计算器\n请输入算式: ");
   scanf("%s", &shuanshu[0]);
-  if (shuanshu.find('+') != string::npos) {
+  if (strchr(shuanshu, '+') != NULL) {
     int left, right;
     try {
-      int lc = shuanshu.find('+');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1));
+      char *lc = strchr(shuanshu, '+');
+      right =
+          atoi(strncpy(new char[lc - shuanshu + 1], shuanshu, lc - shuanshu));
+      left = atoi(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                          lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     } catch (const std::exception &e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d + %d = %d\n", right, left, right + left);
   }
-  if (shuanshu.find('-') != string::npos) {
+  if (strchr(shuanshu, '-') != NULL) {
     int right, left;
     try {
-      int lc = shuanshu.find('-');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+      char *lc = strchr(shuanshu, '-');
+      right =
+          atoi(strncpy(new char[lc - shuanshu + 1], shuanshu, lc - shuanshu));
+      left = atoi(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                          lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     } catch (const std::exception &e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d - %d = %d\n", right, left, right - left);
   }
-  if (shuanshu.find('*') != string::npos) {
+  if (strchr(shuanshu, '*') != NULL) {
     int right, left;
     try {
-      int lc = shuanshu.find('*');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+      char *lc = strchr(shuanshu, '*');
+      right =
+          atoi(strncpy(new char[lc - shuanshu + 1], shuanshu, lc - shuanshu));
+      left = atoi(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                          lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     } catch (const std::exception &e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d * %d = %d\n", right, left, right * left);
   }
-  if (shuanshu.find('/') != string::npos) {
+  if (strchr(shuanshu, '/') != NULL) {
     int right, left;
     try {
-      int lc = shuanshu.find('/');
-      right = stoi(shuanshu.substr(0, lc));
-      left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+      char *lc = strchr(shuanshu, '/');
+      right =
+          atoi(strncpy(new char[lc - shuanshu + 1], shuanshu, lc - shuanshu));
+      left = atoi(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                          lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     } catch (const std::exception &e) {
       printf("程序出现错误, 错误为 %s, 可能原因: 算数过大\n", e.what());
     }
     printf("%d / %d = %d\n", right, left, right / left);
   }
-  if (shuanshu.find('^') != string::npos) {
+  if (strchr(shuanshu, '^') != NULL) {
     long long int right, left;
-    int lc = shuanshu.find('^');
-    right = stoi(shuanshu.substr(0, lc));
-    left = stoi(shuanshu.substr(lc + 1, shuanshu.length()));
+    char *lc = strchr(shuanshu, '^');
+    right = atoi(strncpy(new char[lc - shuanshu + 1], shuanshu, lc - shuanshu));
+    left = atoi(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                        lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     printf("%lld ^ %lld = %lld\n", right, left, cifang(right, left));
   }
-  if (shuanshu.find('s') != string::npos) {
+  if (strchr(shuanshu, 's') != NULL) {
     printf("求根运算可能不准确\n");
     // 以下这些代码选自游戏《Quake-III Arena》
-    double n = stoi(shuanshu.substr(1, shuanshu.length()));
+    char *lc = strchr(shuanshu, 's');
+    double n = atof(strncpy(new char[strlen(shuanshu) - (lc - shuanshu) + 1],
+                            lc + 1, strlen(shuanshu) - (lc - shuanshu)));
     double j = n;
     if (n == 0)
       printf("sqrt(0) = 0\n");
@@ -165,23 +179,21 @@ void alpjsq() {
 }
 void CPS() {
   printf("测试你的每秒点击速度---------点击更多，KB越小！！！\n");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.clickpersecond.com/cn/1-second/");
   return;
 }
 void mail() {
+  setvbuf(stdin, NULL, _IONBF, 0);
   puts("你自己的未来信箱");
   char name[20], things[50], fut[100];
   int yesorno;
   printf("输入你的名字：");
-  Clearce();
-  scanf("%[^\n]", &name[0]);
+  fgets(name, 20, stdin);
   printf("输入你未来想做的职业：");
-  Clearce();
-  scanf("%[^\n]", things);
+  fgets(things, 50, stdin);
   printf("输入你的愿望: ");
-  Clearce();
-  scanf("%[^\n]", &fut[0]);
+  fgets(fut, 100, stdin);
   puts("已发送！");
   puts("是否查看信件(1/0)");
   scanf("%d", &yesorno);
@@ -198,29 +210,28 @@ void mail() {
   }
   return;
 }
+
 void bd() {
   printf("百度一下\n");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.baidu.com/");
   return;
 }
 void ahaoj() { OpenWeb("https://www.acoj.com"); }
 void text() {
   printf("刷题时间到了，刷题吧！\n");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   printf("请输入题号: ");
-  string tihao;
-  tihao.resize(100);
-  scanf("%s", &tihao[0]);
-  OpenWeb("https://www.luogu.com.cn/problem/" + tihao);
-  // 某AR曰:
-  // 建议使用OpenWeb 怎么使用呢? 假如我要让它打开https://www.bing.com,
-  // 那么就OpenWeb("https://www.bing.com"); 用法 OpenWeb(目标网址)
+  char tihao[100], neir[133];
+  scanf("%s", tihao);
+  sprintf(neir, "https://www.luogu.com.cn/problem/%s", tihao);
+  OpenWeb(neir);
+
   return;
 }
 char *nowtm() {
-  auto time = chrono::system_clock::now();
-  time_t nowtime = chrono::system_clock::to_time_t(time);
+  auto time = std::chrono::system_clock::now();
+  time_t nowtime = std::chrono::system_clock::to_time_t(time);
   auto locate = localtime(&nowtime);
   static char crte[9];
   sprintf(crte, "%02d:%02d:%02d", locate->tm_hour, locate->tm_min,
@@ -305,19 +316,19 @@ void downcpp() {
     printf("错误: 模式 %c 不存在\n", mode);
     break;
   }
-  // this_thread::sleep_for(chrono::seconds(2));
+  // std::this_thread::sleep_for(std::chrono::seconds(2));
   // OpenWeb("https://www.onlinedown.net/soft/9500.htm");
   return;
 }
 void chinajy() {
   puts("国家云教育平台");
-  this_thread::sleep_for(chrono::seconds(2));
+  std::this_thread::sleep_for(std::chrono::seconds(2));
   OpenWeb("https://basic.smartedu.cn/");
   return;
 }
 void funnyth() {
   printf("神奇的事情");
-  this_thread::sleep_for(chrono::seconds(2));
+  std::this_thread::sleep_for(std::chrono::seconds(2));
   OpenWeb("https://www.lglg.top/61884");
   return;
 }
@@ -349,21 +360,27 @@ void gametwo() {
 
 void txt() {
   puts("文本编辑器");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   printf("\033[2J\033[1;1H");
   printf("这是一个文本自由写作器，可以在这里写作，最后要敲'|'+ enter结束\n");
   char all[999999];
-  int i = 0;
-  scanf("%[^|]", all);
-  Clearce();
+  char *totext = all;
+  char c;
+  while ((c = fgetc(stdin)) != EOF) {
+    if (c == '|') {
+      break;
+    }
+    *totext++ = c;
+  }
   printf("是否要保存[y/n]: ");
+  getchar();
   char yon = getchar();
-  Clearce();
   if (yon == 'y') {
     printf("请输入文件名称: ");
     char filename[100];
-    scanf("%s", filename);
-    Clearce();
+    char *ptr = filename;
+    getchar();
+    fgets(ptr, 100, stdin);
     FILE *file;
     file = fopen(filename, "w+");
     if (all[0] == '\n')
@@ -378,12 +395,12 @@ void txt() {
 void cpu() {
 
   // random, start!
-  random_device rd;
-  mt19937 gen(rd());
-  uniform_int_distribution<> dis(0, 4);
-  uniform_int_distribution<> dis2(0, 11);
-  uniform_int_distribution<> dis3(100, 999);
-  uniform_int_distribution<> dis4(1, 999);
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<> dis(0, 4);
+  std::uniform_int_distribution<> dis2(0, 11);
+  std::uniform_int_distribution<> dis3(100, 999);
+  std::uniform_int_distribution<> dis4(1, 999);
   printf("cpuh配置: %s %s\n", cpu_xh[dis(gen)], cpu_xhcore[dis2(gen)]);
   // (:
   printf("ip地址：%d.%d.%d.%d\n", dis3(gen), dis3(gen), dis4(gen), dis4(gen));
@@ -415,7 +432,7 @@ void catstore() {
 
 void jd() {
   puts("来买东西吧！");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.jd.com/");
 }
 
@@ -457,7 +474,7 @@ void state() {
 }
 void prog() {
   puts("好用的在线编译网站--Programiz");
-  this_thread::sleep_for(chrono::seconds(3));
+  std::this_thread::sleep_for(std::chrono::seconds(3));
   OpenWeb("https://www.programiz.com/");
   return;
 }
@@ -550,11 +567,10 @@ void update() {
 
 void looking() {
   puts("快捷的网页浏览器"); // 个人认为这应该不算浏览器吧..........
-  this_thread::sleep_for(chrono::seconds(3));
-  string url;
-  url.resize(200);
+  std::this_thread::sleep_for(std::chrono::seconds(3));
+  char url[200];
   puts("输入浏览网页网址:");
-  scanf("%s", &url[0]);
+  scanf("%s", url);
   OpenWeb(url);
   return;
 }
@@ -886,7 +902,7 @@ void qwbd() {
       exit(0);
     } else if (modet == 3) {
       puts("Wisterl系统将在10秒后关机");
-      this_thread::sleep_for(chrono::seconds(10));
+      std::this_thread::sleep_for(std::chrono::seconds(10));
       exit(0);
     } else if (modet == 0) {
     }
@@ -911,51 +927,20 @@ void about_windows() {
   char os[7][9] = {"Windows", "Linux",   "MacOS",   "Unix",
                    "MS-DOS",  "FreeBSD", "TempleOS"};
   // 进入随机数阶段
-  random_device randev;
-  mt19937 gen(randev());
-  uniform_int_distribution<> dis(0, 6);
-  uniform_int_distribution<> dis2(0, 4);
-  uniform_int_distribution<> dis3(0, 11);
-  uniform_int_distribution<> dis4(5, 17);
-  uniform_int_distribution<> dis5(0, 25);
-  uniform_int_distribution<> dis6(1, 7);
-  uniform_int_distribution<> dis7(1, 6);
-  uniform_int_distribution<> dis8(0, 999999);
+  std::random_device randev;
+  std::mt19937 gen(randev());
+  std::uniform_int_distribution<> dis(0, 6);
+  std::uniform_int_distribution<> dis2(0, 4);
+  std::uniform_int_distribution<> dis3(0, 11);
+  std::uniform_int_distribution<> dis4(5, 17);
+  std::uniform_int_distribution<> dis5(0, 25);
+  std::uniform_int_distribution<> dis6(1, 7);
+  std::uniform_int_distribution<> dis7(1, 6);
+  std::uniform_int_distribution<> dis8(0, 999999);
   // end
   printf("建议运行系统：%s %d\n", os[dis(gen)], dis8(gen));
   printf("建议运行CPU: %s %s\n", cpu_xh[dis2(gen)], cpu_xhcore[dis3(gen)]);
   printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)]);
-  string PCNAME = "";
-  if (0 < dis4(gen)) {
-    int i = 0;
-    do {
-      char rdc = 'a' + dis4(gen);
-      PCNAME += rdc;
-      ++i;
-    } while (i < dis4(gen));
-  }
-  char rdc = 'a' + dis4(gen);
-  PCNAME += "'";
-  PCNAME += rdc;
-  PCNAME += "-";
-  if (0 < dis6(gen)) {
-    int i = 0;
-    do {
-      char rdc = 'a' + dis4(gen);
-      PCNAME += rdc;
-      ++i;
-    } while (i < dis6(gen));
-  }
-  PCNAME += "-";
-  if (0 < dis7(gen)) {
-    int i = 0;
-    do {
-      char rdc = 'a' + dis4(gen);
-      PCNAME += rdc;
-      ++i;
-    } while (i < dis7(gen));
-  }
-  printf("名称: %s\n", PCNAME.c_str());
   return;
 }
 
@@ -971,49 +956,50 @@ void pblktct() {
 }
 void look() {
   puts("浏览");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.bing.com");
   return;
 }
+
 void taotao() {
-  string yesorno;
-  yesorno.resize(2);
+  char yesorno[3];
   puts("是否购物");
-  scanf("%s", &yesorno[0]);
-  if (yesorno == "no") {
+  scanf("%s", yesorno);
+  if (strcmp(yesorno, "no") == 0) {
     printf("谢谢惠顾");
     return;
   } else {
     printf("66666666666666666666");
-    this_thread::sleep_for(chrono::seconds(2));
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     OpenWeb("https://www.taobao.com/");
   }
   return;
 }
+
 void hzhz() {
   puts("Hydro Online Judge, 原名H, 是世界知名的OJ");
-  this_thread::sleep_for(chrono::seconds(1));
-  string tihao;
+  std::this_thread::sleep_for(std::chrono::seconds(1));
+  char tihao[100], neir[123];
   printf("请输入题号: ");
-  tihao.resize(100);
-  scanf("%s", &tihao[0]);
-  string allurl = "https://www.hydro.ac/p/" + tihao;
-  OpenWeb(allurl);
+  scanf("%s", tihao);
+  sprintf(neir, "https://www.hydro.ac/p/%s", tihao);
+  OpenWeb(neir);
   Prints("Its OK!\n", 300);
   return;
 }
+
 void kkk() {
   puts("累了吗？刷会视频吧！");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.bilibili.com"); // 建议Bilibili
   return;
 }
 void ybt() {
 
   puts("信息学奥赛在线练习网站！！！");
-  this_thread::sleep_for(chrono::seconds(2));
+  std::this_thread::sleep_for(std::chrono::seconds(2));
   // puts("开发者 sunyuhao"); ?????????????????
-  this_thread::sleep_for(chrono::seconds(2));
+  std::this_thread::sleep_for(std::chrono::seconds(2));
   OpenWeb("ybt.ssoier.cn:8088/");
   return;
 }
@@ -1036,19 +1022,19 @@ void AboutWe() {
 
 void ys() {
   puts("来添加一个163邮箱吧！！");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://mail.163.com/");
   return;
 }
 void ajy() {
   puts("想刷剧了吗？来爱奇艺吧！");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.iqiyi.com/ ");
   return;
 }
 void jjxrb() {
   // puts("狙击小日本无敌版！");
-  this_thread::sleep_for(chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
   // puts("那叫一个爽爽爽！！！！！！真解恨！！！！！");
   OpenWeb("https://www.2344.com/flash/28135.htm");
 }
@@ -1092,8 +1078,8 @@ void printf_green(const char *s) {
 void Minecraft_End_Poem() {
   const char *name = username;
   std::mt19937 gen(static_cast<unsigned int>(std::time(NULL)));
-  uniform_int_distribution<> dis(33, 126);
-  uniform_int_distribution<> dis1(1, 10);
+  std::uniform_int_distribution<> dis(33, 126);
+  std::uniform_int_distribution<> dis1(1, 10);
   printf("\n");
   printf_blue("I see the player you mean.\n");
   printf_green(name);
@@ -1353,18 +1339,18 @@ int main() {
       file = fopen("username.list", "r");
       if (fgets(username, 15, file) != NULL) {
         printf("欢迎回来, %s", username);
-        this_thread::sleep_for(chrono::seconds(2));
+        std::this_thread::sleep_for(std::chrono::seconds(2));
       }
       fclose(file);
     }
 
     clr();
     puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
-    this_thread::sleep_for(chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
     srand(time(0));
     clr();
     printf("开机时间：%s\n", nowtm());
-    this_thread::sleep_for(chrono::seconds(1)); // no
+    std::this_thread::sleep_for(std::chrono::seconds(1)); // no
     clr();
     printf("\033[2J\033[3J\033[1;1H");
     puts(
@@ -1415,21 +1401,21 @@ int main() {
     puts("*  *  *   *          *        *        *     *   *  *  *  *");
     puts(
         " ** **    ********   *******  *******  *******   *  *  *  *******  *");
-    this_thread::sleep_for(chrono::seconds(5));
-    this_thread::sleep_for(chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     printf("\a");
     clr();
 
     for (size_t i = 0; i < 13; ++i) {
       putchar("loading......"[i]);
-      this_thread::sleep_for(chrono::milliseconds(100));
+      std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     clr();
     Prints("本系统采用了终端操作系统，能有效的在多种情况↓运行，使用命令控制。请"
            "勿恶意使用这个操作系统，否则你的电脑将出现卡顿，运行慢等情况。严禁"
            "抄袭！！严禁抄袭！！！",
            50);
-    this_thread::sleep_for(chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(5));
     clr();
     puts("fn··············笑话");
     puts("catstore···········商店");
@@ -1490,6 +1476,8 @@ int main() {
           break;
         }
       }
+      fflush(stdout);
+      fflush(stdin);
       if (!isfound) {
         printf("错误： %s 不是一个有效的命令\n", command);
       }
@@ -1498,7 +1486,7 @@ int main() {
     Prints("MADE IN CHINA,BAIGEPING", 75);
     Prints("                       ", 100);
     Prints("Closeing·······", 300);
-    this_thread::sleep_for(chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
   } else {
     throw PasswordorUsernameError;
     return 0;
