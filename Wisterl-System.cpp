@@ -1280,7 +1280,7 @@ struct CommandStruct {
                  {game, "game"},
                  {jjxrb, "jjxrb"},
                  {looking, "looking"},
-                 {fy, "sllfy"},
+                 {fy, "deplfy"},
                  {chinajy, "cnjy"},
                  {leetcode, "leetcode"},
                  {sd, "sd"},
@@ -1405,7 +1405,6 @@ int main() {
     std::this_thread::sleep_for(std::chrono::seconds(1));
     printf("\a");
     clr();
-
     for (size_t i = 0; i < 13; ++i) {
       putchar("loading......"[i]);
       std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -1453,7 +1452,7 @@ int main() {
     puts("jjxrb············ 狙击小日本");
     puts("jd··············京东");
     puts("qq··············腾讯网");
-    puts("sllfy············ Deepl翻译");
+    puts("deplfy············ Deepl翻译");
     puts("CPS············· CPS测试");
     puts("ML··············未来信箱");
     puts("hzhz·············Hydro Online Judge");
