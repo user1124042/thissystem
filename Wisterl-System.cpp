@@ -230,9 +230,9 @@ void text() {
   return;
 }
 char *nowtm() {
-  auto time = std::chrono::system_clock::now();
+  std::chrono::time_point time = std::chrono::system_clock::now();
   time_t nowtime = std::chrono::system_clock::to_time_t(time);
-  auto locate = localtime(&nowtime);
+  struct tm *locate = localtime(&nowtime);
   static char crte[9];
   sprintf(crte, "%02d:%02d:%02d", locate->tm_hour, locate->tm_min,
           locate->tm_sec);
@@ -623,7 +623,7 @@ void saol() {
       printf("\n");
     }
     i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-    for (auto &tx : minemap[i]) {
+    for (char &tx : minemap[i]) {
       printf(". ");
     }
     printf("\n");
@@ -653,7 +653,7 @@ void saol() {
           printf("\n");
         }
         i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-        for (auto &tx : minemap[i]) {
+        for (char &tx : minemap[i]) {
           if (tx == '1')
             printf("1 ");
           else
@@ -665,7 +665,7 @@ void saol() {
       cail = true;
       break;
     }
-    for (auto &rw : minemap) {
+    for (char &rw : minemap) {
       for (char tx : rw) {
         if (tx == '.') {
           tg = false;
@@ -692,7 +692,7 @@ void saol() {
         printf("\n");
       }
       i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-      for (auto &tx : minemap[i]) {
+      for (char &tx : minemap[i]) {
         printf("%c ", tx);
       }
       printf("\n");
@@ -715,7 +715,7 @@ void saol() {
         printf("\n");
       }
       i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-      for (auto &tx : minemap[i]) {
+      for (char &tx : minemap[i]) {
         printf("%c ", tx);
       }
       printf("\n");
