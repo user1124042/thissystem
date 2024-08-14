@@ -583,7 +583,7 @@ void saol() {
   scanf("%d", &w);
   printf("请输入列数: ");
   scanf("%d", &h);
-  char minemap[h][w];
+  std::vector<std::vector<char>> minemap(h, std::vector<char>(w));
   for (int i = 0; i < h; ++i) {
     for (int j = 1; j < w + 1; ++j) {
       minemap[i][j] = '.';
