@@ -578,7 +578,7 @@ void looking() {
 void saol() {
   printf("编写者： BlocksFunction\n");
   bool tg = false;
-  int w, h, m, ls, al, tgcs = 0;
+  int w, h = 0;
   printf("请输入行数: ");
   scanf("%d", &w);
   printf("请输入列数: ");
@@ -595,7 +595,7 @@ void saol() {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> wrd(0, w - 1);
     std::uniform_int_distribution<> hrd(0, h - 1);
-    int minepld = 0, i = 0;
+    int i = 0;
     do {
       int wl, hl;
       do {
@@ -603,7 +603,6 @@ void saol() {
         hl = hrd(gen);
       } while (minemap[hl][wl] == '*');
       minemap[hl][wl] = '*';
-      ++ls;
       ++i;
     } while (i < Minecou);
   }
@@ -623,14 +622,15 @@ void saol() {
       printf("\n");
     }
     i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-    for (char &tx : minemap[i]) {
-      printf(". ");
+    for (int i = 0; i < h; ++i) {
+      for (int j = 0; j < w; ++j) {
+        printf(". ");
+      }
+      printf("\n");
     }
-    printf("\n");
   }
   do {
     tg = true;
-    tgcs = 0;
     int ww, hh;
     printf("请输入你要扫的坐标的所属列: ");
     scanf("%d", &ww);
