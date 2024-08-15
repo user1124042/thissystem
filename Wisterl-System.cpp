@@ -610,7 +610,7 @@ void saol() {
   puts("当前地图:");
   for (int i = 0; i < h; ++i) {
     if (i == 0) {
-      printf("   ");
+      printf("0  ");
       for (int j = 1; j < w + 1; ++j) {
         printf("%d ", j);
       }
@@ -622,26 +622,29 @@ void saol() {
       printf("\n");
     }
     i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-    for (int i = 0; i < h; ++i) {
-      for (int j = 0; j < w; ++j) {
-        printf(". ");
-      }
-      printf("\n");
+    for (int j = 0; j < w; ++j) {
+      printf(". ");
     }
+    printf("\n");
   }
   do {
     tg = true;
     int ww, hh;
+    Input:
     printf("请输入你要扫的坐标的所属列: ");
     scanf("%d", &ww);
     printf("请输入你要扫的坐标的所属行: ");
     scanf("%d", &hh);
+    if (ww > w || hh > h) {
+      printf("错误: 坐标系过大\n");
+      goto Input;
+    }
     if (minemap[ww - 1][hh - 1] != '*') {
       minemap[ww - 1][hh - 1] = '1';
       printf("你很幸运 没中雷\n");
       for (int i = 0; i < h; ++i) {
         if (i == 0) {
-          printf("   ");
+          printf("0  ");
           for (int j = 1; j < w + 1; ++j) {
             printf("%d ", j);
           }
@@ -680,7 +683,7 @@ void saol() {
     printf("BOOM! 你中雷了\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-        printf("   ");
+        printf("0  ");
         for (int j = 1; j < w + 1; ++j) {
           printf("%d ", j);
         }
@@ -703,7 +706,7 @@ void saol() {
     printf("恭喜你成功通关\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-        printf("   ");
+        printf("0  ");
         for (int j = 1; j < w + 1; ++j) {
           printf("%d ", j);
         }
