@@ -653,7 +653,7 @@ void saol() {
           printf("\n");
         }
         i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-        for (char &tx : minemap[i]) {
+        for (auto &tx : minemap[i]) {
           if (tx == '1')
             printf("1 ");
           else
@@ -665,8 +665,8 @@ void saol() {
       cail = true;
       break;
     }
-    for (char &rw : minemap) {
-      for (char tx : rw) {
+    for (auto &rw : minemap) {
+      for (auto tx : rw) {
         if (tx == '.') {
           tg = false;
           break;
@@ -692,7 +692,7 @@ void saol() {
         printf("\n");
       }
       i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-      for (char &tx : minemap[i]) {
+      for (auto &tx : minemap[i]) {
         printf("%c ", tx);
       }
       printf("\n");
@@ -715,7 +715,7 @@ void saol() {
         printf("\n");
       }
       i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-      for (char &tx : minemap[i]) {
+      for (auto &tx : minemap[i]) {
         printf("%c ", tx);
       }
       printf("\n");
