@@ -217,7 +217,9 @@ void bd() {
   OpenWeb("https://www.baidu.com/");
   return;
 }
+
 void ahaoj() { OpenWeb("https://www.acoj.com"); }
+
 void text() {
   printf("刷题时间到了，刷题吧！\n");
   std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -229,15 +231,17 @@ void text() {
 
   return;
 }
+
 char *nowtm() {
-  auto time = std::chrono::system_clock::now();
+  std::chrono::time_point time = std::chrono::system_clock::now();
   time_t nowtime = std::chrono::system_clock::to_time_t(time);
-  auto locate = localtime(&nowtime);
+  struct tm *locate = localtime(&nowtime);
   static char crte[9];
   sprintf(crte, "%02d:%02d:%02d", locate->tm_hour, locate->tm_min,
           locate->tm_sec);
   return crte;
 }
+
 void presenter() {
   printf("朋友们大家好，现在的时间是: %s", nowtm());
   puts("");
@@ -246,6 +250,7 @@ void presenter() {
   OpenWeb("https://www.luogu.com.cn/team/71582");
   return;
 }
+
 void ziyanfa() {
   printf("您已进入自研发解析\n");
   puts("名：TbS-FXS-endsts");
@@ -275,6 +280,7 @@ void ziyanfa() {
     return;
   }
 }
+
 void downcpp() {
   // puts("来来来，下c++载来！");
   printf("\n有四种选择:\n1. 下载DevC++(很老并且已停止更新的自带Mingw的IDE)\n2. "
@@ -320,23 +326,27 @@ void downcpp() {
   // OpenWeb("https://www.onlinedown.net/soft/9500.htm");
   return;
 }
+
 void chinajy() {
   puts("国家云教育平台");
   std::this_thread::sleep_for(std::chrono::seconds(2));
   OpenWeb("https://basic.smartedu.cn/");
   return;
 }
+
 void funnyth() {
   printf("神奇的事情");
   std::this_thread::sleep_for(std::chrono::seconds(2));
   OpenWeb("https://www.lglg.top/61884");
   return;
 }
+
 void codeforces() {
   printf("CODEFORCES----百万编程人士的信赖");
   OpenWeb("https://www.codeforces.com/");
   return;
 }
+
 void game() {
   Prints("想玩游戏了吗？和我来吧！", 50);
   printf("网友自制minecraft");
@@ -347,6 +357,7 @@ void game() {
   // puts("哎呦我，老得劲了！！"); sunyuhao你这写的太抽象了吧 --- 某A
   return;
 }
+
 void gametwo() {
   Prints("轻松时刻-------游戏时刻\n", 300);
   // system("echo google小恐龙在线版本！！！"); 666
@@ -406,10 +417,12 @@ void cpu() {
   printf("ip地址：%d.%d.%d.%d\n", dis3(gen), dis3(gen), dis4(gen), dis4(gen));
   return;
 }
+
 void copyright() {
   puts("Copyright by sunyuhao and alanbecker C");
   return;
 }
+
 void input_zll() {
   puts("智能指令开启网站！！！");
   puts("输入");
@@ -420,6 +433,7 @@ void input_zll() {
   // cin.getline(str2,1024);//读入char数组
   return;
 }
+
 void catstore() {
   puts("由于技术原因，个人商店暂不支持在该版本上使用，只能用淘宝，望见谅。");
   puts("");
@@ -446,6 +460,7 @@ void kfcid() {
   // 500);
   return;
 }
+
 void fy() {
   puts("Deepl翻译------难题翻译我最行！");
   OpenWeb("https://www.deepl.com/");
@@ -453,6 +468,7 @@ void fy() {
   Prints("666666666666666666666", 200);
   return;
 }
+
 void address() {
   puts("We are in:");
   puts("中国辽宁省阜新市海州区中华路129-2-206科技有限公司");
@@ -472,12 +488,14 @@ void state() {
   printf("ROM使用率: %d", rand() % 5);
   return;
 }
+
 void prog() {
   puts("好用的在线编译网站--Programiz");
   std::this_thread::sleep_for(std::chrono::seconds(3));
   OpenWeb("https://www.programiz.com/");
   return;
 }
+
 void update() {
   puts("2023-12-23 1.0.0 梦开始的地方");
   puts("2023-12-24 1.0.1 更改了开场动画，增加了进度条，开始写了第一条命令");
@@ -578,12 +596,12 @@ void looking() {
 void saol() {
   printf("编写者： BlocksFunction\n");
   bool tg = false;
-  int w, h, m, ls, al, tgcs = 0;
+  int w, h = 0;
   printf("请输入行数: ");
   scanf("%d", &w);
   printf("请输入列数: ");
   scanf("%d", &h);
-  char minemap[h][w];
+  std::vector<std::vector<char>> minemap(h, std::vector<char>(w));
   for (int i = 0; i < h; ++i) {
     for (int j = 1; j < w + 1; ++j) {
       minemap[i][j] = '.';
@@ -595,7 +613,7 @@ void saol() {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> wrd(0, w - 1);
     std::uniform_int_distribution<> hrd(0, h - 1);
-    int minepld = 0, i = 0;
+    int i = 0;
     do {
       int wl, hl;
       do {
@@ -603,7 +621,6 @@ void saol() {
         hl = hrd(gen);
       } while (minemap[hl][wl] == '*');
       minemap[hl][wl] = '*';
-      ++ls;
       ++i;
     } while (i < Minecou);
   }
@@ -611,7 +628,7 @@ void saol() {
   puts("当前地图:");
   for (int i = 0; i < h; ++i) {
     if (i == 0) {
-      printf("   ");
+      printf("0  ");
       for (int j = 1; j < w + 1; ++j) {
         printf("%d ", j);
       }
@@ -623,25 +640,29 @@ void saol() {
       printf("\n");
     }
     i + 1 >= 10 ? printf("%d|", i + 1) : printf("%d |", i + 1);
-    for (auto &tx : minemap[i]) {
+    for (int j = 0; j < w; ++j) {
       printf(". ");
     }
     printf("\n");
   }
   do {
     tg = true;
-    tgcs = 0;
     int ww, hh;
+    Input:
     printf("请输入你要扫的坐标的所属列: ");
     scanf("%d", &ww);
     printf("请输入你要扫的坐标的所属行: ");
     scanf("%d", &hh);
+    if (ww > w || hh > h) {
+      printf("错误: 坐标系过大\n");
+      goto Input;
+    }
     if (minemap[ww - 1][hh - 1] != '*') {
       minemap[ww - 1][hh - 1] = '1';
       printf("你很幸运 没中雷\n");
       for (int i = 0; i < h; ++i) {
         if (i == 0) {
-          printf("   ");
+          printf("0  ");
           for (int j = 1; j < w + 1; ++j) {
             printf("%d ", j);
           }
@@ -666,7 +687,7 @@ void saol() {
       break;
     }
     for (auto &rw : minemap) {
-      for (char tx : rw) {
+      for (auto tx : rw) {
         if (tx == '.') {
           tg = false;
           break;
@@ -680,7 +701,7 @@ void saol() {
     printf("BOOM! 你中雷了\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-        printf("   ");
+        printf("0  ");
         for (int j = 1; j < w + 1; ++j) {
           printf("%d ", j);
         }
@@ -703,7 +724,7 @@ void saol() {
     printf("恭喜你成功通关\n");
     for (int i = 0; i < h; ++i) {
       if (i == 0) {
-        printf("   ");
+        printf("0  ");
         for (int j = 1; j < w + 1; ++j) {
           printf("%d ", j);
         }
@@ -908,6 +929,7 @@ void qwbd() {
     }
   }
 }
+
 void sd() {
   puts("苏达办公------线上工具");
   OpenWeb("bangong.360.cn/index.html#");
@@ -954,6 +976,7 @@ void pblktct() {
   puts("Copyright by Wisterl C");
   return;
 }
+
 void look() {
   puts("浏览");
   std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -994,6 +1017,7 @@ void kkk() {
   OpenWeb("https://www.bilibili.com"); // 建议Bilibili
   return;
 }
+
 void ybt() {
 
   puts("信息学奥赛在线练习网站！！！");
@@ -1026,12 +1050,14 @@ void ys() {
   OpenWeb("https://mail.163.com/");
   return;
 }
+
 void ajy() {
   puts("想刷剧了吗？来爱奇艺吧！");
   std::this_thread::sleep_for(std::chrono::seconds(1));
   OpenWeb("https://www.iqiyi.com/ ");
   return;
 }
+
 void jjxrb() {
   // puts("狙击小日本无敌版！");
   std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -1280,7 +1306,7 @@ struct CommandStruct {
                  {game, "game"},
                  {jjxrb, "jjxrb"},
                  {looking, "looking"},
-                 {fy, "sllfy"},
+                 {fy, "deplfy"},
                  {chinajy, "cnjy"},
                  {leetcode, "leetcode"},
                  {sd, "sd"},
@@ -1405,7 +1431,6 @@ int main() {
     std::this_thread::sleep_for(std::chrono::seconds(1));
     printf("\a");
     clr();
-
     for (size_t i = 0; i < 13; ++i) {
       putchar("loading......"[i]);
       std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -1453,7 +1478,7 @@ int main() {
     puts("jjxrb············ 狙击小日本");
     puts("jd··············京东");
     puts("qq··············腾讯网");
-    puts("sllfy············ Deepl翻译");
+    puts("deplfy············ Deepl翻译");
     puts("CPS············· CPS测试");
     puts("ML··············未来信箱");
     puts("hzhz·············Hydro Online Judge");
