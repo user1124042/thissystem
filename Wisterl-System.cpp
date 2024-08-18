@@ -374,7 +374,7 @@ void txt() {
   std::this_thread::sleep_for(std::chrono::seconds(1));
   printf("\033[2J\033[1;1H");
   printf("这是一个文本自由写作器，可以在这里写作，最后要敲'|'+ enter结束\n");
-  char all[999999];
+  char all[999999] = "";
   char *totext = all;
   char c;
   while ((c = fgetc(stdin)) != EOF) {
@@ -648,7 +648,7 @@ void saol() {
   do {
     tg = true;
     int ww, hh;
-    Input:
+  Input:
     printf("请输入你要扫的坐标的所属列: ");
     scanf("%d", &ww);
     printf("请输入你要扫的坐标的所属行: ");
@@ -1073,10 +1073,7 @@ void printf_blue(const char *s) {
   putchar('3');
   putchar('4');
   putchar('m');
-  while (*s != '\0') {
-    putchar(*s);
-    s++;
-  }
+  Prints(s, 5);
   putchar('\033');
   putchar('[');
   putchar('0');
@@ -1091,9 +1088,18 @@ void printf_green(const char *s) {
   putchar('3');
   putchar('2');
   putchar('m');
-  while (*s != '\0') {
-    putchar(*s);
-    s++;
+  if (strcmp(s, "Wake up.\n") != 0) {
+    Prints(s, 5);
+  } else {
+    Prints("W", 100);
+    Prints("a", 150);
+    Prints("k", 200);
+    Prints("e", 250);
+    Prints(" ", 300);
+    Prints("u", 350);
+    Prints("p", 400);
+    Prints(".", 450);
+    printf("\n");
   }
   putchar('\033');
   putchar('[');
@@ -1131,9 +1137,9 @@ void Minecraft_End_Poem() {
   printf_green("Hah, the original interface. A million years old, and it still "
                "works. But what true structure did this player create, in the "
                "reality behind the screen?\n");
-  printf_green("It worked, with a million others, to sculpt a true world in a "
-               "fold of\n");
-  printf_blue("the <Error> and created a <Error> for <Error> in the <Error>\n");
+  printf_blue(
+      "It worked, with a million others, to sculpt a true world in a "
+      "fold of the <Error> and created a <Error> for <Error> in the <Error>\n");
   printf_green("It cannot read that thought.\n");
   printf_blue(
       "No. It has not yet achieved the highest level. That, it must achieve in "
@@ -1348,7 +1354,8 @@ int main() {
   scanf("%s %s", qaz, wsx);
   if ((strcmp(qaz, "Ed_Wis_gfzh") == 0 && strcmp(wsx, "gh5ter") == 0) ||
       strcmp(qaz, "Guest") == 0) {
-    if (fopen("username.list", "r") == NULL) {
+    FILE *isopen = fopen("username.list", "r");
+    if (isopen == NULL) {
       printf("请输入账户名: ");
       Clearce();
       scanf("%[^\n]", username);
@@ -1369,7 +1376,6 @@ int main() {
       }
       fclose(file);
     }
-
     clr();
     puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
     std::this_thread::sleep_for(std::chrono::seconds(5));
