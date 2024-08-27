@@ -16,7 +16,7 @@ const char cpu_xhcore[12][11] = {"Core",       "Atom",     "Celeron", "Pentium",
                                  "Xeon",       "Athlon",   "Sempron", "Sempron",
                                  "Snapdragon", "Scorpion", "Krait",   "Grace"};
 class Username_or_password_is_incorrect : public std::exception {
-  virtual const char *what() const throw() {
+  virtual const char *what() const noexcept override {
     return "错误: 用户名或密码不正确";
   }
 } PasswordorUsernameError; // Password or Username not right
@@ -1345,7 +1345,6 @@ struct CommandStruct {
                  {Minecraft_End_Poem, "MC_End_Poem"},
                  {saol, "sao"},
                  {qwbd, "qwbd"}};
-
 int main() {
   setbuf(stdout, NULL);
   puts("请您先登陆");
