@@ -1097,7 +1097,7 @@ void printf_green(const char *s) {
     Prints(" ", 300);
     Prints("u", 350);
     Prints("p", 400);
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     Prints(".", 450);
     printf("\n");
   }
