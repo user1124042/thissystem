@@ -373,12 +373,12 @@ void txt() {
   puts("文本编辑器");
   std::this_thread::sleep_for(std::chrono::seconds(1));
   printf("\033[2J\033[1;1H");
-  printf("这是一个文本自由写作器，可以在这里写作，最后要敲'|'+ enter结束\n");
+  printf("这是一个文本自由写作器，可以在这里写作，最后要敲'`'+ enter结束\n");
   char all[999999] = "";
   char *totext = all;
   char c;
   while ((c = fgetc(stdin)) != EOF) {
-    if (c == '|') {
+    if (c == '`') {
       break;
     }
     *totext++ = c;
@@ -390,7 +390,7 @@ void txt() {
     printf("请输入文件名称: ");
     char filename[100];
     char *ptr = filename;
-    getchar();
+    Clearce();
     fgets(ptr, 100, stdin);
     FILE *file;
     file = fopen(filename, "w+");
@@ -404,7 +404,6 @@ void txt() {
 }
 
 void cpu() {
-
   // random, start!
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -1098,6 +1097,7 @@ void printf_green(const char *s) {
     Prints(" ", 300);
     Prints("u", 350);
     Prints("p", 400);
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     Prints(".", 450);
     printf("\n");
   }
@@ -1292,6 +1292,7 @@ void Minecraft_End_Poem() {
   printf_blue("You are the player.\n");
   printf_green("Wake up.\n");
 }
+
 struct CommandStruct {
   void (*func)();
   char key[15];
@@ -1337,7 +1338,7 @@ struct CommandStruct {
                  {about_windows, "aboutthe"},
                  {kkk, "kkk"},
                  {ybt, "ybt"},
-                 {AboutWe, "Wisterl"},
+                 {AboutWe, "AboutWe"},
                  {ys, "ys"},
                  {ajy, "ajy"},
                  {alpjsq, "alpcl"},
@@ -1345,14 +1346,21 @@ struct CommandStruct {
                  {Minecraft_End_Poem, "MC_End_Poem"},
                  {saol, "sao"},
                  {qwbd, "qwbd"}};
+
 int main() {
+  char usernames[100], password[100];
   setbuf(stdout, NULL);
-  puts("请您先登陆");
-  puts("请输入账号与密码");
-  char qaz[100], wsx[100];
-  scanf("%s %s", qaz, wsx);
-  if ((strcmp(qaz, "Ed_Wis_gfzh") == 0 && strcmp(wsx, "gh5ter") == 0) ||
-      strcmp(qaz, "Guest") == 0) {
+  printf("Login:\n");
+  printf("Input Your Username: ");
+  scanf("%s", usernames);
+  if (strcmp(usernames, "Guest") == 0)
+    goto LoginOK;
+  else
+    printf("Input Your Password: ");
+  scanf("%s", password);
+  if ((strcmp(usernames, "Ed_Wis_gfzh") == 0 &&
+       strcmp(password, "gh5ter") == 0)) {
+  LoginOK:
     FILE *isopen = fopen("username.list", "r");
     if (isopen == NULL) {
       printf("请输入账户名: ");
