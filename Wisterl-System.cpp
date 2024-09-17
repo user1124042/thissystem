@@ -6,10 +6,15 @@
 #include <cstring>
 #include <random>
 #include <thread>
-
+using namespace std;
 // 命令库：清屏：printf("\033[2J\033[1;1H");
 // 等待：sleep();
 // 声音：Beep(频率,时间);
+#ifdef _WIN32
+#warning Sorry, But I Don't like Microsoft Windows System
+#else
+#endif
+
 char username[15];
 const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
 const char cpu_xhcore[12][11] = {"Core",       "Atom",     "Celeron", "Pentium",
@@ -20,7 +25,7 @@ class Username_or_password_is_incorrect : public std::exception {
     return "错误: 用户名或密码不正确";
   }
 } PasswordorUsernameError; // Password or Username not right
-
+// template<>
 void Clearce() { scanf("%*c"); }
 void OpenWeb(const char *url) {
   char command[2][100];
