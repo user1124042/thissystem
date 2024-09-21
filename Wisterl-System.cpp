@@ -1351,7 +1351,7 @@ struct CommandStruct {
                  {qwbd, "qwbd"}};
 
 int main() {
-  char usernames[100], password[100];
+  char *usernames = new char[100], *password = new char[100];
   setbuf(stdout, NULL);
   printf("Login:\n");
   printf("Input Your Username: ");
@@ -1365,16 +1365,34 @@ int main() {
        strcmp(password, "gh5ter") == 0) ||
       (strcmp(usernames, "Universe") == 0 &&
        strcmp(password, "Wakeup,player") == 0)) {
+    delete[] usernames;
+    delete[] password;
   LoginOK:
+    if (strcmp(usernames, "Universe") == 0) {
+      strcpy(username, "World Admin");
+      FILE *file;
+      file = fopen("username.list", "w+");
+      fprintf(file, "World Admin");
+      fclose(file);
+    } else if (strcmp(usernames, "Guest") == 0) {
+      strcpy(username, "Temp User");
+      FILE *file;
+      file = fopen("username.list", "w+");
+      fprintf(file, "Temp User");
+      fclose(file);
+    }
     FILE *isopen = fopen("username.list", "r");
-    if (isopen == NULL && strcmp(usernames, "Guest") != 0 &&
-        strcmp(usernames, "Universe") != 0) {
+    if (isopen == NULL) {
+    InputUserName:
       printf("请输入账户名: ");
       Clearce();
       scanf("%[^\n]", username);
+      if (!strcmp(username, "Admin") || !strcmp(username, "World Admin")) {
+        printf("错误: 不支持的用户名\n");
+        goto InputUserName;
+      }
       FILE *file;
       file = fopen("username.list", "w+");
-      strlen(username) == 0 ? strcpy(username, "Admin") : NULL;
       if (username[0] == '\n')
         fprintf(file, "%s", username + 1);
       else
@@ -1383,21 +1401,18 @@ int main() {
     } else {
       FILE *file;
       file = fopen("username.list", "r");
-      if (fgets(username, 15, file) != NULL &&
-          strcmp("Guest", usernames) != 0 &&
-          strcmp(usernames, "Universe") != 0) {
+      if (fgets(username, 15, file) != NULL) {
         printf("欢迎回来, %s", username);
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-      } else {
-        if (strcmp(usernames, "Universe") == 0)
-          strcpy(usernames, "World Admin"), printf("欢迎回来, World Admin");
-        else
-          printf("欢迎回来, Guest");
         std::this_thread::sleep_for(std::chrono::seconds(2));
       }
       fclose(file);
     }
     clr();
+    //}
+    // if (!strcmp(usernames, "Universe")) {printf("欢迎回来, World
+    // Admin");std::this_thread::sleep_for(std::chrono::seconds(2));clr();}
+    //   else if (!strcmp(usernames, "Guest")) {printf("欢迎回来,
+    //   Admin");std::this_thread::sleep_for(std::chrono::seconds(2));clr();}
     puts("为防止屏幕太小而导致您的体验结果，请放大屏幕");
     std::this_thread::sleep_for(std::chrono::seconds(5));
     srand(time(0));
@@ -1518,7 +1533,8 @@ int main() {
     bool isfound = false;
     while (1) {
       isfound = false;
-      printf("Wisterl20.0.0>> ");
+      printf("╭─Wisterl Shell at %s ─╮\n", nowtm());
+      printf("╰─ ");                                                                                                                                                                      
       Clearce();
       scanf("%s", command);
       for (int i = 0; i < 46; ++i) {
