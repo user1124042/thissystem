@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 # set(CMAKE_BUILD_TYPE Release)
 
-add_executable(Wisterl-System Wisterl-System.cpp)
+add_executable(Wisterl-System src/Wisterl-System.cpp)
 
 add_custom_command(TARGET  ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_STRIP} "$<TARGET_FILE:${PROJECT_NAME}>"
