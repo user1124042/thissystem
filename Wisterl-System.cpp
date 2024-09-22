@@ -7,13 +7,6 @@
 #include <random>
 #include <thread>
 using namespace std;
-// 命令库：清屏：printf("\033[2J\033[1;1H");
-// 等待：sleep();
-// 声音：Beep(频率,时间);
-#ifdef _WIN32
-#warning Sorry, But I Don't like Microsoft Windows System
-#else
-#endif
 
 char username[15];
 const char cpu_xh[5][9] = {"Intel", "AMD", "Loongson", "Qualcomm", "NVDIA"};
@@ -1534,7 +1527,7 @@ int main() {
     while (1) {
       isfound = false;
       printf("╭─Wisterl Shell at %s ─╮\n", nowtm());
-      printf("╰─ ");                                                                                                                                                                      
+      printf("╰─ ");
       Clearce();
       scanf("%s", command);
       for (int i = 0; i < 46; ++i) {
