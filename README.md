@@ -1,15 +1,11 @@
-you cant use it with windows7
+I no can do this thing
 
-i no can do this thing
+So, I got a couple people.
 
-so, I got a couple people.
+They and i, we are create this system.
 
-they and i, we are create this system.
+I am very honoured.
 
-i am very honoured.
+So I'm very happy that this system has been able to go from 2023.12.23 to the present
 
-so I'm very happy that this system has been able to go from 2023.12.23 to the present
-
-create...
-
-create...
+Never can't Create...

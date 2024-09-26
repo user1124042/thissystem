@@ -963,7 +963,7 @@ void clr() {
 
 void about_windows() {
   puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-  char os[7][20] = {"Microsoft Windows", "Linux",   "macOS", "Unix", "MS-DOS",
+  const string os[7][20] = {"Microsoft Windows", "Linux",   "macOS", "Unix", "MS-DOS",
                     "FreeBSD",           "TempleOS"};
   // 进入随机数阶段
   std::random_device randev;
@@ -977,10 +977,10 @@ void about_windows() {
   std::uniform_int_distribution<> dis7(1, 6);
   std::uniform_int_distribution<> dis8(0, 999999);
   // ends
-  printf("建议运行系统：%s %d\n", os[dis(gen)], dis8(gen));
+  printf("建议运行系统：%s %d\n", os[dis(gen)]->c_str(), dis8(gen));
   printf("建议运行CPU: %s %s\n", cpu_xh[dis2(gen)].c_str(),
          cpu_xhcore[dis3(gen)].c_str());
-  printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)]);
+  printf("系统类别：基于%s 的指令操作系统\n", os[dis(gen)]->c_str());
   return;
 }
 
