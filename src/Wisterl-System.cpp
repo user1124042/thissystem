@@ -1032,7 +1032,7 @@ void hzhz() {
 void kkk() {
   puts("累了吗？刷会视频吧！");
   std::this_thread::sleep_for(std::chrono::seconds(1));
-  OpenWeb("https://www.bilibili.com"); // 建议Bilibili
+  OpenWeb("https://www.bilibili.com");
   return;
 }
 
@@ -1561,20 +1561,20 @@ int main() {
     clr();
     // help();
     comMap["help"]();
-    char command[15];
+    string command;
     bool isfound = false;
     while (1) {
       isfound = false;
       printf("╭─Wisterl Shell at %s ─╮\n", nowtm());
       printf("╰─ ");
       Clearce();
-      scanf("%s", command);
+      strscanf(command);
       if (comMap.find(command) != comMap.end()) {
         isfound = true;
         comMap[command]();
         Clearce();
       } else
-        printf("错误： %s 不是一个有效的命令\n", command);
+        printf("错误： %s 不是一个有效的命令\n", command.c_str());
     }
     printf("\033[1;37m");
     Prints("MADE IN CHINA,BAIGEPING", 75);
