@@ -24,9 +24,9 @@ void Clearce() {
   setbuf(stdin, NULL);
   setbuf(stdout, NULL);
 }
-auto strscanf(string &str) -> void {
+auto strscanf(string &str, char stopt = '\n') -> void {
   char temp;
-  while ((temp = getchar()) != '\n')
+  while ((temp = getchar()) != stopt)
     str += temp;
   Clearce();
   return;
@@ -390,30 +390,22 @@ void txt() {
   std::this_thread::sleep_for(std::chrono::seconds(1));
   printf("\033[2J\033[1;1H");
   printf("这是一个文本自由写作器，可以在这里写作，最后要敲'`'+ enter结束\n");
-  char all[999999] = "";
-  char *totext = all;
-  char c;
-  while ((c = fgetc(stdin)) != EOF) {
-    if (c == '`') {
-      break;
-    }
-    *totext++ = c;
-  }
+  string totext;
+  strscanf(totext, '`');
   printf("是否要保存[y/n]: ");
   getchar();
   char yon = getchar();
   if (yon == 'y') {
     printf("请输入文件名称: ");
-    char filename[100];
-    char *ptr = filename;
-    Clearce();
-    fgets(ptr, 100, stdin);
+    string filename;
+    getchar();
+    strscanf(filename);
     FILE *file;
-    file = fopen(filename, "w+");
-    if (all[0] == '\n')
-      fprintf(file, "%s", all + 1);
+    file = fopen(filename.c_str(), "w+");
+    if (totext[0] == '\n')
+      fprintf(file, "%s", totext.c_str() + 1);
     else
-      fprintf(file, "%s", all);
+      fprintf(file, "%s", totext.c_str());
     fclose(file);
   }
   return;
@@ -442,9 +434,9 @@ void copyright() {
 void input_zll() {
   puts("智能指令开启网站！！！");
   puts("输入");
-  char url[1000];
-  scanf("%s", url);
-  OpenWeb(url);
+  string url;
+  strscanf(url);
+  OpenWeb(url.c_str());
   //	char str2[1024];
   // cin.getline(str2,1024);//读入char数组
   return;
@@ -963,8 +955,9 @@ void clr() {
 
 void about_windows() {
   puts("我们的系统搞笑又高效，可以从各种条件下运行！为编程人士打造的题库系统");
-  const string os[7][20] = {"Microsoft Windows", "Linux",   "macOS", "Unix", "MS-DOS",
-                    "FreeBSD",           "TempleOS"};
+  const string os[7][20] = {
+      "Microsoft Windows", "Linux",   "macOS", "Unix", "MS-DOS",
+      "FreeBSD",           "TempleOS"};
   // 进入随机数阶段
   std::random_device randev;
   std::mt19937 gen(randev());
@@ -1441,12 +1434,12 @@ int main() {
     printf("Input Your Password: ");
   strscanf(*password);
   allx(password);
-  for (auto i : userp)
-    if (i.first == *usernames && i.second == *password) {
-      NowCan = true;
-      break;
-    }
-  if (NowCan) {
+  // for (auto i : userp)
+  // if (i.first == *usernames && i.second == *password) {
+  // NowCan = true;
+  // break;
+  // }
+  if (userp.find(*usernames) != userp.end() && userp[*usernames] == *password) {
   LoginOK:
     if (*usernames == "UNIVERSE") {
       strcpy(username, "World Admin");
@@ -1575,6 +1568,7 @@ int main() {
         Clearce();
       } else
         printf("错误： %s 不是一个有效的命令\n", command.c_str());
+      command.clear();
     }
     printf("\033[1;37m");
     Prints("MADE IN CHINA,BAIGEPING", 75);
