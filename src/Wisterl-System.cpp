@@ -1565,16 +1565,13 @@ int main() {
     // help();
     comMap["help"]();
     string *command = new string;
-    bool isfound = false;
     while (1) {
-      isfound = false;
       printf("╭─Wisterl Shell at %s ─╮\n", nowtm());
       printf("╰─ ");
       Clearce();
       strscanf(*command);
       allx(command);
       if (comMap.find(*command) != comMap.end()) {
-        isfound = true;
         comMap[*command]();
         Clearce();
       } else
