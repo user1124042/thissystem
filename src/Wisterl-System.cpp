@@ -21,8 +21,8 @@ class Username_or_password_is_incorrect : public std::exception {
 } PasswordorUsernameError; // Password or Username not right
 
 void Clearce() {
-  setbuf(stdin, NULL);
-  setbuf(stdout, NULL);
+  setbuf(stdin, nullptr);
+  setbuf(stdout, nullptr);
 }
 auto strscanf(string &str, char stopt = '\n') -> void {
   char temp;
@@ -201,7 +201,7 @@ void CPS() {
   return;
 }
 void mail() {
-  setvbuf(stdin, NULL, _IONBF, 0);
+  setvbuf(stdin, nullptr, _IONBF, 0);
   puts("你自己的未来信箱");
   char name[20], things[50], fut[100];
   int yesorno;
@@ -1121,7 +1121,7 @@ void printf_green(const char *s) {
 
 void Minecraft_End_Poem() {
   const char *name = username;
-  std::mt19937 gen(static_cast<unsigned int>(std::time(NULL)));
+  std::mt19937 gen(static_cast<unsigned int>(std::time(nullptr)));
   std::uniform_int_distribution<> dis(33, 126);
   std::uniform_int_distribution<> dis1(1, 10);
   printf("\n");
@@ -1424,7 +1424,7 @@ int main() {
   // End Init
   string *usernames = new string, *password = new string;
   bool NowCan = false;
-  setbuf(stdout, NULL);
+  setbuf(stdout, nullptr);
   printf("Login:\n");
   printf("Input Your Username: ");
   strscanf(*usernames);
@@ -1456,7 +1456,7 @@ int main() {
     delete usernames;
     delete password;
     FILE *isopen = fopen("username.list", "r");
-    if (isopen == NULL) {
+    if (isopen == nullptr) {
     InputUserName:
       printf("请输入账户名: ");
       Clearce();
@@ -1475,7 +1475,7 @@ int main() {
     } else {
       FILE *file;
       file = fopen("username.list", "r");
-      if (fgets(username, 15, file) != NULL) {
+      if (fgets(username, 15, file) != nullptr) {
         printf("欢迎回来, %s", username);
         std::this_thread::sleep_for(std::chrono::seconds(2));
       }
