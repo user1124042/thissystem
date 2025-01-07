@@ -1,0 +1,7 @@
+.idea/
+.vscode/
+.xmake/
+build/
+cmake-build-debug/
+test.cpp
+Wisterl-System.cpp
