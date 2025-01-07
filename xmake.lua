@@ -1,4 +1,7 @@
 add_rules("mode.debug", "mode.release")
+set_toolchains("llvm")
+add_cxxflags("-std=c++26")
+set_languages("c++26")
 
 target("Wisterl")
     set_kind("binary")
