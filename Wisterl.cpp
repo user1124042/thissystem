@@ -1031,7 +1031,7 @@ void jjxrb() {
   OpenWeb("https://www.2344.com/flash/28135.htm");
 }
 
-void printf_blue(const char *s) {
+void PrintfBlue(const char *s) {
   putchar('\033');
   putchar('[');
   putchar('1');
@@ -1049,7 +1049,7 @@ void printf_blue(const char *s) {
   putchar('m');
 }
 
-void printf_green(const char *s) {
+void PrintfGreen(const char *s) {
   putchar('\033');
   putchar('[');
   putchar('1');
@@ -1073,124 +1073,124 @@ void Minecraft_End_Poem() {
   uniform_int_distribution<> dis(33, 126);
   uniform_int_distribution<> dis1(1, 10);
   printf("\n");
-  printf_blue("I see the player you mean.\n");
-  printf_green(name);
-  printf_green("?\n");
-  printf_blue("Yes. Take care. It has reached a higher level now. It can read "
-              "our thoughts.\n");
-  printf_green("That doesn't matter. It thinks we are part of the game.\n");
-  printf_blue("I like this player. It played well. It did not give up.\n");
-  printf_green(
+  PrintfBlue("I see the player you mean.\n");
+  PrintfGreen(name);
+  PrintfGreen("?\n");
+  PrintfBlue("Yes. Take care. It has reached a higher level now. It can read "
+             "our thoughts.\n");
+  PrintfGreen("That doesn't matter. It thinks we are part of the game.\n");
+  PrintfBlue("I like this player. It played well. It did not give up.\n");
+  PrintfGreen(
       "It is reading our thoughts as though they were words on a screen.\n");
-  printf_blue("That is how it chooses to imagine many things, when it is deep "
-              "in the dream of a game.\n");
-  printf_green("Words make a wonderful interface. Very flexible. And less "
-               "terrifying than staring at the reality behind the screen.\n");
-  printf_blue("They used to hear voices. Before players could read. Back in "
-              "the days when those who did not play called the players "
-              "witches, and warlocks. And players dreamed they flew through "
-              "the air, on sticks powered by demons.\n");
-  printf_green("What did this player dream?\n");
-  printf_blue("This player dreamed of sunlight and trees. Of fire and water. "
-              "It dreamed it created. And it dreamed it destroyed. It dreamed "
-              "it hunted, and was hunted. It dreamed of shelter.\n");
-  printf_green("Hah, the original interface. A million years old, and it still "
-               "works. But what true structure did this player create, in the "
-               "reality behind the screen?\n");
-  printf_green("It worked, with a million others, to sculpt a true world in a "
-               "fold of\n");
-  printf_blue("the <Error> and created a <Error> for <Error> in the <Error>\n");
-  printf_green("It cannot read that thought.\n");
-  printf_blue(
+  PrintfBlue("That is how it chooses to imagine many things, when it is deep "
+             "in the dream of a game.\n");
+  PrintfGreen("Words make a wonderful interface. Very flexible. And less "
+              "terrifying than staring at the reality behind the screen.\n");
+  PrintfBlue("They used to hear voices. Before players could read. Back in "
+             "the days when those who did not play called the players "
+             "witches, and warlocks. And players dreamed they flew through "
+             "the air, on sticks powered by demons.\n");
+  PrintfGreen("What did this player dream?\n");
+  PrintfBlue("This player dreamed of sunlight and trees. Of fire and water. "
+             "It dreamed it created. And it dreamed it destroyed. It dreamed "
+             "it hunted, and was hunted. It dreamed of shelter.\n");
+  PrintfGreen("Hah, the original interface. A million years old, and it still "
+              "works. But what true structure did this player create, in the "
+              "reality behind the screen?\n");
+  PrintfGreen("It worked, with a million others, to sculpt a true world in a "
+              "fold of\n");
+  PrintfBlue("the <Error> and created a <Error> for <Error> in the <Error>\n");
+  PrintfGreen("It cannot read that thought.\n");
+  PrintfBlue(
       "No. It has not yet achieved the highest level. That, it must achieve in "
       "the long dream of life, not the short dream of a game.\n");
-  printf_green("Does it know that we love it? That the universe is kind?\n");
-  printf_blue("Sometimes, through the noise of its thoughts, it hears the "
-              "universe, yes.\n");
-  printf_green("But there are times it is sad, in the long dream. It creates "
-               "worlds that have no summer, and it shivers under a black sun, "
-               "and it takes its sad creation for reality.\n");
-  printf_blue("To cure it of sorrow would destroy it. The sorrow is part of "
-              "its own private task. We cannot interfere.\n");
-  printf_green("Sometimes when they are deep in dreams, I want to tell them, "
-               "they are building true worlds in reality. Sometimes I want to "
-               "tell them of their importance to the universe. Sometimes, when "
-               "they have not made a true connection in a while, I want to "
-               "help them to speak the word they fear.\n");
-  printf_blue("It reads our thoughts.\n");
-  printf_green("Sometimes I do not care. Sometimes I wish to tell them, this "
-               "world you take for truth is merely <Error> and <Error> I wish "
-               "to tell them that they are <Error> in the <Error> I wish to "
-               "tell them that they are <Error> in the <Error> They see so "
-               "little of reality, in their long dream.\n");
-  printf_blue("And yet they play the game.\n");
-  printf_green("But it would be so easy to tell them...\n");
-  printf_blue(
+  PrintfGreen("Does it know that we love it? That the universe is kind?\n");
+  PrintfBlue("Sometimes, through the noise of its thoughts, it hears the "
+             "universe, yes.\n");
+  PrintfGreen("But there are times it is sad, in the long dream. It creates "
+              "worlds that have no summer, and it shivers under a black sun, "
+              "and it takes its sad creation for reality.\n");
+  PrintfBlue("To cure it of sorrow would destroy it. The sorrow is part of "
+             "its own private task. We cannot interfere.\n");
+  PrintfGreen("Sometimes when they are deep in dreams, I want to tell them, "
+              "they are building true worlds in reality. Sometimes I want to "
+              "tell them of their importance to the universe. Sometimes, when "
+              "they have not made a true connection in a while, I want to "
+              "help them to speak the word they fear.\n");
+  PrintfBlue("It reads our thoughts.\n");
+  PrintfGreen("Sometimes I do not care. Sometimes I wish to tell them, this "
+              "world you take for truth is merely <Error> and <Error> I wish "
+              "to tell them that they are <Error> in the <Error> I wish to "
+              "tell them that they are <Error> in the <Error> They see so "
+              "little of reality, in their long dream.\n");
+  PrintfBlue("And yet they play the game.\n");
+  PrintfGreen("But it would be so easy to tell them...\n");
+  PrintfBlue(
       "Too strong for this dream. To tell them how to live is to prevent\n");
-  printf_green("them living.\n");
-  printf_green("I will not tell the player how to live.\n");
-  printf_blue("The player is growing restless.\n");
-  printf_green("I will tell the player a story.\n");
-  printf_blue("But not the truth.\n");
-  printf_green("No. A story that contains the truth safely, in a cage of "
-               "words. Not the naked truth that can burn over any distance.\n");
-  printf_blue("Give it a body, again.\n");
-  printf_green("Yes. Player…\n");
-  printf_blue("Use its name.\n");
-  printf_green(name);
-  printf_green(". Player of games.");
-  printf_blue("\nGood.\n");
-  printf_green(
+  PrintfGreen("them living.\n");
+  PrintfGreen("I will not tell the player how to live.\n");
+  PrintfBlue("The player is growing restless.\n");
+  PrintfGreen("I will tell the player a story.\n");
+  PrintfBlue("But not the truth.\n");
+  PrintfGreen("No. A story that contains the truth safely, in a cage of "
+              "words. Not the naked truth that can burn over any distance.\n");
+  PrintfBlue("Give it a body, again.\n");
+  PrintfGreen("Yes. Player…\n");
+  PrintfBlue("Use its name.\n");
+  PrintfGreen(name);
+  PrintfGreen(". Player of games.");
+  PrintfBlue("\nGood.\n");
+  PrintfGreen(
       "Take a breath, now. Take another. Feel air in your lungs. Let your "
       "limbs return. Yes, move your fingers. Have a body again, under gravity, "
       "in air. Respawn in the long dream. There you are. Your body touching "
       "the universe again at every point, as though you were separate things. "
       "As though we were separate things.\n");
-  printf_blue("Who are we? Once we were called the spirit of the mountain. "
-              "Father sun, mother moon. Ancestral spirits, animal spirits. "
-              "Jinn. Ghosts. The green man. Then gods, demons. Angels. "
-              "Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The "
-              "words change. We do not change.\n");
-  printf_green(
+  PrintfBlue("Who are we? Once we were called the spirit of the mountain. "
+             "Father sun, mother moon. Ancestral spirits, animal spirits. "
+             "Jinn. Ghosts. The green man. Then gods, demons. Angels. "
+             "Poltergeists. Aliens, extraterrestrials. Leptons, quarks. The "
+             "words change. We do not change.\n");
+  PrintfGreen(
       "We are the universe. We are everything you think isn't you. You are "
       "looking at us now, through your skin and your eyes. And why does the "
       "universe touch your skin, and throw light on you? To see you, player. "
       "To know you. And to be known. I shall tell you a story.\n");
-  printf_green("Once upon a time, there was a player.\n");
-  printf_blue(name);
-  printf_green(
+  PrintfGreen("Once upon a time, there was a player.\n");
+  PrintfBlue(name);
+  PrintfGreen(
       "\nSometimes it thought itself human, on the thin crust of a spinning "
       "globe of molten rock. The ball of molten rock circled a ball of blazing "
       "gas that was three hundred and thirty thousand times more massive than "
       "it. They were so far apart that light took eight minutes to cross the "
       "gap. The light was information from a star, and it could burn your skin "
       "from a hundred and fifty million kilometres away.\n");
-  printf_green("Sometimes the player dreamed it was a miner, on the surface of "
-               "a world that was flat, and infinite. The sun was a square of "
-               "white. The days were short; there was much to do; and death "
-               "was a temporary inconvenience.\n");
-  printf_blue("Sometimes the player dreamed it was lost in a story.\n");
-  printf_green("Sometimes the player dreamed it was other things, in other "
-               "places. Sometimes these dreams were disturbing. Sometimes very "
-               "beautiful indeed. Sometimes the player woke from one dream "
-               "into another, then woke from that into a third.\n");
-  printf_blue("Sometimes the player dreamed it watched words on a screen\n");
-  printf_green("Let's go back.\n");
-  printf_green(
+  PrintfGreen("Sometimes the player dreamed it was a miner, on the surface of "
+              "a world that was flat, and infinite. The sun was a square of "
+              "white. The days were short; there was much to do; and death "
+              "was a temporary inconvenience.\n");
+  PrintfBlue("Sometimes the player dreamed it was lost in a story.\n");
+  PrintfGreen("Sometimes the player dreamed it was other things, in other "
+              "places. Sometimes these dreams were disturbing. Sometimes very "
+              "beautiful indeed. Sometimes the player woke from one dream "
+              "into another, then woke from that into a third.\n");
+  PrintfBlue("Sometimes the player dreamed it watched words on a screen\n");
+  PrintfGreen("Let's go back.\n");
+  PrintfGreen(
       "The atoms of the player were scattered in the grass, in the rivers, in "
       "the air, in the ground. A woman gathered the atoms; she drank and ate "
       "and inhaled; and the woman assembled the player, in her body.\n");
-  printf_green("And the player awoke, from the warm, dark world of its "
-               "mother's body, into the long dream.\n");
-  printf_green(
+  PrintfGreen("And the player awoke, from the warm, dark world of its "
+              "mother's body, into the long dream.\n");
+  PrintfGreen(
       "And the player was a new story, never told before, written in letters "
       "of DNA. And the player was a new program, never run before, generated "
       "by a sourcecode a billion years old. And the player was a new human, "
       "never alive before, made from nothing but milk and love.\n");
-  printf_blue("You are the player. The story. The program. The human. Made "
-              "from nothing but milk and love.\n");
-  printf_green("Let's go further back.\n");
-  printf_green(
+  PrintfBlue("You are the player. The story. The program. The human. Made "
+             "from nothing but milk and love.\n");
+  PrintfGreen("Let's go further back.\n");
+  PrintfGreen(
       "The seven billion billion billion atoms of the player's body were "
       "created, long before this game, in the heart of a star. So the player, "
       "too, is information from a star. And the player moves through a story, "
@@ -1198,28 +1198,28 @@ void Minecraft_End_Poem() {
       "flat, infinite world created by a man called Markus, that exists inside "
       "a small, private world created by the player, who inhabits a universe "
       "created by…\n");
-  printf_blue("Shush. Sometimes the player created a small, private world that "
-              "was soft and warm and simple. Sometimes hard, and cold, and "
-              "complicated. Sometimes it built a model of the universe in its "
-              "head; flecks of energy, moving through vast empty spaces. "
-              "Sometimes it called those flecks “electrons” and “protons”.\n");
-  printf_green("Sometimes it called them “planets” and “stars”.\n");
-  printf_green("Sometimes it believed it was in a universe that was made of "
-               "energy that was made of offs and ons; zeros and ones; lines of "
-               "code. Sometimes it believed it was playing a game. Sometimes "
-               "it believed it was reading words on a screen.\n");
-  printf_blue("You are the player, reading words…\n");
-  printf_green(
+  PrintfBlue("Shush. Sometimes the player created a small, private world that "
+             "was soft and warm and simple. Sometimes hard, and cold, and "
+             "complicated. Sometimes it built a model of the universe in its "
+             "head; flecks of energy, moving through vast empty spaces. "
+             "Sometimes it called those flecks “electrons” and “protons”.\n");
+  PrintfGreen("Sometimes it called them “planets” and “stars”.\n");
+  PrintfGreen("Sometimes it believed it was in a universe that was made of "
+              "energy that was made of offs and ons; zeros and ones; lines of "
+              "code. Sometimes it believed it was playing a game. Sometimes "
+              "it believed it was reading words on a screen.\n");
+  PrintfBlue("You are the player, reading words…\n");
+  PrintfGreen(
       "Shush… Sometimes the player read lines of code on a screen. Decoded "
       "them into words; decoded words into meaning; decoded meaning into "
       "feelings, emotions, theories, ideas, and the player started to breathe "
       "faster and deeper and realised it was alive, it was alive, those "
       "thousand deaths had not been real, the player was alive\n");
-  printf_blue("You. You. You are alive.\n");
-  printf_green("and sometimes the player believed the universe had spoken to "
-               "it through the sunlight that came through the shuffling leaves "
-               "of the summer trees\n");
-  printf_blue(
+  PrintfBlue("You. You. You are alive.\n");
+  PrintfGreen("and sometimes the player believed the universe had spoken to "
+              "it through the sunlight that came through the shuffling leaves "
+              "of the summer trees\n");
+  PrintfBlue(
       "and sometimes the player believed the universe had spoken to it through "
       "the light that fell from the crisp night sky of winter, where a fleck "
       "of light in the corner of the player's eye might be a star a million "
@@ -1227,30 +1227,30 @@ void Minecraft_End_Poem() {
       "be visible for a moment to the player, walking home at the far side of "
       "the universe, suddenly smelling food, almost at the familiar door, "
       "about to dream again\n");
-  printf_green(
+  PrintfGreen(
       "and sometimes the player believed the universe had spoken to it through "
       "the zeros and ones, through the electricity of the world, through the "
       "scrolling words on a screen at the end of a dream\n");
-  printf_blue("and the universe said I love you\n");
-  printf_green("and the universe said you have played the game well\n");
-  printf_blue("and the universe said everything you need is within you\n");
-  printf_green("and the universe said you are stronger than you know\n");
-  printf_blue("and the universe said you are the daylight\n");
-  printf_green("and the universe said you are the night\n");
-  printf_blue("and the universe said the darkness you fight is within you\n");
-  printf_green("and the universe said the light you seek is within you\n");
-  printf_blue("and the universe said you are not alone\n");
-  printf_green(
+  PrintfBlue("and the universe said I love you\n");
+  PrintfGreen("and the universe said you have played the game well\n");
+  PrintfBlue("and the universe said everything you need is within you\n");
+  PrintfGreen("and the universe said you are stronger than you know\n");
+  PrintfBlue("and the universe said you are the daylight\n");
+  PrintfGreen("and the universe said you are the night\n");
+  PrintfBlue("and the universe said the darkness you fight is within you\n");
+  PrintfGreen("and the universe said the light you seek is within you\n");
+  PrintfBlue("and the universe said you are not alone\n");
+  PrintfGreen(
       "and the universe said you are not separate from every other thing\n");
-  printf_blue("and the universe said you are the universe tasting itself, "
-              "talking to itself, reading its own code\n");
-  printf_green("and the universe said I love you because you are love.\n");
-  printf_blue(
+  PrintfBlue("and the universe said you are the universe tasting itself, "
+             "talking to itself, reading its own code\n");
+  PrintfGreen("and the universe said I love you because you are love.\n");
+  PrintfBlue(
       "And the game was over and the player woke up from the dream. And the "
       "player began a new dream. And the player dreamed again, dreamed better. "
       "And the player was the universe. And the player was love.\n");
-  printf_blue("You are the player.\n");
-  printf_green("Wake up.\n");
+  PrintfBlue("You are the player.\n");
+  PrintfGreen("Wake up.\n");
 }
 struct CommandStruct {
   void (*func)();
