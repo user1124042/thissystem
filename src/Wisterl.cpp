@@ -582,9 +582,41 @@ void EndPoem() {
   IO::PrintfGreen("Wake up.\n");
 }
 
+// 千万别点
+void DontCLick() {
+  printf("Warning!"
+         "本系统对“千万要点”所造成的bug和对电脑的伤害概不负责，是否继续操作? "
+         "(Y/Y/Y)");
+  char mode;
+  scanf("%c", &mode);
+  if (mode == 'y')
+    for (int i = 0; i < 100; ++i) {
+      for (int j = 0; j < 10; ++j)
+        printf("乐滋");
+      printf("\n");
+    }
+}
+
 // 主函数
 int main() {
-  AddCommand("Hi", EndPoem);
-  RunCommand("Hi");
+  AddCommand("Hi", notes);
+  AddCommand("leetcode", []() -> void {
+    puts("力扣网站-----全世界人(精神病患者)的选择");
+    IO::printfs(
+        "请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生"
+        "使用！！！\n",
+        30);
+    printf("确定？(Y/N)");
+    char c = getchar();
+    IO::ClearCache();
+    if (c == 'Y') {
+      puts("你确定的话，我就不管你了"); // eeeeeeeee6
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      OpenWeb("https://www.leetcode.cn/");
+    } else {
+      return;
+    }
+  });
+  RunCommand("leetcode");
   return 0;
 }
