@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdio>
+#include <file.h>
+#include <io.h>
 #include <map>
 #include <random>
 #include <string>
@@ -13,82 +15,6 @@ std::map<std::string, void (*)()> command;
 std::string username;
 
 // 功能类
-
-namespace IO {
-// 字符串输入
-void scanfs(std::string &str) {
-  char tmp;
-  while ((tmp = static_cast<char>(getchar())) != '\n' && tmp != ' ' &&
-         tmp != EOF)
-    str += tmp;
-}
-
-// 单字符停止
-void scanfA(std::string &str, const char stopChar) {
-  char tmp;
-  while ((tmp = static_cast<char>(getchar())) != stopChar)
-    str += tmp;
-}
-
-// 延迟输出
-void printfs(const std::string &str, double speed) {
-  if (!str.empty()) {
-    for (int i = 0; i < str.length(); ++i) {
-      putchar(str[i]);
-      std::fflush(stdout);
-      std::this_thread::sleep_for(
-          std::chrono::milliseconds(static_cast<int>(speed)));
-    }
-  }
-}
-
-// 清空缓冲区
-void ClearCache() { scanf("%*[^\n]%*c"); }
-
-// 输出颜色
-void PrintfBlue(const std::string &text) {
-  putchar('\033');
-  putchar('[');
-  putchar('1');
-  putchar(';');
-  putchar('3');
-  putchar('4');
-  putchar('m');
-  printfs(text, 5);
-  putchar('\033');
-  putchar('[');
-  putchar('0');
-  putchar('m');
-}
-
-void PrintfGreen(const std::string &text) {
-  putchar('\033');
-  putchar('[');
-  putchar('1');
-  putchar(';');
-  putchar('3');
-  putchar('2');
-  putchar('m');
-  if (text != "Wake up.\n")
-    printfs(text, 5);
-  else {
-    printfs("W", 100);
-    printfs("a", 150);
-    printfs("k", 200);
-    printfs("e", 250);
-    printfs(" ", 300);
-    printfs("u", 350);
-    printfs("p", 400);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    printfs(".", 450);
-    printf("\n");
-  }
-  putchar('\033');
-  putchar('[');
-  putchar('0');
-  putchar('m');
-}
-} // namespace IO
 
 // 打开网页
 void OpenWeb(const std::string &url) {
@@ -113,6 +39,12 @@ void RunCommand(const std::string &name) {
     command[name]();
   } else {
     printf("未找到命令: %s\n", name.c_str());
+  }
+}
+
+void AllToUpper(std::string &str) {
+  for (auto &c : str) {
+    c = static_cast<char>(toupper(c));
   }
 }
 
@@ -216,13 +148,17 @@ void notes() {
     std::string filename;
     getchar();
     IO::scanfA(filename, '\n');
-    if (FILE *file = fopen(filename.c_str(), "w+")) {
-      if (!text.empty() && text[0] == '\n')
-        text.erase(0, text.find_first_not_of('\n'));
-      fprintf(file, "%s", text.c_str());
-      fclose(file);
-    } else {
-      printf("无法打开文件");
+    // if (FILE *file = fopen(filename.c_str(), "w+")) {
+    //   if (!text.empty() && text[0] == '\n')
+    //     text.erase(0, text.find_first_not_of('\n'));
+    //   fprintf(file, "%s", text.c_str());
+    //   fclose(file);
+    // } else {
+    //   printf("无法打开文件");
+    // }
+    File file(filename);
+    if (!file.Write(text)) {
+      printf("无法写入文件\n");
     }
   }
 }
@@ -419,9 +355,9 @@ void EndPoem() {
   IO::PrintfBlue(
       "the <Error> and created a <Error> for <Error> in the <Error>\n");
   IO::PrintfGreen("It cannot read that thought.\n");
-  IO::PrintfBlue(
-      "No. It has not yet achieved the highest level. That, it must achieve in "
-      "the long dream of life, not the short dream of a game.\n");
+  IO::PrintfBlue("No. It has not yet achieved the highest level. That, it "
+                 "must achieve in "
+                 "the long dream of life, not the short dream of a game.\n");
   IO::PrintfGreen("Does it know that we love it? That the universe is kind?\n");
   IO::PrintfBlue("Sometimes, through the noise of its thoughts, it hears the "
                  "universe, yes.\n");
@@ -464,9 +400,11 @@ void EndPoem() {
   IO::PrintfBlue("\nGood.\n");
   IO::PrintfGreen(
       "Take a breath, now. Take another. Feel air in your lungs. Let your "
-      "limbs return. Yes, move your fingers. Have a body again, under gravity, "
+      "limbs return. Yes, move your fingers. Have a body again, under "
+      "gravity, "
       "in air. Respawn in the long dream. There you are. Your body touching "
-      "the universe again at every point, as though you were separate things. "
+      "the universe again at every point, as though you were separate "
+      "things. "
       "As though we were separate things.\n");
   IO::PrintfBlue(
       "Who are we? Once we were called the spirit of the mountain. "
@@ -483,10 +421,13 @@ void EndPoem() {
   IO::PrintfBlue(name);
   IO::PrintfGreen(
       "\nSometimes it thought itself human, on the thin crust of a spinning "
-      "globe of molten rock. The ball of molten rock circled a ball of blazing "
-      "gas that was three hundred and thirty thousand times more massive than "
+      "globe of molten rock. The ball of molten rock circled a ball of "
+      "blazing "
+      "gas that was three hundred and thirty thousand times more massive "
+      "than "
       "it. They were so far apart that light took eight minutes to cross the "
-      "gap. The light was information from a star, and it could burn your skin "
+      "gap. The light was information from a star, and it could burn your "
+      "skin "
       "from a hundred and fifty million kilometres away.\n");
   IO::PrintfGreen(
       "Sometimes the player dreamed it was a miner, on the surface of "
@@ -502,7 +443,8 @@ void EndPoem() {
   IO::PrintfBlue("Sometimes the player dreamed it watched words on a screen\n");
   IO::PrintfGreen("Let's go back.\n");
   IO::PrintfGreen(
-      "The atoms of the player were scattered in the grass, in the rivers, in "
+      "The atoms of the player were scattered in the grass, in the rivers, "
+      "in "
       "the air, in the ground. A woman gathered the atoms; she drank and ate "
       "and inhaled; and the woman assembled the player, in her body.\n");
   IO::PrintfGreen("And the player awoke, from the warm, dark world of its "
@@ -517,10 +459,13 @@ void EndPoem() {
   IO::PrintfGreen("Let's go further back.\n");
   IO::PrintfGreen(
       "The seven billion billion billion atoms of the player's body were "
-      "created, long before this game, in the heart of a star. So the player, "
-      "too, is information from a star. And the player moves through a story, "
+      "created, long before this game, in the heart of a star. So the "
+      "player, "
+      "too, is information from a star. And the player moves through a "
+      "story, "
       "which is a forest of information planted by a man called Julian, on a "
-      "flat, infinite world created by a man called Markus, that exists inside "
+      "flat, infinite world created by a man called Markus, that exists "
+      "inside "
       "a small, private world created by the player, who inhabits a universe "
       "created by…\n");
   IO::PrintfBlue(
@@ -539,7 +484,8 @@ void EndPoem() {
   IO::PrintfGreen(
       "Shush… Sometimes the player read lines of code on a screen. Decoded "
       "them into words; decoded words into meaning; decoded meaning into "
-      "feelings, emotions, theories, ideas, and the player started to breathe "
+      "feelings, emotions, theories, ideas, and the player started to "
+      "breathe "
       "faster and deeper and realised it was alive, it was alive, those "
       "thousand deaths had not been real, the player was alive\n");
   IO::PrintfBlue("You. You. You are alive.\n");
@@ -548,15 +494,19 @@ void EndPoem() {
       "it through the sunlight that came through the shuffling leaves "
       "of the summer trees\n");
   IO::PrintfBlue(
-      "and sometimes the player believed the universe had spoken to it through "
+      "and sometimes the player believed the universe had spoken to it "
+      "through "
       "the light that fell from the crisp night sky of winter, where a fleck "
       "of light in the corner of the player's eye might be a star a million "
-      "times as massive as the sun, boiling its planets to plasma in order to "
-      "be visible for a moment to the player, walking home at the far side of "
+      "times as massive as the sun, boiling its planets to plasma in order "
+      "to "
+      "be visible for a moment to the player, walking home at the far side "
+      "of "
       "the universe, suddenly smelling food, almost at the familiar door, "
       "about to dream again\n");
   IO::PrintfGreen(
-      "and sometimes the player believed the universe had spoken to it through "
+      "and sometimes the player believed the universe had spoken to it "
+      "through "
       "the zeros and ones, through the electricity of the world, through the "
       "scrolling words on a screen at the end of a dream\n");
   IO::PrintfBlue("and the universe said I love you\n");
@@ -576,7 +526,8 @@ void EndPoem() {
   IO::PrintfGreen("and the universe said I love you because you are love.\n");
   IO::PrintfBlue(
       "And the game was over and the player woke up from the dream. And the "
-      "player began a new dream. And the player dreamed again, dreamed better. "
+      "player began a new dream. And the player dreamed again, dreamed "
+      "better. "
       "And the player was the universe. And the player was love.\n");
   IO::PrintfBlue("You are the player.\n");
   IO::PrintfGreen("Wake up.\n");
@@ -599,15 +550,51 @@ void DontCLick() {
 
 // 主函数
 int main() {
-  AddCommand("Hi", notes);
+  setbuf(stdout, nullptr);
+  puts("请您先登陆");
+  puts("请输入账号与密码");
+  std::string username, password;
+  IO::scanfs(username);
+  AllToUpper(username);
+  // 如果是访客
+  if (username == "GUEST")
+    goto Run;
+  IO::scanfs(password);
+  AllToUpper(password);
+  if (username == "ED_WIS_GFZH" && password == "GH5TER") {
+    bool IsNew = true;
+    File userfile("username.list", &IsNew);
+    if (!IsNew) {
+      printf("请输入帐号名: ");
+      IO::ClearCache();
+      IO::scanfA(username, '\n');
+      if (username.empty())
+        username = "Admin";
+      if (!userfile.Write(username)) {
+        printf("无法写入文件\n");
+      } else {
+        // bool IsNew = true;
+        const File file("username.list");
+        if (char buffer[16];
+            std::fgets(buffer, 15, file.GetFilePtr()) != nullptr) {
+          username = buffer;
+          printf("欢迎回来, %s", username.c_str());
+          std::this_thread::sleep_for(std::chrono::seconds(2));
+        }
+      }
+    }
+  }
+
+Run:
+  AddCommand("Hi", EndPoem);
   AddCommand("leetcode", []() -> void {
     puts("力扣网站-----全世界人(精神病患者)的选择");
-    IO::printfs(
-        "请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨询相关医生"
-        "使用！！！\n",
-        30);
+    IO::printfs("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨"
+                "询相关医生"
+                "使用！！！\n",
+                30);
     printf("确定？(Y/N)");
-    char c = getchar();
+    char c = static_cast<char>(getchar());
     IO::ClearCache();
     if (c == 'Y') {
       puts("你确定的话，我就不管你了"); // eeeeeeeee6
@@ -617,6 +604,6 @@ int main() {
       return;
     }
   });
-  RunCommand("leetcode");
+  RunCommand("EndPoem");
   return 0;
 }

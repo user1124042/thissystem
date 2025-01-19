@@ -4,6 +4,7 @@ add_cxxflags("-std=c++26")
 set_languages("c++26")
 
 target("Wisterl")
+    add_includedirs("include")
     set_kind("binary")
     add_files("src/*.cpp")
 
