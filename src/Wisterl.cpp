@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdio>
+#include <extern.h>
 #include <file.h>
 #include <io.h>
 #include <map>
@@ -10,9 +11,9 @@
 
 // 全局函数区
 // 函数列表
-std::map<std::string, void (*)()> command;
+std::map<std::string, function> command;
 // 当前用户名
-std::string username;
+std::string username = "Guest";
 
 // 功能类
 
@@ -29,17 +30,24 @@ void OpenWeb(const std::string &url) {
 }
 
 // 添加命令
-void AddCommand(const std::string &name, void (*func)()) {
-    command[name] = func;
+void AddCommand(const std::string &name, void (*func)(), std::string describe) {
+    command[name] = {func, describe};
 }
 
 // 运行命令
 void RunCommand(const std::string &name) {
     if (command.contains(name)) {
-        command[name]();
+        command[name].function();
     } else {
         printf("未找到命令: %s\n", name.c_str());
     }
+}
+
+// 打印输出命令
+void OutputCommand() {
+    printf("%-22s%s\n", "命令", "描述");
+    for (auto i : command)
+        printf("%-20s%s\n", i.first.c_str(), i.second.describe.c_str());
 }
 
 void AllToUpper(std::string *str) {
@@ -335,6 +343,8 @@ void MineSweeper() {
         }
         printf("\n");
     }
+
+    getchar();
 }
 
 // 输出终末之诗
@@ -588,10 +598,8 @@ int main() {
     IO::scanfs(username);
     AllToUpper(&username);
     // 如果是访客
-    if (username == "GUEST") {
-        username = "Guest";
+    if (username == "GUEST")
         goto Run;
-    }
 
     IO::scanfs(password);
     AllToUpper(&password);
@@ -602,11 +610,8 @@ int main() {
 
         if (!IsNew) {
             printf("请输入帐号名: ");
-
             IO::ClearCache();
-
             IO::scanfA(username, '\n');
-
             if (username.empty())
                 username = "Admin";
             if (!userfile.Write(username)) {
@@ -614,13 +619,10 @@ int main() {
             } else {
                 // bool IsNew = true;
                 const File file("username.list");
-
                 if (char buffer[16];
                     std::fgets(buffer, 15, file.GetFilePtr()) != nullptr) {
                     username = buffer;
-
                     printf("欢迎回来, %s", username.c_str());
-
                     std::this_thread::sleep_for(std::chrono::seconds(2));
                 }
             }
@@ -628,38 +630,47 @@ int main() {
     }
 
 Run:
-    AddCommand("End poem", EndPoem);
+    AddCommand("End poem", EndPoem, "输出终末之诗");
+    AddCommand(
+        "leetcode",
+        []() -> void {
+            puts("力扣网站-----全世界人(精神病患者)的选择");
+            IO::printfs(
+                "请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨"
+                "询相关医生"
+                "使用！！！\n",
+                30);
+            printf("确定？(Y/N)");
 
-    AddCommand("leetcode", []() -> void {
-        puts("力扣网站-----全世界人(精神病患者)的选择");
-        IO::printfs("请注意，本次的编程之旅，可能会引起夜间盗汗，使用之前务必咨"
-                    "询相关医生"
-                    "使用！！！\n",
-                    30);
-        printf("确定？(Y/N)");
+            char c = static_cast<char>(getchar());
 
-        char c = static_cast<char>(getchar());
+            IO::ClearCache();
 
-        IO::ClearCache();
+            if (c == 'Y') {
+                puts("你确定的话，我就不管你了");
 
-        if (c == 'Y') {
-            puts("你确定的话，我就不管你了");
+                std::this_thread::sleep_for(std::chrono::seconds(1));
 
-            std::this_thread::sleep_for(std::chrono::seconds(1));
+                OpenWeb("https://www.leetcode.cn/");
+            } else {
+                return;
+            }
+        },
+        "打开Leetcode");
+    AddCommand(
+        "exit",
+        []() -> void {
+            printf("感谢使用");
 
-            OpenWeb("https://www.leetcode.cn/");
-        } else {
-            return;
-        }
-    });
-
-    AddCommand("exit", []() -> void {
-        printf("感谢使用");
-
-        exit(0);
-    });
+            exit(0);
+        },
+        "退出程序");
+    AddCommand("Minesweeper", MineSweeper, "扫雷");
+    AddCommand("help", OutputCommand, "获取命令列表");
 
     std::string input_command;
+
+    OutputCommand();
 
     while (true) {
         input_command.clear();
