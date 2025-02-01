@@ -5,3 +5,4 @@ build/
 cmake-build-debug/
 test.cpp
 Wisterl-System.cpp
+.cache/
