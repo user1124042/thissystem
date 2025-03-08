@@ -1,13 +1,16 @@
-#include <algorithm>
-#include <cctype>
-#include <cstdio>
 #include <extern.h>
 #include <file.h>
 #include <io.h>
+
+#include <algorithm>
+#include <cctype>
+#include <complex>
+#include <cstdio>
 #include <map>
 #include <random>
 #include <string>
 #include <thread>
+#include <vector>
 
 // 全局函数区
 // 函数列表
@@ -96,30 +99,66 @@ std::string sub(const std::string &minuend, const std::string &subtrahend) {
 }
 
 // 乘法
-std::string mul(const std::string &mul1, const std::string &mul2) {
-    int Alen = mul1.length();
-    int Blen = mul2.length();
-    std::vector<int> result(Alen + Blen, 0);
 
-    for (int i = Alen - 1; i >= 0; --i) {
-        for (int j = Blen - 1; j >= 0; --j) {
-            int mul = (mul1[i] - '0') * (mul2[j] - '0');
-            int sum = mul + result[i + j + 1];
-            result[i + j + 1] = sum % 10;
-            result[i + j] += sum / 10;
-        }
+using cd = std::complex<double>;
+const double PI = acos(-1);
+
+void fft(std::vector<cd> &a, bool invert) {
+    int n = a.size();
+    if (n <= 1) return;
+
+    std::vector<cd> a0(n / 2), a1(n / 2);
+    for (int i = 0; 2 * i < n; i++) {
+        a0[i] = a[2 * i];
+        a1[i] = a[2 * i + 1];
     }
+    fft(a0, invert);
+    fft(a1, invert);
 
-    std::string ans;
-    for (int num : result) {
-        if (!(ans.empty() && num == 0)) {
-            ans += std::to_string(num);
+    double ang = 2 * 3.14 / n * (invert ? -1 : 1);
+    cd w(1), wn(cos(ang), sin(ang));
+
+    for (int i = 0; i < n / 2; i++) {
+        a[i] = a0[i] + w * a1[i];
+        a[i + n / 2] = a0[i] - w * a1[i];
+        if (invert) {
+            a[i] /= 2;
+            a[i + n / 2] /= 2;
         }
+        w *= wn;
     }
-
-    return ans.empty() ? "0" : ans;
 }
-} // namespace Calc
+
+std::string mul(const std::string &a, const std::string &b) {
+    if (a == "0" || b == "0") return "0";
+
+    std::vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
+    for (auto &c : fa) c -= '0';
+    for (auto &c : fb) c -= '0';
+
+    int n = 1;
+    while (n < a.size() + b.size()) n <<= 1;
+    fa.resize(n);
+    fb.resize(n);
+
+    fft(fa, false);
+    fft(fb, false);
+    for (int i = 0; i < n; i++) fa[i] *= fb[i];
+    fft(fa, true);
+
+    std::string result;
+    int carry = 0;
+    for (int i = a.size() + b.size() - 2; i >= 0; i--) {
+        int num = round(fa[i].real()) + carry;
+        carry = num / 10;
+        result.push_back(num % 10 + '0');
+    }
+    if (carry) result.push_back(carry + '0');
+
+    reverse(result.begin(), result.end());
+    return result.empty() ? "0" : result;
+}
+}  // namespace Calc
 
 // 应用类
 void calc() {
@@ -211,9 +250,10 @@ void mail() {
     } else {
         printf("来自以前的 %s 的一封信:", name.c_str());
         puts(" ");
-        printf("你好，未来的 %s ，我希望你成为一名 %s ，我想你 %s "
-               "，希望你能完成！！！\n\n",
-               name.c_str(), things.c_str(), fut.c_str());
+        printf(
+            "你好，未来的 %s ，我希望你成为一名 %s ，我想你 %s "
+            "，希望你能完成！！！\n\n",
+            name.c_str(), things.c_str(), fut.c_str());
         printf("          ----------------- 从前的 %s\n", name.c_str());
     }
 }
@@ -306,8 +346,7 @@ void MineSweeper() {
                     break;
                 }
             }
-            if (!tg)
-                break;
+            if (!tg) break;
         }
     } while (!tg);
     if (cail) {
@@ -389,13 +428,15 @@ void EndPoem() {
     IO::PrintfBlue(
         "the <Error> and created a <Error> for <Error> in the <Error>\n");
     IO::PrintfGreen("It cannot read that thought.\n");
-    IO::PrintfBlue("No. It has not yet achieved the highest level. That, it "
-                   "must achieve in "
-                   "the long dream of life, not the short dream of a game.\n");
+    IO::PrintfBlue(
+        "No. It has not yet achieved the highest level. That, it "
+        "must achieve in "
+        "the long dream of life, not the short dream of a game.\n");
     IO::PrintfGreen(
         "Does it know that we love it? That the universe is kind?\n");
-    IO::PrintfBlue("Sometimes, through the noise of its thoughts, it hears the "
-                   "universe, yes.\n");
+    IO::PrintfBlue(
+        "Sometimes, through the noise of its thoughts, it hears the "
+        "universe, yes.\n");
     IO::PrintfGreen(
         "But there are times it is sad, in the long dream. It creates "
         "worlds that have no summer, and it shivers under a black sun, "
@@ -484,8 +525,9 @@ void EndPoem() {
         "in "
         "the air, in the ground. A woman gathered the atoms; she drank and ate "
         "and inhaled; and the woman assembled the player, in her body.\n");
-    IO::PrintfGreen("And the player awoke, from the warm, dark world of its "
-                    "mother's body, into the long dream.\n");
+    IO::PrintfGreen(
+        "And the player awoke, from the warm, dark world of its "
+        "mother's body, into the long dream.\n");
     IO::PrintfGreen(
         "And the player was a new story, never told before, written in letters "
         "of DNA. And the player was a new program, never run before, generated "
@@ -559,8 +601,9 @@ void EndPoem() {
     IO::PrintfBlue("and the universe said you are not alone\n");
     IO::PrintfGreen(
         "and the universe said you are not separate from every other thing\n");
-    IO::PrintfBlue("and the universe said you are the universe tasting itself, "
-                   "talking to itself, reading its own code\n");
+    IO::PrintfBlue(
+        "and the universe said you are the universe tasting itself, "
+        "talking to itself, reading its own code\n");
     IO::PrintfGreen("and the universe said I love you because you are love.\n");
     IO::PrintfBlue(
         "And the game was over and the player woke up from the dream. And the "
@@ -573,15 +616,15 @@ void EndPoem() {
 
 // 千万别点
 void DontCLick() {
-    printf("Warning!"
-           "本系统对“千万要点”所造成的bug和对电脑的伤害概不负责，是否继续操作? "
-           "(Y/Y/Y)");
+    printf(
+        "Warning!"
+        "本系统对“千万要点”所造成的bug和对电脑的伤害概不负责，是否继续操作? "
+        "(Y/Y/Y)");
     char mode;
     scanf("%c", &mode);
     if (mode == 'y')
         for (int i = 0; i < 100; ++i) {
-            for (int j = 0; j < 10; ++j)
-                printf("乐滋");
+            for (int j = 0; j < 10; ++j) printf("乐滋");
             printf("\n");
         }
 }
@@ -598,8 +641,7 @@ int main() {
     IO::scanfs(username);
     AllToUpper(&username);
     // 如果是访客
-    if (username == "GUEST")
-        goto Run;
+    if (username == "GUEST") goto Run;
 
     IO::scanfs(password);
     AllToUpper(&password);
@@ -612,8 +654,7 @@ int main() {
             printf("请输入帐号名: ");
             IO::ClearCache();
             IO::scanfA(username, '\n');
-            if (username.empty())
-                username = "Admin";
+            if (username.empty()) username = "Admin";
             if (!userfile.Write(username)) {
                 printf("无法写入文件\n");
             } else {
@@ -667,6 +708,7 @@ Run:
         "退出程序");
     AddCommand("Minesweeper", MineSweeper, "扫雷");
     AddCommand("help", OutputCommand, "获取命令列表");
+    AddCommand("calc", calc, "一个计算器");
 
     std::string input_command;
 

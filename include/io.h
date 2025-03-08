@@ -7,7 +7,7 @@
 
 namespace IO {
 // 字符串输入
-inline void scanfs(std::string &str) {
+inline void scanfs(std::string& str) {
     char tmp;
     while ((tmp = static_cast<char>(getchar())) != '\n' && tmp != ' ' &&
            tmp != EOF)
@@ -15,14 +15,13 @@ inline void scanfs(std::string &str) {
 }
 
 // 单字符停止
-inline void scanfA(std::string &str, const char stopChar) {
+inline void scanfA(std::string& str, const char stopChar) {
     char tmp;
-    while ((tmp = static_cast<char>(getchar())) != stopChar)
-        str += tmp;
+    while ((tmp = static_cast<char>(getchar())) != stopChar) str += tmp;
 }
 
 // 延迟输出
-inline void printfs(const std::string &str, double speed) {
+inline void printfs(const std::string& str, double speed) {
     if (!str.empty()) {
         for (int i = 0; i < str.length(); ++i) {
             putchar(str[i]);
@@ -37,7 +36,7 @@ inline void printfs(const std::string &str, double speed) {
 inline void ClearCache() { rewind(stdin); }
 
 // 输出颜色
-inline void PrintfBlue(const std::string &text) {
+inline void PrintfBlue(const std::string& text) {
     putchar('\033');
     putchar('[');
     putchar('1');
@@ -52,7 +51,7 @@ inline void PrintfBlue(const std::string &text) {
     putchar('m');
 }
 
-inline void PrintfGreen(const std::string &text) {
+inline void PrintfGreen(const std::string& text) {
     putchar('\033');
     putchar('[');
     putchar('1');
@@ -79,6 +78,6 @@ inline void PrintfGreen(const std::string &text) {
     putchar('0');
     putchar('m');
 }
-} // namespace IO
+}  // namespace IO
 
 #endif

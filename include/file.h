@@ -4,39 +4,40 @@
 #include <string>
 
 class File {
-public:
-  explicit File(const std::string &FileNames, bool *IsNew = nullptr) {
-    if (IsNew)
-      if (fopen(FileNames.c_str(), "r") == nullptr)
-        *IsNew = true;
-      else
-        *IsNew = false;
-    this->FilePtr = fopen(FileNames.c_str(), "w+");
-    this->FileName = FileNames;
-  }
+   public:
+    explicit File(const std::string& FileNames, bool* IsNew = nullptr) {
+        if (IsNew) {
+            *IsNew = false;
 
-  ~File() {
-    if (FilePtr) {
-      fclose(FilePtr);
+            if (fopen(FileNames.c_str(), "r") == nullptr) *IsNew = true;
+        }
+
+        this->FilePtr = fopen(FileNames.c_str(), "w+");
+        this->FileName = FileNames;
     }
-  }
 
-  [[nodiscard]] bool Write(std::string &str) const {
-    if (FilePtr) {
-      if (!str.empty() && str[0] == '\n')
-        str.erase(0, str.find_first_not_of('\n'));
-      fprintf(this->FilePtr, "%s", str.c_str());
-    } else {
-      return false;
+    ~File() {
+        if (FilePtr) {
+            fclose(FilePtr);
+        }
     }
-    return true;
-  }
 
-  [[nodiscard]] FILE *GetFilePtr() const { return FilePtr; }
+    [[nodiscard]] bool Write(std::string& str) const {
+        if (FilePtr) {
+            if (!str.empty() && str[0] == '\n')
+                str.erase(0, str.find_first_not_of('\n'));
+            fprintf(this->FilePtr, "%s", str.c_str());
+        } else {
+            return false;
+        }
+        return true;
+    }
 
-private:
-  std::string FileName;
-  FILE *FilePtr;
+    [[nodiscard]] FILE* GetFilePtr() const { return FilePtr; }
+
+   private:
+    std::string FileName;
+    FILE* FilePtr;
 };
 
 #endif
